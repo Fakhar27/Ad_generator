@@ -1,0 +1,1190 @@
+ File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ca' in position 50: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 102, in generate_reel
+    transcript_data = self.whisper_processor.transcribe_audio(italian_audio_path)
+  File "E:\angelo_script_small\reel_gen\whisper_processor.py", line 126, in transcribe_audio
+    logger.info(f"📊 Transcription summary:")
+Message: '📊 Transcription summary:'
+Arguments: ()
+2025-11-06 18:17:06,943 [INFO] whisper_processor: 📊 Transcription summary:
+2025-11-06 18:17:06,947 [INFO] whisper_processor:    Words: 128
+2025-11-06 18:17:06,947 [INFO] whisper_processor:    Lines: 25
+2025-11-06 18:17:06,948 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-06 18:17:06,950 [INFO] whisper_processor:    Language: it
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 103, in generate_reel
+    logger.info(f"✅ Transcription complete: {len(transcript_data['word_level'])} words detected")
+Message: '✅ Transcription complete: 128 words detected'
+Arguments: ()
+2025-11-06 18:17:06,951 [INFO] __main__: ✅ Transcription complete: 128 words detected
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50d' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 106, in generate_reel
+    logger.info("🔍 Step 2: Extracting keywords for video search...")
+Message: '🔍 Step 2: Extracting keywords for video search...'
+Arguments: ()
+2025-11-06 18:17:06,956 [INFO] __main__: 🔍 Step 2: Extracting keywords for video search...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50d' in position 50: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 107, in generate_reel
+    keywords = self.keyword_extractor.extract_keywords(transcript_data['full_text'])
+  File "E:\angelo_script_small\reel_gen\keyword_extractor.py", line 92, in extract_keywords
+    logger.info("🔍 Extracting keywords from transcript...")
+Message: '🔍 Extracting keywords from transcript...'
+Arguments: ()
+2025-11-06 18:17:06,960 [INFO] keyword_extractor: 🔍 Extracting keywords from transcript...
+2025-11-06 18:17:08,017 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 404 Not Found"
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\angelo_script_small\reel_gen\keyword_extractor.py", line 100, in extract_keywords
+    response = chain.invoke({"transcript": italian_transcript})
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_core\runnables\base.py", line 3022, in invoke
+    input = context.run(step.invoke, input, config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_core\language_models\chat_models.py", line 286, in invoke
+    self.generate_prompt(
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_core\language_models\chat_models.py", line 790, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_core\language_models\chat_models.py", line 647, in generate
+    raise e
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_core\language_models\chat_models.py", line 637, in generate
+    self._generate_with_cache(
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_core\language_models\chat_models.py", line 855, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "E:\angelo_script_small\env\Lib\site-packages\langchain_cohere\chat_models.py", line 1135, in _generate
+    response = self.client.v2.chat(**request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\angelo_script_small\env\Lib\site-packages\cohere\v2\client.py", line 626, in chat
+    raise NotFoundError(
+cohere.errors.not_found_error.NotFoundError: status_code: 404, body: {'id': '8fa9c90a-722d-4912-b1ed-12bebe7471f8', 'message': "model 'command-r-plus' was removed on September 15, 2025. See https://docs.cohere.com/docs/models#command for a list of models you can use instead."}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 51: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 107, in generate_reel
+    keywords = self.keyword_extractor.extract_keywords(transcript_data['full_text'])
+  File "E:\angelo_script_small\reel_gen\keyword_extractor.py", line 116, in extract_keywords
+    logger.error(f"❌ Keyword extraction failed: {e}")
+Message: '❌ Keyword extraction failed: status_code: 404, body: {\'id\': \'8fa9c90a-722d-4912-b1ed-12bebe7471f8\', \'message\': "model \'command-r-plus\' was removed on September 15, 2025. See https://docs.cohere.com/docs/
+models#command for a list of models you can use instead."}'
+Arguments: ()
+2025-11-06 18:17:08,018 [ERROR] keyword_extractor: ❌ Keyword extraction failed: status_code: 404, body: {'id': '8fa9c90a-722d-4912-b1ed-12bebe7471f8', 'message': "model 'command-r-plus' was removed on September 15, 2025. 
+See https://docs.cohere.com/docs/models#command for a list of models you can use instead."}
+2025-11-06 18:17:08,032 [WARNING] keyword_extractor: Using fallback keywords: ['fitness', 'gym', 'workout', 'training', 'exercise']
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 108, in generate_reel
+    logger.info(f"✅ Keywords extracted: {keywords}")
+Message: "✅ Keywords extracted: ['fitness', 'gym', 'workout', 'training', 'exercise']"
+Arguments: ()
+2025-11-06 18:17:08,032 [INFO] __main__: ✅ Keywords extracted: ['fitness', 'gym', 'workout', 'training', 'exercise']
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f3a5' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 111, in generate_reel
+    logger.info("🎥 Step 3: Searching for relevant videos...")
+Message: '🎥 Step 3: Searching for relevant videos...'
+Arguments: ()
+2025-11-06 18:17:08,036 [INFO] __main__: 🎥 Step 3: Searching for relevant videos...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50d' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 57, in search_portrait_videos
+    logger.info(f"🔍 Searching Pexels for videos...")
+Message: '🔍 Searching Pexels for videos...'
+Arguments: ()
+2025-11-06 18:17:08,052 [INFO] pexels_client: 🔍 Searching Pexels for videos...
+2025-11-06 18:17:08,063 [INFO] pexels_client:    Keywords: ['fitness', 'gym', 'workout', 'training', 'exercise']
+2025-11-06 18:17:08,063 [INFO] pexels_client:    Target duration: 44.3 seconds
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 93, in search_portrait_videos
+    logger.info(f"✅ Found video for '{keyword}': {video['duration']}s")
+Message: "✅ Found video for 'fitness': 12s"
+Arguments: ()
+2025-11-06 18:17:09,109 [INFO] pexels_client: ✅ Found video for 'fitness': 12s
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 93, in search_portrait_videos
+    logger.info(f"✅ Found video for '{keyword}': {video['duration']}s")
+Message: "✅ Found video for 'gym': 9s"
+Arguments: ()
+2025-11-06 18:17:09,812 [INFO] pexels_client: ✅ Found video for 'gym': 9s
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 93, in search_portrait_videos
+    logger.info(f"✅ Found video for '{keyword}': {video['duration']}s")
+Message: "✅ Found video for 'workout': 9s"
+Arguments: ()
+2025-11-06 18:17:10,838 [INFO] pexels_client: ✅ Found video for 'workout': 9s
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 93, in search_portrait_videos
+    logger.info(f"✅ Found video for '{keyword}': {video['duration']}s")
+Message: "✅ Found video for 'training': 8s"
+Arguments: ()
+2025-11-06 18:17:11,866 [INFO] pexels_client: ✅ Found video for 'training': 8s
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 93, in search_portrait_videos
+    logger.info(f"✅ Found video for '{keyword}': {video['duration']}s")
+Message: "✅ Found video for 'exercise': 9s"
+Arguments: ()
+2025-11-06 18:17:12,517 [INFO] pexels_client: ✅ Found video for 'exercise': 9s
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 112, in generate_reel
+    video_segments = self.pexels_client.search_portrait_videos(
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 108, in search_portrait_videos
+    logger.info(f"✅ Found {len(video_segments)} video segments")
+Message: '✅ Found 5 video segments'
+Arguments: ()
+2025-11-06 18:17:12,522 [INFO] pexels_client: ✅ Found 5 video segments
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 116, in generate_reel
+    logger.info(f"✅ Found {len(video_segments)} video segments")
+Message: '✅ Found 5 video segments'
+Arguments: ()
+2025-11-06 18:17:12,526 [INFO] __main__: ✅ Found 5 video segments
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 119, in generate_reel
+    logger.info("📥 Step 3.5: Downloading video files...")
+Message: '📥 Step 3.5: Downloading video files...'
+Arguments: ()
+2025-11-06 18:17:12,531 [INFO] __main__: 📥 Step 3.5: Downloading video files...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 251, in download_all_segments
+    logger.info(f"📥 Downloading {len(video_segments)} video segments...")
+Message: '📥 Downloading 5 video segments...'
+Arguments: ()
+2025-11-06 18:17:12,535 [INFO] pexels_client: 📥 Downloading 5 video segments...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 221, in download_video_segment
+    logger.info(f"📥 Downloading video: {segment['keyword']} ({segment['duration']}s)")
+Message: '📥 Downloading video: fitness (12s)'
+Arguments: ()
+2025-11-06 18:17:12,539 [INFO] pexels_client: 📥 Downloading video: fitness (12s)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 238, in download_video_segment
+    logger.info(f"✅ Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
+Message: '✅ Downloaded: C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_3761095_fitness.mp4 (2029 KB)'
+Arguments: ()
+2025-11-06 18:17:17,096 [INFO] pexels_client: ✅ Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_3761095_fitness.mp4 (2029 KB)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 221, in download_video_segment
+    logger.info(f"📥 Downloading video: {segment['keyword']} ({segment['duration']}s)")
+Message: '📥 Downloading video: gym (9s)'
+Arguments: ()
+2025-11-06 18:17:17,101 [INFO] pexels_client: 📥 Downloading video: gym (9s)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 238, in download_video_segment
+    logger.info(f"✅ Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
+Message: '✅ Downloaded: C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_4117854_gym.mp4 (2982 KB)'
+Arguments: ()
+2025-11-06 18:17:18,487 [INFO] pexels_client: ✅ Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_4117854_gym.mp4 (2982 KB)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 221, in download_video_segment
+    logger.info(f"📥 Downloading video: {segment['keyword']} ({segment['duration']}s)")
+Message: '📥 Downloading video: workout (9s)'
+Arguments: ()
+2025-11-06 18:17:18,493 [INFO] pexels_client: 📥 Downloading video: workout (9s)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 238, in download_video_segment
+    logger.info(f"✅ Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
+Message: '✅ Downloaded: C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_4117854_workout.mp4 (2982 KB)'
+Arguments: ()
+2025-11-06 18:17:19,198 [INFO] pexels_client: ✅ Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_4117854_workout.mp4 (2982 KB)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 221, in download_video_segment
+    logger.info(f"📥 Downloading video: {segment['keyword']} ({segment['duration']}s)")
+Message: '📥 Downloading video: training (8s)'
+Arguments: ()
+2025-11-06 18:17:19,206 [INFO] pexels_client: 📥 Downloading video: training (8s)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 238, in download_video_segment
+    logger.info(f"✅ Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
+Message: '✅ Downloaded: C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_2791956_training.mp4 (4805 KB)'
+Arguments: ()
+2025-11-06 18:17:21,018 [INFO] pexels_client: ✅ Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4 (4805 KB)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 221, in download_video_segment
+    logger.info(f"📥 Downloading video: {segment['keyword']} ({segment['duration']}s)")
+Message: '📥 Downloading video: exercise (9s)'
+Arguments: ()
+2025-11-06 18:17:21,024 [INFO] pexels_client: 📥 Downloading video: exercise (9s)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 257, in download_all_segments
+    file_path = self.download_video_segment(segment)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 238, in download_video_segment
+    logger.info(f"✅ Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
+Message: '✅ Downloaded: C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_2785532_exercise.mp4 (5678 KB)'
+Arguments: ()
+2025-11-06 18:17:22,754 [INFO] pexels_client: ✅ Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_2785532_exercise.mp4 (5678 KB)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 46: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 120, in generate_reel
+    video_files = self.pexels_client.download_all_segments(video_segments)
+  File "E:\angelo_script_small\reel_gen\pexels_client.py", line 267, in download_all_segments
+    logger.info(f"✅ Successfully downloaded {len(downloaded_files)} videos")
+Message: '✅ Successfully downloaded 5 videos'
+Arguments: ()
+2025-11-06 18:17:22,761 [INFO] pexels_client: ✅ Successfully downloaded 5 videos
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 121, in generate_reel
+    logger.info(f"✅ Downloaded {len(video_files)} video files")
+Message: '✅ Downloaded 5 video files'
+Arguments: ()
+2025-11-06 18:17:22,766 [INFO] __main__: ✅ Downloaded 5 video files
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 41-42: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 124, in generate_reel
+    logger.info("⚙️ Step 4: Assembling final video...")
+Message: '⚙️ Step 4: Assembling final video...'
+Arguments: ()
+2025-11-06 18:17:22,771 [INFO] __main__: ⚙️ Step 4: Assembling final video...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f3ac' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 68, in create_final_reel
+    logger.info("🎬 Starting final video assembly...")
+Message: '🎬 Starting final video assembly...'
+Arguments: ()
+2025-11-06 18:17:22,775 [INFO] video_assembler: 🎬 Starting final video assembly...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e5' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 72, in create_final_reel
+    logger.info("📥 Step 1: Processing video files...")
+Message: '📥 Step 1: Processing video files...'
+Arguments: ()
+2025-11-06 18:17:22,780 [INFO] video_assembler: 📥 Step 1: Processing video files...
+2025-11-06 18:17:22,787 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_3761095_fitness.mp4
+{'video_found': True, 'audio_found': False, 'metadata': {'major_brand': 'mp42', 'minor_version': '0', 'compatible_brands': 'mp42mp41isomavc1', 'creation_time': '2020-02-18T11:51:53.000000Z'}, 'inputs': [{'streams': [{'input_number': 0, 'stream_number': 0, 'stream_type': 'video', 'language': None, 'default': True, 'size': [720, 1280], 'bitrate': 1410, 'fps': 25.0, 'codec_name': 'h264', 'profile': '(High)', 'metadata': {'Metadata': '', 'creation_time': '2020-02-18T11:51:53.000000Z', 'handler_name': 'L-SMASH Video Handler', 'vendor_id': '[0][0][0][0]', 'encoder': 'AVC Coding'}}], 'input_number': 0}], 'duration': 11.76, 'bitrate': 1413, 'start': 0.0, 'default_video_input_number': 0, 'default_video_stream_number': 0, 'video_codec_name': 'h264', 'video_profile': '(High)', 'video_size': [720, 1280], 'video_bitrate': 1410, 'video_fps': 25.0, 'video_duration': 11.76, 'video_n_frames': 294}
+E:\angelo_script_small\env\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -i C:\Users\Admin\AppData\Local\Temp\pexels_3761095_fitness.mp4 -loglevel error -f image2pipe -vf scale=720:1280 -sws_flags bicubic -pix_fmt rgb24 -vcodec rawvideo -
+2025-11-06 18:17:22,983 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 125, in _process_video_files
+    clip = clip.subclip(0, duration_per_clip)
+           ^^^^^^^^^^^^
+AttributeError: 'VideoFileClip' object has no attribute 'subclip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 54: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 73, in create_final_reel
+    processed_clips = self._process_video_files(video_files, transcript_data['total_duration'])
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 138, in _process_video_files
+    logger.error(f"     ❌ Failed to process {video_file}: {e}")
+Message: "     ❌ Failed to process C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_3761095_fitness.mp4: 'VideoFileClip' object has no attribute 'subclip'"
+Arguments: ()
+2025-11-06 18:17:23,059 [ERROR] video_assembler:      ❌ Failed to process C:\Users\Admin\AppData\Local\Temp\pexels_3761095_fitness.mp4: 'VideoFileClip' object has no attribute 'subclip'
+2025-11-06 18:17:23,065 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_4117854_gym.mp4
+{'video_found': True, 'audio_found': False, 'metadata': {'major_brand': 'mp42', 'minor_version': '0', 'compatible_brands': 'mp42mp41isomavc1', 'creation_time': '2020-04-10T04:21:42.000000Z'}, 'inputs': [{'streams': [{'input_number': 0, 'stream_number': 0, 'stream_type': 'video', 'language': None, 'default': True, 'size': [720, 1280], 'bitrate': 2610, 'fps': 50.0, 'codec_name': 'h264', 'profile': '(High)', 'metadata': {'Metadata': '', 'creation_time': '2020-04-10T04:21:42.000000Z', 'handler_name': 'L-SMASH Video Handler', 'vendor_id': '[0][0][0][0]', 'encoder': 'AVC Coding'}}], 'input_number': 0}], 'duration': 9.34, 'bitrate': 2615, 'start': 0.0, 'default_video_input_number': 0, 'default_video_stream_number': 0, 'video_codec_name': 'h264', 'video_profile': '(High)', 'video_size': [720, 1280], 'video_bitrate': 2610, 'video_fps': 50.0, 'video_duration': 9.34, 'video_n_frames': 467}
+E:\angelo_script_small\env\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -i C:\Users\Admin\AppData\Local\Temp\pexels_4117854_gym.mp4 -loglevel error -f image2pipe -vf scale=720:1280 -sws_flags bicubic -pix_fmt rgb24 -vcodec rawvideo -
+2025-11-06 18:17:23,254 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 125, in _process_video_files
+    clip = clip.subclip(0, duration_per_clip)
+           ^^^^^^^^^^^^
+AttributeError: 'VideoFileClip' object has no attribute 'subclip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 54: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 73, in create_final_reel
+    processed_clips = self._process_video_files(video_files, transcript_data['total_duration'])
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 138, in _process_video_files
+    logger.error(f"     ❌ Failed to process {video_file}: {e}")
+Message: "     ❌ Failed to process C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_4117854_gym.mp4: 'VideoFileClip' object has no attribute 'subclip'"
+Arguments: ()
+2025-11-06 18:17:23,335 [ERROR] video_assembler:      ❌ Failed to process C:\Users\Admin\AppData\Local\Temp\pexels_4117854_gym.mp4: 'VideoFileClip' object has no attribute 'subclip'
+2025-11-06 18:17:23,342 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_4117854_workout.mp4
+{'video_found': True, 'audio_found': False, 'metadata': {'major_brand': 'mp42', 'minor_version': '0', 'compatible_brands': 'mp42mp41isomavc1', 'creation_time': '2020-04-10T04:21:42.000000Z'}, 'inputs': [{'streams': [{'input_number': 0, 'stream_number': 0, 'stream_type': 'video', 'language': None, 'default': True, 'size': [720, 1280], 'bitrate': 2610, 'fps': 50.0, 'codec_name': 'h264', 'profile': '(High)', 'metadata': {'Metadata': '', 'creation_time': '2020-04-10T04:21:42.000000Z', 'handler_name': 'L-SMASH Video Handler', 'vendor_id': '[0][0][0][0]', 'encoder': 'AVC Coding'}}], 'input_number': 0}], 'duration': 9.34, 'bitrate': 2615, 'start': 0.0, 'default_video_input_number': 0, 'default_video_stream_number': 0, 'video_codec_name': 'h264', 'video_profile': '(High)', 'video_size': [720, 1280], 'video_bitrate': 2610, 'video_fps': 50.0, 'video_duration': 9.34, 'video_n_frames': 467}
+E:\angelo_script_small\env\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -i C:\Users\Admin\AppData\Local\Temp\pexels_4117854_workout.mp4 -loglevel error -f image2pipe -vf scale=720:1280 -sws_flags bicubic -pix_fmt rgb24 -vcodec rawvideo -
+2025-11-06 18:17:23,542 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 125, in _process_video_files
+    clip = clip.subclip(0, duration_per_clip)
+           ^^^^^^^^^^^^
+AttributeError: 'VideoFileClip' object has no attribute 'subclip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 54: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 73, in create_final_reel
+    processed_clips = self._process_video_files(video_files, transcript_data['total_duration'])
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 138, in _process_video_files
+    logger.error(f"     ❌ Failed to process {video_file}: {e}")
+Message: "     ❌ Failed to process C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_4117854_workout.mp4: 'VideoFileClip' object has no attribute 'subclip'"
+Arguments: ()
+2025-11-06 18:17:23,623 [ERROR] video_assembler:      ❌ Failed to process C:\Users\Admin\AppData\Local\Temp\pexels_4117854_workout.mp4: 'VideoFileClip' object has no attribute 'subclip'
+2025-11-06 18:17:23,630 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4
+{'video_found': True, 'audio_found': True, 'metadata': {'major_brand': 'mp42', 'minor_version': '0', 'compatible_brands': 'mp42mp41isomavc1', 'creation_time': '2019-08-12T16:08:44.000000Z'}, 'inputs': [{'streams': [{'input_number': 0, 'stream_number': 0, 'stream_type': 'video', 'language': None, 'default': True, 'size': [1080, 1920], 'bitrate': 4920, 'fps': 25.0, 'codec_name': 'h264', 'profile': '(High)', 'metadata': {'Metadata': '', 'creation_time': '2019-08-12T16:08:44.000000Z', 'handler_name': 'L-SMASH Video Handler', 'vendor_id': '[0][0][0][0]', 'encoder': 'AVC Coding'}}, {'input_number': 0, 'stream_number': 1, 'stream_type': 'audio', 'language': None, 'default': True, 'fps': 48000, 'bitrate': 253, 'metadata': {'Metadata': '', 'creation_time': '2019-08-12T16:08:44.000000Z', 'handler_name': 'L-SMASH Audio Handler', 'vendor_id': '[0][0][0][0]'}}], 'input_number': 0}], 'duration': 7.62, 'bitrate': 5169, 'start': 0.0, 'default_video_input_number': 0, 'default_video_stream_number': 0, 'video_codec_name': 'h264', 'video_profile': '(High)', 'video_size': [1080, 1920], 'video_bitrate': 4920, 
+'video_fps': 25.0, 'default_audio_input_number': 0, 'default_audio_stream_number': 1, 'audio_fps': 48000, 'audio_bitrate': 253, 'video_duration': 7.62, 'video_n_frames': 190}
+E:\angelo_script_small\env\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -i C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4 -loglevel error -f image2pipe -vf scale=1080:1920 -sws_flags bicubic -pix_fmt rgb24 -vcodec rawvideo -
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 53: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 73, in create_final_reel
+    processed_clips = self._process_video_files(video_files, transcript_data['total_duration'])
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 135, in _process_video_files
+    logger.info(f"     ✅ Processed: {clip.duration:.1f}s, {clip.w}x{clip.h}")
+Message: '     ✅ Processed: 8.9s, 1080x1920'
+Arguments: ()
+2025-11-06 18:17:24,817 [INFO] video_assembler:      ✅ Processed: 8.9s, 1080x1920
+2025-11-06 18:17:24,846 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_2785532_exercise.mp4
+{'video_found': True, 'audio_found': True, 'metadata': {'major_brand': 'mp42', 'minor_version': '0', 'compatible_brands': 'mp42mp41isomavc1', 'creation_time': '2019-08-11T15:36:04.000000Z'}, 'inputs': [{'streams': [{'input_number': 0, 'stream_number': 0, 'stream_type': 'video', 'language': None, 'default': True, 'size': [1080, 1920], 'bitrate': 4933, 'fps': 25.0, 'codec_name': 'h264', 'profile': '(High)', 'metadata': {'Metadata': '', 'creation_time': '2019-08-11T15:36:04.000000Z', 'handler_name': 'L-SMASH Video Handler', 'vendor_id': '[0][0][0][0]', 'encoder': 'AVC Coding'}}, {'input_number': 0, 'stream_number': 1, 'stream_type': 'audio', 'language': None, 'default': True, 'fps': 48000, 'bitrate': 253, 'metadata': {'Metadata': '', 'creation_time': '2019-08-11T15:36:04.000000Z', 'handler_name': 'L-SMASH Audio Handler', 'vendor_id': '[0][0][0][0]'}}], 'input_number': 0}], 'duration': 8.96, 'bitrate': 5192, 'start': 0.0, 'default_video_input_number': 0, 'default_video_stream_number': 0, 'video_codec_name': 'h264', 'video_profile': '(High)', 'video_size': [1080, 1920], 'video_bitrate': 4933, 
+'video_fps': 25.0, 'default_audio_input_number': 0, 'default_audio_stream_number': 1, 'audio_fps': 48000, 'audio_bitrate': 253, 'video_duration': 8.96, 'video_n_frames': 224}
+E:\angelo_script_small\env\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -i C:\Users\Admin\AppData\Local\Temp\pexels_2785532_exercise.mp4 -loglevel error -f image2pipe -vf scale=1080:1920 -sws_flags bicubic -pix_fmt rgb24 -vcodec rawvideo -
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 125, in _process_video_files
+    clip = clip.subclip(0, duration_per_clip)
+           ^^^^^^^^^^^^
+AttributeError: 'VideoFileClip' object has no attribute 'subclip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 54: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 73, in create_final_reel
+    processed_clips = self._process_video_files(video_files, transcript_data['total_duration'])
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 138, in _process_video_files
+    logger.error(f"     ❌ Failed to process {video_file}: {e}")
+Message: "     ❌ Failed to process C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_2785532_exercise.mp4: 'VideoFileClip' object has no attribute 'subclip'"
+Arguments: ()
+2025-11-06 18:17:28,294 [ERROR] video_assembler:      ❌ Failed to process C:\Users\Admin\AppData\Local\Temp\pexels_2785532_exercise.mp4: 'VideoFileClip' object has no attribute 'subclip'
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f517' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 76, in create_final_reel
+    logger.info("🔗 Step 2: Concatenating video segments...")
+Message: '🔗 Step 2: Concatenating video segments...'
+Arguments: ()
+2025-11-06 18:17:28,346 [INFO] video_assembler: 🔗 Step 2: Concatenating video segments...
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 51: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 77, in create_final_reel
+    concatenated_video = self._concatenate_videos(processed_clips)
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 167, in _concatenate_videos
+    logger.info(f"   ✅ Concatenated {len(clips)} clips → {final_video.duration:.1f}s total")
+Message: '   ✅ Concatenated 1 clips → 8.9s total'
+Arguments: ()
+2025-11-06 18:17:29,063 [INFO] video_assembler:    ✅ Concatenated 1 clips → 8.9s total
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f3b5' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 80, in create_final_reel
+    logger.info("🎵 Step 3: Adding audio layers...")
+Message: '🎵 Step 3: Adding audio layers...'
+Arguments: ()
+2025-11-06 18:17:29,070 [INFO] video_assembler: 🎵 Step 3: Adding audio layers...
+2025-11-06 18:17:29,270 [INFO] video_assembler:    Adding background music: temp_audio_1305.wav
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 51: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 81, in create_final_reel
+    video_with_audio = self._add_audio_layers(concatenated_video, original_audio_path)
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 209, in _add_audio_layers
+    logger.info(f"   ✅ Audio added: {mixed_audio.duration:.1f}s")
+Message: '   ✅ Audio added: 8.9s'
+Arguments: ()
+2025-11-06 18:17:29,470 [INFO] video_assembler:    ✅ Audio added: 8.9s
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ac' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 84, in create_final_reel
+    logger.info("💬 Step 4: Adding Italian subtitles...")
+Message: '💬 Step 4: Adding Italian subtitles...'
+Arguments: ()
+2025-11-06 18:17:29,476 [INFO] video_assembler: 💬 Step 4: Adding Italian subtitles...
+2025-11-06 18:17:29,482 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-06 18:17:29,533 [ERROR] video_assembler: Error creating word-level subtitles: Invalid font Arial-Bold, pillow failed to use it with error cannot open resource
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 51: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 85, in create_final_reel
+    final_video = self._add_subtitles(video_with_audio, transcript_data)
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 225, in _add_subtitles
+    logger.info(f"   ✅ Added {len(subtitle_clips)} subtitle clips")
+Message: '   ✅ Added 0 subtitle clips'
+Arguments: ()
+2025-11-06 18:17:29,607 [INFO] video_assembler:    ✅ Added 0 subtitle clips
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e4' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 88, in create_final_reel
+    logger.info("📤 Step 5: Exporting final video...")
+Message: '📤 Step 5: Exporting final video...'
+Arguments: ()
+2025-11-06 18:17:29,614 [INFO] video_assembler: 📤 Step 5: Exporting final video...
+2025-11-06 18:17:29,620 [INFO] video_assembler:    Exporting to: output_videos\angelo_fitness_reel_poc.mp4
+MoviePy - Building video output_videos\angelo_fitness_reel_poc.mp4.
+MoviePy - Writing audio in temp-audio.m4a
+MoviePy - Done.
+MoviePy - Writing video output_videos\angelo_fitness_reel_poc.mp4
+
+frame_index:  18%|████████████████████████████▊                                                                                                                                  | 48/265 [00:23<01:50,  1.
+
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e4' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 88, in create_final_reel
+    logger.info("📤 Step 5: Exporting final video...")
+Message: '📤 Step 5: Exporting final video...'
+Arguments: ()
+2025-11-06 18:17:29,614 [INFO] video_assembler: 📤 Step 5: Exporting final video...
+2025-11-06 18:17:29,620 [INFO] video_assembler:    Exporting to: output_videos\angelo_fitness_reel_poc.mp4
+MoviePy - Building video output_videos\angelo_fitness_reel_poc.mp4.
+MoviePy - Writing audio in temp-audio.m4a
+MoviePy - Done.
+MoviePy - Writing video output_videos\angelo_fitness_reel_poc.mp4
+
+frame_index:  86%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                     | 229/265 [01:36<00:13,  2.70it/s, now=None]E:\angelo_script_small\env\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py:178: UserWarning: In file C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4, 6220800 bytes wanted but 0 bytes read at frame index 190 (out of a total 190 frames), at time 7.60/7.62 sec. Using the last valid frame instead.
+  warnings.warn(
+frame_index:  87%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                    | 230/265 [01:36<00:12,  2.79it/s, now=None]{'video_found': True, 'audio_found': True, 'metadata': {'major_brand': 'mp42', 'minor_version': '0', 'compatible_brands': 'mp42mp41isomavc1', 'creation_time': '2019-08-12T16:08:44.000000Z'}, 'inputs': [{'streams': [{'input_number': 0, 'stream_number': 0, 'stream_type': 'video', 'language': None, 'default': True, 'size': [1080, 1920], 'bitrate': 4920, 'fps': 25.0, 'codec_name': 'h264', 'profile': '(High)', 'metadata': {'Metadata': '', 'creation_time': '2019-08-12T16:08:44.000000Z', 'handler_name': 'L-SMASH Video Handler', 'vendor_id': '[0][0][0][0]', 'encoder': 'AVC Coding'}}, {'input_number': 0, 'stream_number': 1, 'stream_type': 'audio', 'language': None, 'default': True, 'fps': 48000, 'bitrate': 253, 'metadata': {'Metadata': '', 'creation_time': '2019-08-12T16:08:44.000000Z', 'handler_name': 'L-SMASH Audio Handler', 'vendor_id': '[0][0][0][0]'}}], 'input_number': 0}], 'duration': 7.62, 'bitrate': 5169, 'start': 0.0, 'default_video_input_number': 0, 'default_video_stream_number': 0, 'video_codec_name': 'h264', 'video_profile': '(High)', 'video_size': [1080, 1920], 'video_bitrate': 4920, 'video_fps': 25.0, 'default_audio_input_number': 0, 'default_audio_stream_number': 1, 'audio_fps': 48000, 'audio_bitrate': 253, 'video_duration': 7.62, 'video_n_frames': 190}
+E:\angelo_script_small\env\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -ss 0.000000 -i C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4 -ss 0.013333 -loglevel error -f image2pipe -vf 
+scale=1080:1920 -sws_flags bicubic -pix_fmt rgb24 -vcodec rawvideo -
+MoviePy - Done !
+MoviePy - video ready output_videos\angelo_fitness_reel_poc.mp4
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 125, in generate_reel
+    final_video_path = self.video_assembler.create_final_reel(
+  File "E:\angelo_script_small\reel_gen\video_assembler.py", line 91, in create_final_reel
+    logger.info(f"✅ Video assembly complete: {output_path}")
+Message: '✅ Video assembly complete: output_videos\\angelo_fitness_reel_poc.mp4'
+Arguments: ()
+2025-11-06 18:19:37,862 [INFO] video_assembler: ✅ Video assembly complete: output_videos\angelo_fitness_reel_poc.mp4
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 131, in generate_reel
+    logger.info(f"✅ Final video created: {final_video_path}")
+Message: '✅ Final video created: output_videos\\angelo_fitness_reel_poc.mp4'
+Arguments: ()
+2025-11-06 18:19:37,904 [INFO] __main__: ✅ Final video created: output_videos\angelo_fitness_reel_poc.mp4
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f9f9' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 134, in generate_reel
+    logger.info("🧹 Step 5: Cleaning up temporary files...")
+Message: '🧹 Step 5: Cleaning up temporary files...'
+Arguments: ()
+2025-11-06 18:19:37,912 [INFO] __main__: 🧹 Step 5: Cleaning up temporary files...
+2025-11-06 18:19:37,924 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_2791956_training.mp4'
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 135, in generate_reel
+    self._cleanup_temp_files()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 152, in _cleanup_temp_files
+    logger.info("✅ Temporary files cleaned up")
+Message: '✅ Temporary files cleaned up'
+Arguments: ()
+2025-11-06 18:19:37,928 [INFO] __main__: ✅ Temporary files cleaned up
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Program Files\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f389' in position 41: character maps to <undefined>
+Call stack:
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 193, in <module>
+    main()
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 177, in main
+    output_video = generator.generate_reel(
+  File "E:\angelo_script_small\reel_gen\main_reel_generator.py", line 137, in generate_reel
+    logger.info(f"🎉 REEL GENERATION COMPLETE! Output: {final_video_path}")
+Message: '🎉 REEL GENERATION COMPLETE! Output: output_videos\\angelo_fitness_reel_poc.mp4'
+Arguments: ()
+2025-11-06 18:19:37,936 [INFO] __main__: 🎉 REEL GENERATION COMPLETE! Output: output_videos\angelo_fitness_reel_poc.mp4
+🎉 SUCCESS! Generated reel: output_videos\angelo_fitness_reel_poc.mp4
+📁 File size: 3.3 MB
+
+✨ Ready to show Angelo!
+
+
+🎤 Initializing Whisper service for Angelo's Reel Generator...
+Using device: cpu
+config.json: 
+ 2.31k/? [00:00<00:00, 89.2kB/s]
+tokenizer.json: 
+ 2.20M/? [00:00<00:00, 7.68MB/s]
+vocabulary.txt: 
+ 460k/? [00:00<00:00, 4.43MB/s]
+model.bin: 100%
+ 145M/145M [00:01<00:00, 52.7MB/s]
+✅ Whisper model loaded successfully
+🚀 Starting Whisper service for Angelo's Reel Generator...
+🌐 Setting up ngrok tunnel for Whisper service...
+✅ Whisper service available at: https://c3c6765a3991.ngrok-free.app                                 
+   Endpoint: https://c3c6765a3991.ngrok-free.app/process_audio
+   Use this URL in your WHISPER_NGROK_URL environment variable
+🎤 Whisper service is ready for reel generation!
+ * Serving Flask app '__main__'
+ * Debug mode: off
+[REEL-WHISPER-1db57127] Received audio processing request
+[REEL-WHISPER-1db57127] Audio data size: 930.67 KB
+[REEL-WHISPER-1db57127] Saving to: temp_reel_audio_1db57127.wav
+[REEL-WHISPER-1db57127] File created: 698.00 KB
+[WHISPER-1db57127] Starting Italian audio transcription
+[WHISPER-1db57127] Processing audio file: temp_reel_audio_1db57127.wav (698.00 KB)
+[WHISPER-1db57127] Using model: base on cpu
+[WHISPER-1db57127] Starting transcription with Italian language...
+[WHISPER-1db57127] ✅ Transcription completed in 20.27s
+[WHISPER-1db57127] Detected language: it (probability: 1.0000)
+[WHISPER-1db57127] Number of segments: 8
+[WHISPER-1db57127] Processing word-level timestamps for subtitles...
+[WHISPER-1db57127] Segment 1: 20 words, 0.00s to 5.32s
+[WHISPER-1db57127] Text: " Gestire tutto da solo? È un po' come navigare in mare aperto senza busso, la prima o poi ti perdi."
+[WHISPER-1db57127] Segment 2: 21 words, 5.76s to 12.32s
+[WHISPER-1db57127] Text: " Con Smartgain non sei mai solo. C'è una community vera, fatta di persone reali che ti affiancano in ogni momento."
+[WHISPER-1db57127] Segment 3: 14 words, 12.76s to 17.20s
+[WHISPER-1db57127] Text: " Persone competenti che leggono clausole e contratti insieme a te, non al posto tuo."
+[WHISPER-1db57127] Segment 4: 15 words, 17.50s to 22.96s
+[WHISPER-1db57127] Text: " Niente col center dove nessuno ti conosce, niente risposte pre-confezionate che non risolvono nulla."
+[WHISPER-1db57127] Segment 5: 15 words, 23.36s to 27.84s
+[WHISPER-1db57127] Text: " Qui c'è solo supporto vero, con persone che capiscono davvero quello che stai affrontando."
+[WHISPER-1db57127] Segment 6: 14 words, 27.84s to 32.36s
+[WHISPER-1db57127] Text: " In pari dai casi degli altri, condividi i tuoi dubbi e prendi decisioni consapevoli."
+[WHISPER-1db57127] Segment 7: 19 words, 32.90s to 41.00s
+[WHISPER-1db57127] Text: " Ogni singolo passo, trasparenza totale, sempre. Voi unirti alla community smartgain, trovi tutte le informazioni nel link in bio"
+[WHISPER-1db57127] Segment 8: 10 words, 41.00s to 44.32s
+[WHISPER-1db57127] Text: " oppure se commenti con Smart ti mandiamo tutti i dettagli."
+[WHISPER-1db57127] Total words detected: 128
+[WHISPER-1db57127] Creating subtitle lines for mobile viewing...
+[WHISPER-1db57127] Line parameters: MAX_CHARS=25, MAX_DURATION=2.5s, MAX_GAP=1.5s
+[WHISPER-1db57127] Created 25 subtitle lines
+[WHISPER-1db57127] Sample subtitle lines:
+  Line 1: "Gestire tutto da solo? È un"
+  Line 2: "po' come navigare in mare aperto"
+  Line 3: "senza busso, la prima o poi"
+[WHISPER-1db57127] ✓ Ready for reel generation!
+--------------------------------------------------
+[REEL-WHISPER-1db57127] Results for reel generation:
+  - Words: 128
+  - Subtitle lines: 25
+  - Language: it
+  - Duration: 44.32s
+[REEL-WHISPER-1db57127] ✓ Processing complete in 21.26s
+[REEL-WHISPER-1db57127] Temp file cleaned up

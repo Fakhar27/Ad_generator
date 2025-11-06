@@ -2,7 +2,7 @@
 Pexels Video Search Client
 =========================
 
-Searches Pexels for portrait fitness videos using extracted keywords.
+Searches Pexels for portrait corporate/business/motivational videos using extracted keywords.
 Downloads videos and prepares them for concatenation.
 
 Uses Pexels API native filters for orientation, duration, and quality
@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 class PexelsClient:
     """
-    Handle Pexels video search and download for fitness content
+    Handle Pexels video search and download for corporate/business/motivational content
     """
     
     def __init__(self):
@@ -40,11 +40,11 @@ class PexelsClient:
         # Track downloaded files for cleanup
         self.temp_video_files = []
         
-        logger.info("🎥 Pexels client initialized")
+        logger.info("Pexels client initialized")
     
     def search_portrait_videos(self, keywords: List[str], target_duration: float) -> List[Dict]:
         """
-        Search Pexels for portrait fitness videos matching keywords
+        Search Pexels for portrait corporate/business/motivational videos matching keywords
         
         Args:
             keywords (List[str]): Search keywords from transcript analysis
@@ -54,7 +54,7 @@ class PexelsClient:
             List[Dict]: Video segments ready for concatenation
         """
         
-        logger.info(f"🔍 Searching Pexels for videos...")
+        logger.info(f"Searching Pexels for videos...")
         logger.info(f"   Keywords: {keywords}")
         logger.info(f"   Target duration: {target_duration:.1f} seconds")
         
@@ -90,22 +90,22 @@ class PexelsClient:
                         }
                         
                         video_segments.append(segment)
-                        logger.info(f"✅ Found video for '{keyword}': {video['duration']}s")
+                        logger.info(f"Found video for '{keyword}': {video['duration']}s")
                     else:
-                        logger.warning(f"⚠️ No suitable video file found for '{keyword}'")
+                        logger.warning(f"No suitable video file found for '{keyword}'")
                 else:
-                    logger.warning(f"⚠️ No videos found for keyword: '{keyword}'")
+                    logger.warning(f"No videos found for keyword: '{keyword}'")
                     
             except Exception as e:
-                logger.error(f"❌ Error searching for '{keyword}': {e}")
+                logger.error(f"Error searching for '{keyword}': {e}")
                 continue
         
-        # If we don't have enough videos, search for generic fitness content
+        # If we don't have enough videos, search for generic corporate/business content
         if len(video_segments) < 3:
-            logger.warning("Not enough specific videos found, adding generic fitness videos...")
+            logger.warning("Not enough specific videos found, adding generic corporate/business videos...")
             video_segments.extend(self._get_fallback_videos(target_duration))
         
-        logger.info(f"✅ Found {len(video_segments)} video segments")
+        logger.info(f"Found {len(video_segments)} video segments")
         return video_segments[:5]  # Limit to 5 videos max
     
     def _search_videos(self, query: str, orientation: str = "portrait", 
@@ -133,7 +133,7 @@ class PexelsClient:
             return data.get('videos', [])
             
         except requests.RequestException as e:
-            logger.error(f"❌ Pexels API request failed: {e}")
+            logger.error(f"Pexels API request failed: {e}")
             return []
     
     def _select_best_video_file(self, video: Dict) -> Optional[Dict]:
@@ -166,9 +166,9 @@ class PexelsClient:
         return portrait_files[0] if portrait_files else None
     
     def _get_fallback_videos(self, target_duration: float) -> List[Dict]:
-        """Get generic fitness videos when keyword search fails"""
+        """Get generic corporate/business/motivational videos when keyword search fails"""
         
-        fallback_queries = ["gym workout", "fitness training", "exercise routine"]
+        fallback_queries = ["business meeting", "corporate office", "professional team", "digital marketing", "entrepreneur working"]
         fallback_videos = []
         
         for query in fallback_queries:
@@ -218,7 +218,7 @@ class PexelsClient:
         filename = f"pexels_{segment['video_id']}_{segment['keyword']}.mp4"
         output_path = os.path.join(output_dir, filename)
         
-        logger.info(f"📥 Downloading video: {segment['keyword']} ({segment['duration']}s)")
+        logger.info(f"Downloading video: {segment['keyword']} ({segment['duration']}s)")
         
         try:
             # Download video
@@ -235,20 +235,20 @@ class PexelsClient:
             
             # Verify file was created
             if os.path.exists(output_path) and os.path.getsize(output_path) > 0:
-                logger.info(f"✅ Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
+                logger.info(f"Downloaded: {output_path} ({os.path.getsize(output_path) // 1024} KB)")
                 return output_path
             else:
-                logger.error(f"❌ Download failed or file is empty: {output_path}")
+                logger.error(f"Download failed or file is empty: {output_path}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error downloading video: {e}")
+            logger.error(f"Error downloading video: {e}")
             return None
     
     def download_all_segments(self, video_segments: List[Dict]) -> List[str]:
         """Download all video segments and return list of file paths"""
         
-        logger.info(f"📥 Downloading {len(video_segments)} video segments...")
+        logger.info(f"Downloading {len(video_segments)} video segments...")
         
         downloaded_files = []
         
@@ -264,7 +264,7 @@ class PexelsClient:
                 logger.error(f"Error downloading segment {segment['keyword']}: {e}")
                 continue
         
-        logger.info(f"✅ Successfully downloaded {len(downloaded_files)} videos")
+        logger.info(f"Successfully downloaded {len(downloaded_files)} videos")
         return downloaded_files
     
     def cleanup(self):
@@ -274,7 +274,7 @@ class PexelsClient:
             try:
                 if os.path.exists(video_file):
                     os.remove(video_file)
-                    logger.debug(f"🗑️ Removed temp video: {video_file}")
+                    logger.debug(f"Removed temp video: {video_file}")
             except Exception as e:
                 logger.warning(f"Failed to remove temp video {video_file}: {e}")
         
@@ -287,7 +287,7 @@ if __name__ == "__main__":
     client = PexelsClient()
     
     # Test search
-    keywords = ["gym", "fitness", "workout"]
+    keywords = ["business", "corporate", "professional"]
     segments = client.search_portrait_videos(keywords, target_duration=30)
     
     print(f"Found {len(segments)} video segments:")

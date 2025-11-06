@@ -1,0 +1,177 @@
+2025-11-06 18:16:43,482 [INFO] __main__: Initializing reel generation components...
+2025-11-06 18:16:43,482 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-06 18:16:43,483 [INFO] whisper_processor: Whisper service endpoint: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 18:16:44,395 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-06 18:16:44,396 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmp1m84_n71
+2025-11-06 18:16:44,424 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-06 18:17:06,947 [INFO] whisper_processor:    Words: 128
+2025-11-06 18:17:06,947 [INFO] whisper_processor:    Lines: 25
+2025-11-06 18:17:06,948 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-06 18:17:06,950 [INFO] whisper_processor:    Language: it
+2025-11-06 18:17:08,017 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 404 Not Found"
+2025-11-06 18:17:08,032 [WARNING] keyword_extractor: Using fallback keywords: ['fitness', 'gym', 'workout', 'training', 'exercise']
+2025-11-06 18:17:08,063 [INFO] pexels_client:    Keywords: ['fitness', 'gym', 'workout', 'training', 'exercise']
+2025-11-06 18:17:08,063 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-06 18:17:22,787 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_3761095_fitness.mp4
+2025-11-06 18:17:22,983 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-06 18:17:23,065 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_4117854_gym.mp4
+2025-11-06 18:17:23,254 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-06 18:17:23,342 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_4117854_workout.mp4
+2025-11-06 18:17:23,542 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-06 18:17:23,630 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4
+2025-11-06 18:17:24,846 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_2785532_exercise.mp4
+2025-11-06 18:17:29,270 [INFO] video_assembler:    Adding background music: temp_audio_1305.wav
+2025-11-06 18:17:29,482 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-06 18:17:29,533 [ERROR] video_assembler: Error creating word-level subtitles: Invalid font Arial-Bold, pillow failed to use it with error cannot open resource
+2025-11-06 18:17:29,620 [INFO] video_assembler:    Exporting to: output_videos\angelo_fitness_reel_poc.mp4
+2025-11-06 18:19:37,924 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_2791956_training.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_2791956_training.mp4'
+2025-11-06 18:29:19,739 [INFO] __main__: Initializing reel generation components...
+2025-11-06 18:29:19,740 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-06 18:29:19,740 [INFO] whisper_processor: Whisper service endpoint: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 18:29:19,741 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-06 18:29:21,045 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-06 18:29:21,047 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-06 18:29:21,048 [INFO] pexels_client: Pexels client initialized
+2025-11-06 18:29:21,050 [INFO] video_assembler: Video assembler initialized
+2025-11-06 18:29:21,051 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-06 18:29:21,051 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmphct09z59
+2025-11-06 18:29:21,051 [INFO] __main__: All components initialized successfully
+2025-11-06 18:29:21,052 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-06 18:29:21,052 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-06 18:29:21,053 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-06 18:29:21,053 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-06 18:29:21,059 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-06 18:29:21,065 [INFO] whisper_processor: Sending request to Whisper service: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 18:29:40,163 [INFO] whisper_processor: Received response from Whisper service
+2025-11-06 18:29:40,163 [INFO] whisper_processor: Transcription summary:
+2025-11-06 18:29:40,163 [INFO] whisper_processor:    Words: 128
+2025-11-06 18:29:40,164 [INFO] whisper_processor:    Lines: 25
+2025-11-06 18:29:40,164 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-06 18:29:40,165 [INFO] whisper_processor:    Language: it
+2025-11-06 18:29:40,166 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-06 18:29:40,166 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-06 18:29:40,166 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-06 18:29:40,909 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-06 18:29:41,066 [INFO] keyword_extractor: Extracted keywords: ['community', 'support', 'transparency', 'collaboration', 'professional']
+2025-11-06 18:29:41,066 [INFO] __main__: Keywords extracted: ['community', 'support', 'transparency', 'collaboration', 'professional']
+2025-11-06 18:29:41,067 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-06 18:29:41,067 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-06 18:29:41,068 [INFO] pexels_client:    Keywords: ['community', 'support', 'transparency', 'collaboration', 'professional']
+2025-11-06 18:29:41,068 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-06 18:29:42,716 [INFO] pexels_client: Found video for 'community': 11s
+2025-11-06 18:29:43,749 [INFO] pexels_client: Found video for 'support': 10s
+2025-11-06 18:29:44,377 [INFO] pexels_client: Found video for 'transparency': 10s
+2025-11-06 18:29:45,026 [INFO] pexels_client: Found video for 'collaboration': 11s
+2025-11-06 18:29:45,637 [INFO] pexels_client: Found video for 'professional': 12s
+2025-11-06 18:29:45,637 [INFO] pexels_client: Found 5 video segments
+2025-11-06 18:29:45,638 [INFO] __main__: Found 5 video segments
+2025-11-06 18:29:45,638 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-06 18:29:45,639 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-06 18:29:45,639 [INFO] pexels_client: Downloading video: community (11s)
+2025-11-06 18:29:45,912 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34576019_community.mp4 (2115 KB)
+2025-11-06 18:29:45,913 [INFO] pexels_client: Downloading video: support (10s)
+2025-11-06 18:29:48,384 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_4039958_support.mp4 (5866 KB)
+2025-11-06 18:29:48,385 [INFO] pexels_client: Downloading video: transparency (10s)
+2025-11-06 18:29:49,901 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8676956_transparency.mp4 (2841 KB)
+2025-11-06 18:29:49,902 [INFO] pexels_client: Downloading video: collaboration (11s)
+2025-11-06 18:29:50,133 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4 (1526 KB)
+2025-11-06 18:29:50,134 [INFO] pexels_client: Downloading video: professional (12s)
+2025-11-06 18:29:50,411 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34596564_professional.mp4 (1821 KB)
+2025-11-06 18:29:50,412 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-06 18:29:50,412 [INFO] __main__: Downloaded 5 video files
+2025-11-06 18:29:50,413 [INFO] __main__: Step 4: Assembling final video...
+2025-11-06 18:29:50,413 [INFO] video_assembler: Starting final video assembly...
+2025-11-06 18:29:50,414 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-06 18:29:50,414 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_34576019_community.mp4
+2025-11-06 18:29:50,565 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 18:29:50,618 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_4039958_support.mp4
+2025-11-06 18:29:50,825 [INFO] video_assembler:      Adjusting resolution from 1080x2048 to 1080x1920
+2025-11-06 18:29:51,633 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_8676956_transparency.mp4
+2025-11-06 18:29:53,120 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-06 18:29:53,815 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4
+2025-11-06 18:29:54,790 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 18:29:55,262 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_34596564_professional.mp4
+2025-11-06 18:29:56,056 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 18:29:56,176 [ERROR] __main__: Error during reel generation: No video clips could be processed
+2025-11-06 18:29:56,177 [ERROR] __main__: Error type: ValueError
+2025-11-06 18:35:12,239 [INFO] __main__: Initializing reel generation components...
+2025-11-06 18:35:12,240 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-06 18:35:12,240 [INFO] whisper_processor: Whisper service endpoint: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 18:35:12,241 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-06 18:35:13,450 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-06 18:35:13,452 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-06 18:35:13,453 [INFO] pexels_client: Pexels client initialized
+2025-11-06 18:35:13,455 [INFO] video_assembler: Video assembler initialized
+2025-11-06 18:35:13,455 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-06 18:35:13,456 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpohhp3mus
+2025-11-06 18:35:13,456 [INFO] __main__: All components initialized successfully
+2025-11-06 18:35:13,457 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-06 18:35:13,457 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-06 18:35:13,458 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-06 18:35:13,459 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-06 18:35:13,463 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-06 18:35:13,463 [INFO] whisper_processor: Sending request to Whisper service: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 18:35:31,409 [INFO] whisper_processor: Received response from Whisper service
+2025-11-06 18:35:31,410 [INFO] whisper_processor: Transcription summary:
+2025-11-06 18:35:31,410 [INFO] whisper_processor:    Words: 128
+2025-11-06 18:35:31,410 [INFO] whisper_processor:    Lines: 25
+2025-11-06 18:35:31,411 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-06 18:35:31,411 [INFO] whisper_processor:    Language: it
+2025-11-06 18:35:31,412 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-06 18:35:31,413 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-06 18:35:31,413 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-06 18:35:32,074 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-06 18:35:32,077 [INFO] keyword_extractor: Extracted keywords: ['community', 'support', 'transparency', 'collaboration']
+2025-11-06 18:35:32,078 [INFO] __main__: Keywords extracted: ['community', 'support', 'transparency', 'collaboration']
+2025-11-06 18:35:32,078 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-06 18:35:32,079 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-06 18:35:32,079 [INFO] pexels_client:    Keywords: ['community', 'support', 'transparency', 'collaboration']
+2025-11-06 18:35:32,079 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-06 18:35:33,128 [INFO] pexels_client: Found video for 'community': 15s
+2025-11-06 18:35:34,132 [INFO] pexels_client: Found video for 'support': 15s
+2025-11-06 18:35:35,160 [INFO] pexels_client: Found video for 'transparency': 11s
+2025-11-06 18:35:35,819 [INFO] pexels_client: Found video for 'collaboration': 11s
+2025-11-06 18:35:35,820 [INFO] pexels_client: Found 4 video segments
+2025-11-06 18:35:35,821 [INFO] __main__: Found 4 video segments
+2025-11-06 18:35:35,821 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-06 18:35:35,821 [INFO] pexels_client: Downloading 4 video segments...
+2025-11-06 18:35:35,822 [INFO] pexels_client: Downloading video: community (15s)
+2025-11-06 18:35:36,109 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34576365_community.mp4 (2459 KB)
+2025-11-06 18:35:36,110 [INFO] pexels_client: Downloading video: support (15s)
+2025-11-06 18:35:38,302 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_3704908_support.mp4 (3334 KB)
+2025-11-06 18:35:38,302 [INFO] pexels_client: Downloading video: transparency (11s)
+2025-11-06 18:35:40,992 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8676988_transparency.mp4 (6890 KB)
+2025-11-06 18:35:40,993 [INFO] pexels_client: Downloading video: collaboration (11s)
+2025-11-06 18:35:41,429 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4 (1526 KB)
+2025-11-06 18:35:41,430 [INFO] pexels_client: Successfully downloaded 4 videos
+2025-11-06 18:35:41,431 [INFO] __main__: Downloaded 4 video files
+2025-11-06 18:35:41,431 [INFO] __main__: Step 4: Assembling final video...
+2025-11-06 18:35:41,431 [INFO] video_assembler: Starting final video assembly...
+2025-11-06 18:35:41,432 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-06 18:35:41,432 [INFO] video_assembler:    Processing clip 1/4: C:\Users\Admin\AppData\Local\Temp\pexels_34576365_community.mp4
+2025-11-06 18:35:41,573 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 18:35:41,656 [INFO] video_assembler: Processed: 11.1s, 1080x1920
+2025-11-06 18:35:41,656 [INFO] video_assembler:    Processing clip 2/4: C:\Users\Admin\AppData\Local\Temp\pexels_3704908_support.mp4
+2025-11-06 18:35:41,820 [INFO] video_assembler:      Adjusting resolution from 720x1366 to 1080x1920
+2025-11-06 18:35:41,932 [INFO] video_assembler: Processed: 11.1s, 1080x1920
+2025-11-06 18:35:41,933 [INFO] video_assembler:    Processing clip 3/4: C:\Users\Admin\AppData\Local\Temp\pexels_8676988_transparency.mp4
+2025-11-06 18:35:42,167 [INFO] video_assembler: Processed: 11.1s, 1080x1920
+2025-11-06 18:35:42,170 [INFO] video_assembler:    Processing clip 4/4: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4
+2025-11-06 18:35:44,158 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 18:35:44,882 [INFO] video_assembler: Processed: 11.1s, 1080x1920
+2025-11-06 18:35:44,885 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-06 18:35:47,601 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-06 18:35:47,792 [INFO] video_assembler:    Adding background music: temp_audio_1305.wav
+2025-11-06 18:35:48,005 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-06 18:35:48,006 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-06 18:35:48,013 [ERROR] video_assembler: Error creating word-level subtitles: Invalid font Arial-Bold, pillow failed to use it with error cannot open resource
+2025-11-06 18:35:48,101 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-06 18:35:48,103 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc.mp4
+2025-11-06 18:46:40,588 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc.mp4
+2025-11-06 18:46:40,589 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-06 18:46:40,590 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34576365_community.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34576365_community.mp4'
+2025-11-06 18:46:40,591 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_3704908_support.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_3704908_support.mp4'
+2025-11-06 18:46:40,592 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8676988_transparency.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8676988_transparency.mp4'
+2025-11-06 18:46:40,593 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_collaboration.mp4'
+2025-11-06 18:46:40,594 [INFO] __main__: Temporary files cleaned up
+2025-11-06 18:46:40,595 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc.mp4

@@ -19,7 +19,7 @@ try:
     from langchain_cohere import ChatCohere
     from langchain_core.prompts import ChatPromptTemplate
 except ImportError as e:
-    print(f"❌ Missing LangChain packages: {e}")
+    print(f"Missing LangChain packages: {e}")
     print("Please install: pip install langchain langchain-cohere")
     raise
 
@@ -40,42 +40,41 @@ class KeywordExtractor:
         if not cohere_api_key:
             raise ValueError("CO_API_KEY not found in environment variables")
         
-        logger.info("🧠 Initializing Cohere LLM for keyword extraction...")
+        logger.info("Initializing Cohere LLM for keyword extraction...")
         
         try:
             # Initialize Cohere LLM (same setup as langchain_service.py)
             self.llm = ChatCohere(
                 cohere_api_key=cohere_api_key,
-                model="command-r-plus",  # Good model for analysis
                 temperature=0.3,  # Lower temperature for consistent keywords
                 max_tokens=100  # Short response needed
             )
             
-            # Create the prompt template for fitness keyword extraction
+            # Create the prompt template for corporate/business keyword extraction
             self.prompt_template = ChatPromptTemplate.from_messages([
-                ("system", """You are a fitness video content analyzer. 
+                ("system", """You are a business video content analyzer. 
 
-Your job is to extract 4-5 English keywords from Italian fitness/workout content
-that would work well for searching stock fitness videos.
+Your job is to extract 4-5 English keywords from Italian business/corporate content
+that would work well for searching stock business videos.
 
-Focus on VISUAL themes that would appear in workout videos:
-- Types of exercise: gym, workout, fitness, cardio, strength
-- Settings: gym, outdoor, home, equipment  
-- People: trainer, athlete, community, group
-- Actions: running, lifting, stretching, training
+Focus on VISUAL themes that would appear in corporate/business videos:
+- Business settings: office, meeting, conference, workspace
+- Business activities: presentation, teamwork, collaboration, strategy
+- Professional people: entrepreneur, executive, team, professional
+- Business concepts: success, growth, innovation, leadership
 
 Return ONLY comma-separated keywords, no explanations.
-Example: "gym, workout, fitness, community, strength"
+Example: "business, meeting, office, professional, teamwork"
 """),
                 ("human", """Italian transcript: {transcript}
 
-Extract 4-5 English keywords for finding relevant fitness videos:""")
+Extract 4-5 English keywords for finding relevant business videos:""")
             ])
             
-            logger.info("✅ Cohere keyword extractor initialized")
+            logger.info("Cohere keyword extractor initialized")
             
         except Exception as e:
-            logger.error(f"❌ Failed to initialize Cohere LLM: {e}")
+            logger.error(f"Failed to initialize Cohere LLM: {e}")
             raise
     
     def extract_keywords(self, italian_transcript: str) -> List[str]:
@@ -89,7 +88,7 @@ Extract 4-5 English keywords for finding relevant fitness videos:""")
             List[str]: 4-5 English keywords optimized for Pexels search
         """
         
-        logger.info("🔍 Extracting keywords from transcript...")
+        logger.info("Extracting keywords from transcript...")
         logger.debug(f"Transcript preview: {italian_transcript[:100]}...")
         
         try:
@@ -109,12 +108,12 @@ Extract 4-5 English keywords for finding relevant fitness videos:""")
             # Add fallback keywords if too few were extracted
             keywords = self._ensure_minimum_keywords(keywords)
             
-            logger.info(f"✅ Extracted keywords: {keywords}")
+            logger.info(f"Extracted keywords: {keywords}")
             return keywords
             
         except Exception as e:
-            logger.error(f"❌ Keyword extraction failed: {e}")
-            # Return fallback keywords for fitness content
+            logger.error(f"Keyword extraction failed: {e}")
+            # Return fallback keywords for business content
             fallback_keywords = self._get_fallback_keywords()
             logger.warning(f"Using fallback keywords: {fallback_keywords}")
             return fallback_keywords
@@ -156,7 +155,7 @@ Extract 4-5 English keywords for finding relevant fitness videos:""")
     def _ensure_minimum_keywords(self, keywords: List[str]) -> List[str]:
         """Ensure we have at least 4 keywords, add fallbacks if needed"""
         
-        fallback_keywords = ["corporate", "meeting", "business", "motivation", "training"]
+        fallback_keywords = ["business", "office", "professional", "corporate", "meeting"]
         
         # Add fallbacks if we don't have enough keywords
         for fallback in fallback_keywords:
@@ -169,35 +168,37 @@ Extract 4-5 English keywords for finding relevant fitness videos:""")
     
     def _get_fallback_keywords(self) -> List[str]:
         """
-        Return default fitness keywords when LLM extraction fails
-        These are proven to work well with Pexels fitness content
+        Return default business keywords when LLM extraction fails
+        These are proven to work well with Pexels business content
         """
-        return ["fitness", "gym", "workout", "training", "exercise"]
+        return ["business", "office", "corporate", "professional", "meeting"]
 
     def extract_keywords_simple(self, italian_transcript: str) -> List[str]:
         """
         Simple keyword extraction without LLM (backup method)
-        Uses text matching for common Italian fitness terms
+        Uses text matching for common Italian business terms
         """
         
-        logger.info("🔄 Using simple keyword matching (fallback method)")
+        logger.info("Using simple keyword matching (fallback method)")
         
-        # Italian -> English keyword mappings
+        # Italian -> English keyword mappings for business/corporate content
         keyword_map = {
-            'palestra': 'gym',
-            'allenamento': 'workout', 
-            'fitness': 'fitness',
-            'esercizio': 'exercise',
-            'forza': 'strength',
-            'cardio': 'cardio',
-            'muscoli': 'muscle',
-            'corpo': 'body',
-            'salute': 'health',
-            'comunità': 'community',
+            'business': 'business',
+            'lavoro': 'work',
+            'ufficio': 'office',
+            'azienda': 'company',
+            'team': 'team',
             'gruppo': 'group',
-            'sport': 'sport',
-            'movimento': 'movement',
-            'energia': 'energy'
+            'riunione': 'meeting',
+            'progetto': 'project',
+            'successo': 'success',
+            'crescita': 'growth',
+            'innovazione': 'innovation',
+            'leadership': 'leadership',
+            'professionale': 'professional',
+            'strategia': 'strategy',
+            'marketing': 'marketing',
+            'vendite': 'sales'
         }
         
         found_keywords = []
@@ -208,12 +209,12 @@ Extract 4-5 English keywords for finding relevant fitness videos:""")
             if italian_word in transcript_lower:
                 found_keywords.append(english_word)
         
-        # Add default fitness keywords if none found
+        # Add default business keywords if none found
         if not found_keywords:
-            found_keywords = ["fitness", "workout", "gym"]
+            found_keywords = ["business", "office", "corporate"]
         
         # Ensure we have enough keywords
-        fallback_keywords = ["exercise", "training", "health", "strength"]
+        fallback_keywords = ["professional", "meeting", "teamwork", "success"]
         for keyword in fallback_keywords:
             if len(found_keywords) >= 4:
                 break
@@ -228,8 +229,8 @@ if __name__ == "__main__":
     # Test the keyword extractor
     extractor = KeywordExtractor()
     
-    # Test with sample Italian text
-    sample_text = "Benvenuti alla nostra palestra! Oggi faremo un allenamento di forza per tutto il corpo."
+    # Test with sample Italian business text
+    sample_text = "Benvenuti alla nostra azienda! Oggi parleremo di strategia e crescita del business."
     keywords = extractor.extract_keywords(sample_text)
     
     print(f"Test transcript: {sample_text}")

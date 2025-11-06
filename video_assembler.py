@@ -16,14 +16,10 @@ import tempfile
 from typing import List, Dict
 from pathlib import Path
 
-# Video processing imports
+# Video processing imports (following video_manager.py pattern)
 try:
-    from moviepy.editor import (
-        VideoFileClip, AudioFileClip, ImageClip, TextClip,
-        concatenate_videoclips, CompositeVideoClip, CompositeAudioClip
-    )
-    import moviepy.video.fx.all as vfx
-    import moviepy.audio.fx.all as afx
+    from moviepy import *
+    from moviepy.video.tools.subtitles import SubtitlesClip
 except ImportError as e:
     print(f"❌ Missing MoviePy: {e}")
     print("Please install: pip install moviepy")
@@ -50,7 +46,7 @@ class VideoAssembler:
         # Font settings for subtitles
         self.subtitle_font = self._get_subtitle_font()
         
-        logger.info(f"🎬 Video assembler initialized")
+        logger.info(f"Video assembler initialized")
         logger.info(f"   Output resolution: {self.target_width}x{self.target_height}")
         logger.info(f"   Temp directory: {self.temp_dir}")
     
@@ -69,34 +65,34 @@ class VideoAssembler:
             str: Path to final video file
         """
         
-        logger.info("🎬 Starting final video assembly...")
+        logger.info("Starting final video assembly...")
         
         try:
             # Step 1: Process already downloaded video files
-            logger.info("📥 Step 1: Processing video files...")
+            logger.info("Step 1: Processing video files...")
             processed_clips = self._process_video_files(video_files, transcript_data['total_duration'])
             
             # Step 2: Concatenate videos
-            logger.info("🔗 Step 2: Concatenating video segments...")
+            logger.info("Step 2: Concatenating video segments...")
             concatenated_video = self._concatenate_videos(processed_clips)
             
             # Step 3: Add audio layers (Italian + background music)
-            logger.info("🎵 Step 3: Adding audio layers...")
+            logger.info("Step 3: Adding audio layers...")
             video_with_audio = self._add_audio_layers(concatenated_video, original_audio_path)
             
             # Step 4: Burn Italian subtitles
-            logger.info("💬 Step 4: Adding Italian subtitles...")
+            logger.info("Step 4: Adding Italian subtitles...")
             final_video = self._add_subtitles(video_with_audio, transcript_data)
             
             # Step 5: Export final video
-            logger.info("📤 Step 5: Exporting final video...")
+            logger.info("Step 5: Exporting final video...")
             output_path = self._export_final_video(final_video, output_filename)
             
             logger.info(f"✅ Video assembly complete: {output_path}")
             return output_path
             
         except Exception as e:
-            logger.error(f"❌ Video assembly failed: {e}")
+            logger.error(f"Video assembly failed: {e}")
             raise
         finally:
             # Cleanup will be called by main script
@@ -122,24 +118,24 @@ class VideoAssembler:
                 # Just ensure it matches our target resolution if needed
                 if clip.w != self.target_width or clip.h != self.target_height:
                     logger.info(f"     Adjusting resolution from {clip.w}x{clip.h} to {self.target_width}x{self.target_height}")
-                    clip = clip.resize((self.target_width, self.target_height))
+                    clip = clip.resized((self.target_width, self.target_height))
                 
                 # Trim to desired duration
                 if clip.duration > duration_per_clip:
-                    clip = clip.subclip(0, duration_per_clip)
+                    clip = clip.subclipped(0, duration_per_clip)
                 elif clip.duration < duration_per_clip:
                     # Loop video if too short
                     loops_needed = int(duration_per_clip / clip.duration) + 1
-                    clip = concatenate_videoclips([clip] * loops_needed).subclip(0, duration_per_clip)
+                    clip = concatenate_videoclips([clip] * loops_needed).subclipped(0, duration_per_clip)
                 
                 # Remove original audio (we'll add our own)
                 clip = clip.without_audio()
                 
                 processed_clips.append(clip)
-                logger.info(f"     ✅ Processed: {clip.duration:.1f}s, {clip.w}x{clip.h}")
+                logger.info(f"Processed: {clip.duration:.1f}s, {clip.w}x{clip.h}")
                 
             except Exception as e:
-                logger.error(f"     ❌ Failed to process {video_file}: {e}")
+                logger.error(f"Failed to process {video_file}: {e}")
                 continue
         
         if not processed_clips:
@@ -157,13 +153,13 @@ class VideoAssembler:
         for i, clip in enumerate(clips):
             if i == 0:
                 # First clip: fade in
-                clips[i] = clip.fx(vfx.FadeIn, transition_duration)
+                clips[i] = clip.with_effects([vfx.FadeIn(transition_duration)])
             elif i == len(clips) - 1:
                 # Last clip: fade out
-                clips[i] = clip.fx(vfx.FadeOut, transition_duration)
+                clips[i] = clip.with_effects([vfx.FadeOut(transition_duration)])
             else:
                 # Middle clips: fade in and out
-                clips[i] = clip.fx(vfx.FadeIn, transition_duration).fx(vfx.FadeOut, transition_duration)
+                clips[i] = clip.with_effects([vfx.FadeIn(transition_duration), vfx.FadeOut(transition_duration)])
         
         # Concatenate all clips
         final_video = concatenate_videoclips(clips, method="compose")
@@ -192,10 +188,10 @@ class VideoAssembler:
                 # Loop background music
                 loops_needed = int(video_clip.duration / background_music.duration) + 1
                 background_music = concatenate_audioclips([background_music] * loops_needed)
-                background_music = background_music.subclip(0, video_clip.duration)
+                background_music = background_music.subclipped(0, video_clip.duration)
             
             # Reduce background music volume (so Italian audio is clear)
-            background_music = background_music.fx(afx.MultiplyVolume, 0.25)  # 25% volume
+            background_music = background_music.with_effects([afx.MultiplyVolume(0.25)])  # 25% volume
             
             # Mix original Italian audio + background music
             mixed_audio = CompositeAudioClip([original_audio, background_music])
@@ -205,10 +201,10 @@ class VideoAssembler:
         
         # Trim audio to match video duration exactly
         if mixed_audio.duration > video_clip.duration:
-            mixed_audio = mixed_audio.subclip(0, video_clip.duration)
+            mixed_audio = mixed_audio.subclipped(0, video_clip.duration)
         
         # Attach audio to video
-        video_with_audio = video_clip.set_audio(mixed_audio)
+        video_with_audio = video_clip.with_audio(mixed_audio)
         
         logger.info(f"   ✅ Audio added: {mixed_audio.duration:.1f}s")
         return video_with_audio
@@ -245,16 +241,16 @@ class VideoAssembler:
                     continue
                     
                 word_clip = (TextClip(
-                    txt=word,
+                    text=word,
                     font=self.subtitle_font,
-                    fontsize=int(frame_size[1] * 0.075),  # 7.5% of frame height
+                    font_size=int(frame_size[1] * 0.075),  # 7.5% of frame height
                     color=subtitle_color,
                     stroke_color='black',
                     stroke_width=2
                 )
-                .set_position(position, relative=relative)
-                .set_start(word_data['start'])
-                .set_duration(word_data['end'] - word_data['start']))
+                .with_position(position, relative=relative)
+                .with_start(word_data['start'])
+                .with_duration(word_data['end'] - word_data['start']))
                 
                 subtitle_clips.append(word_clip)
                 
@@ -272,7 +268,7 @@ class VideoAssembler:
         
         # Generate filename
         if output_filename is None:
-            output_filename = "angelo_fitness_reel.mp4"
+            output_filename = "angelo_business_reel.mp4"
         
         output_path = os.path.join(output_dir, output_filename)
         
@@ -319,7 +315,7 @@ class VideoAssembler:
             try:
                 if os.path.exists(temp_file):
                     os.remove(temp_file)
-                    logger.debug(f"🗑️ Removed temp file: {temp_file}")
+                    logger.debug(f"Removed temp file: {temp_file}")
             except Exception as e:
                 logger.warning(f"Failed to remove temp file {temp_file}: {e}")
         
@@ -330,7 +326,7 @@ class VideoAssembler:
             import shutil
             if os.path.exists(self.temp_dir):
                 shutil.rmtree(self.temp_dir, ignore_errors=True)
-                logger.debug(f"🗑️ Removed temp directory: {self.temp_dir}")
+                logger.debug(f"Removed temp directory: {self.temp_dir}")
         except Exception as e:
             logger.warning(f"Failed to remove temp directory: {e}")
 
