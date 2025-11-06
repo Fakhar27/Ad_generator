@@ -207,7 +207,7 @@ class VideoAssembler:
                 background_music = background_music.subclipped(0, video_clip.duration)
             
             # Reduce background music volume (so Italian audio is clear) but keep it audible
-            background_music = background_music.with_effects([afx.MultiplyVolume(0.4)])  # 40% volume for better audibility
+            background_music = background_music.with_effects([afx.MultiplyVolume(0.3)])  # 40% volume for better audibility
             logger.info(f"   Background music volume set to 40% for audibility")
             
             # Mix original Italian audio + background music
