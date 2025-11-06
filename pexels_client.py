@@ -59,21 +59,37 @@ class PexelsClient:
         logger.info(f"   Target duration: {target_duration:.1f} seconds")
         
         video_segments = []
+        used_video_ids = set()  # Track used video IDs to avoid duplicates
         duration_per_video = max(6, target_duration / len(keywords))  # At least 6 seconds each
         
         for keyword in keywords:
             try:
-                # Search for videos with this keyword
+                # Search for videos with strict corporate/business context
+                strict_query = f"{keyword} corporate business professional office"
+                logger.info(f"Searching with strict query: '{strict_query}'")
                 videos = self._search_videos(
-                    query=f"{keyword}",
+                    query=strict_query,
                     orientation="portrait",
                     min_duration=int(duration_per_video),
                     max_duration=int(duration_per_video) + 5  # Some flexibility
                 )
                 
                 if videos:
-                    # Take the first suitable video
-                    video = videos[0]
+                    # Log all available videos for transparency
+                    logger.info(f"Found {len(videos)} videos for keyword '{keyword}':")
+                    for i, vid in enumerate(videos[:3]):  # Log first 3
+                        logger.info(f"  Option {i+1}: ID={vid.get('id', 'N/A')}, Duration={vid.get('duration', 'N/A')}s")
+                        # Sanitize username to avoid Unicode errors
+                        username = vid.get('user', {}).get('name', 'Unknown')
+                        try:
+                            safe_username = username.encode('ascii', 'ignore').decode('ascii')
+                            logger.info(f"    User: {safe_username}")
+                        except:
+                            logger.info(f"    User: [Non-ASCII username]")
+                        logger.info(f"    URL: {vid.get('url', 'N/A')}")
+                    
+                    # Select the best video with business-focused filtering, avoiding duplicates
+                    video = self._select_best_business_video(videos, keyword, used_video_ids)
                     
                     # Find the best quality portrait video file
                     video_file = self._select_best_video_file(video)
@@ -90,6 +106,7 @@ class PexelsClient:
                         }
                         
                         video_segments.append(segment)
+                        used_video_ids.add(video['id'])  # Track this video ID as used
                         logger.info(f"Found video for '{keyword}': {video['duration']}s")
                     else:
                         logger.warning(f"No suitable video file found for '{keyword}'")
@@ -165,10 +182,86 @@ class PexelsClient:
         # Fallback to any available file
         return portrait_files[0] if portrait_files else None
     
+    def _select_best_business_video(self, videos: List[Dict], keyword: str, used_video_ids: set = None) -> Dict:
+        """Select the most business-appropriate video from search results"""
+        
+        # Business-related keywords to prioritize
+        business_indicators = [
+            'office', 'business', 'corporate', 'professional', 'meeting', 
+            'conference', 'executive', 'team', 'workplace', 'boardroom',
+            'presentation', 'handshake', 'suit', 'desk', 'computer',
+            'collaboration', 'strategy', 'leadership', 'entrepreneur'
+        ]
+        
+        # Keywords that indicate non-business content to avoid
+        avoid_keywords = [
+            'farm', 'agriculture', 'food', 'kitchen', 'cooking', 'recipe',
+            'juice', 'drink', 'beverage', 'fruit', 'garden', 'plant',
+            'sport', 'fitness', 'gym', 'workout', 'exercise', 'outdoor',
+            'beach', 'vacation', 'travel', 'party', 'celebration'
+        ]
+        
+        scored_videos = []
+        if used_video_ids is None:
+            used_video_ids = set()
+        
+        # Filter out already used videos first
+        available_videos = [v for v in videos if v.get('id') not in used_video_ids]
+        
+        if not available_videos:
+            logger.warning(f"All videos for '{keyword}' were already used, using original list")
+            available_videos = videos  # Fallback to original list if all were used
+        
+        for video in available_videos:
+            score = 0
+            video_url = video.get('url', '')
+            user_name = video.get('user', {}).get('name', '').lower()
+            
+            # Get video tags/keywords if available (this might not be in Pexels API response)
+            # We'll work with the URL and user info
+            video_text = f"{video_url} {user_name}".lower()
+            
+            # Positive scoring for business indicators
+            for indicator in business_indicators:
+                if indicator in video_text:
+                    score += 2
+                    logger.debug(f"Video {video['id']}: +2 points for '{indicator}'")
+            
+            # Negative scoring for non-business content
+            for avoid in avoid_keywords:
+                if avoid in video_text:
+                    score -= 3
+                    logger.debug(f"Video {video['id']}: -3 points for '{avoid}'")
+            
+            # Prefer videos with higher duration (within reason)
+            duration = video.get('duration', 0)
+            if 8 <= duration <= 15:  # Good duration range
+                score += 1
+            
+            scored_videos.append((score, video))
+            logger.debug(f"Video {video['id']} score: {score}")
+        
+        # Sort by score (highest first) and return the best video
+        if scored_videos:
+            scored_videos.sort(key=lambda x: x[0], reverse=True)
+            best_score, best_video = scored_videos[0]
+            logger.info(f"Selected video {best_video['id']} with score {best_score} for keyword '{keyword}'")
+            return best_video
+        
+        # Fallback to first video if no scoring worked
+        logger.warning(f"No scored videos found, using first video for keyword '{keyword}'")
+        return videos[0]
+    
     def _get_fallback_videos(self, target_duration: float) -> List[Dict]:
         """Get generic corporate/business/motivational videos when keyword search fails"""
         
-        fallback_queries = ["business meeting", "corporate office", "professional team", "digital marketing", "entrepreneur working"]
+        fallback_queries = [
+            "business meeting corporate office", 
+            "professional team office collaboration", 
+            "corporate executive business suit",
+            "office workspace professional meeting",
+            "business presentation conference room"
+        ]
         fallback_videos = []
         
         for query in fallback_queries:

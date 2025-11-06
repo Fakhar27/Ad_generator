@@ -52,19 +52,20 @@ class KeywordExtractor:
             
             # Create the prompt template for corporate/business keyword extraction
             self.prompt_template = ChatPromptTemplate.from_messages([
-                ("system", """You are a business video content analyzer. 
+                ("system", """You are a business video content analyzer for stock video searches.
 
-Your job is to extract 4-5 English keywords from Italian business/corporate content
-that would work well for searching stock business videos.
+Extract 4-5 VISUAL English keywords from Italian business content for Pexels stock video search.
 
-Focus on VISUAL themes that would appear in corporate/business videos:
-- Business settings: office, meeting, conference, workspace
-- Business activities: presentation, teamwork, collaboration, strategy
-- Professional people: entrepreneur, executive, team, professional
-- Business concepts: success, growth, innovation, leadership
+FOCUS ON CONCRETE VISUALS that appear in business/corporate stock videos:
+- PEOPLE: businessman, businesswoman, executive, professional, team, entrepreneur  
+- SETTINGS: office, conference room, meeting room, workspace, boardroom, desk
+- ACTIVITIES: meeting, presentation, handshake, collaboration, discussion, planning
+- OBJECTS: suit, computer, documents, whiteboard, projector
 
-Return ONLY comma-separated keywords, no explanations.
-Example: "business, meeting, office, professional, teamwork"
+AVOID ABSTRACT CONCEPTS like "transparency", "innovation", "growth" - these don't translate to visual stock footage.
+
+Return ONLY comma-separated keywords focusing on CONCRETE VISUAL ELEMENTS.
+Example: "businessman, office, meeting, presentation, team"
 """),
                 ("human", """Italian transcript: {transcript}
 
@@ -155,7 +156,7 @@ Extract 4-5 English keywords for finding relevant business videos:""")
     def _ensure_minimum_keywords(self, keywords: List[str]) -> List[str]:
         """Ensure we have at least 4 keywords, add fallbacks if needed"""
         
-        fallback_keywords = ["business", "office", "professional", "corporate", "meeting"]
+        fallback_keywords = ["businessman", "office", "meeting", "professional", "boardroom"]
         
         # Add fallbacks if we don't have enough keywords
         for fallback in fallback_keywords:
@@ -171,7 +172,7 @@ Extract 4-5 English keywords for finding relevant business videos:""")
         Return default business keywords when LLM extraction fails
         These are proven to work well with Pexels business content
         """
-        return ["business", "office", "corporate", "professional", "meeting"]
+        return ["businessman", "office", "meeting", "boardroom", "executive"]
 
     def extract_keywords_simple(self, italian_transcript: str) -> List[str]:
         """
@@ -181,24 +182,27 @@ Extract 4-5 English keywords for finding relevant business videos:""")
         
         logger.info("Using simple keyword matching (fallback method)")
         
-        # Italian -> English keyword mappings for business/corporate content
+        # Italian -> English keyword mappings for VISUAL business content
         keyword_map = {
-            'business': 'business',
-            'lavoro': 'work',
+            'business': 'businessman',
+            'lavoro': 'office',
             'ufficio': 'office',
-            'azienda': 'company',
+            'azienda': 'corporate',
             'team': 'team',
-            'gruppo': 'group',
+            'gruppo': 'meeting',
             'riunione': 'meeting',
-            'progetto': 'project',
-            'successo': 'success',
-            'crescita': 'growth',
-            'innovazione': 'innovation',
-            'leadership': 'leadership',
+            'progetto': 'presentation',
+            'successo': 'handshake',  # Success often shown as handshakes
+            'crescita': 'executive',   # Growth often shown with executives
+            'innovazione': 'boardroom', # Innovation often in boardroom settings
+            'leadership': 'executive',
             'professionale': 'professional',
-            'strategia': 'strategy',
-            'marketing': 'marketing',
-            'vendite': 'sales'
+            'strategia': 'presentation', # Strategy often shown in presentations
+            'marketing': 'presentation',
+            'vendite': 'handshake',     # Sales often shown as handshakes
+            'direttore': 'executive',
+            'manager': 'manager',
+            'imprenditore': 'entrepreneur'
         }
         
         found_keywords = []
@@ -209,12 +213,12 @@ Extract 4-5 English keywords for finding relevant business videos:""")
             if italian_word in transcript_lower:
                 found_keywords.append(english_word)
         
-        # Add default business keywords if none found
+        # Add default visual business keywords if none found
         if not found_keywords:
-            found_keywords = ["business", "office", "corporate"]
+            found_keywords = ["businessman", "office", "meeting"]
         
         # Ensure we have enough keywords
-        fallback_keywords = ["professional", "meeting", "teamwork", "success"]
+        fallback_keywords = ["professional", "executive", "boardroom", "handshake"]
         for keyword in fallback_keywords:
             if len(found_keywords) >= 4:
                 break

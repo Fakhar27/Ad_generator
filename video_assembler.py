@@ -88,7 +88,7 @@ class VideoAssembler:
             logger.info("Step 5: Exporting final video...")
             output_path = self._export_final_video(final_video, output_filename)
             
-            logger.info(f"✅ Video assembly complete: {output_path}")
+            logger.info(f"Video assembly complete: {output_path}")
             return output_path
             
         except Exception as e:
@@ -164,7 +164,7 @@ class VideoAssembler:
         # Concatenate all clips
         final_video = concatenate_videoclips(clips, method="compose")
         
-        logger.info(f"   ✅ Concatenated {len(clips)} clips → {final_video.duration:.1f}s total")
+        logger.info(f"Concatenated {len(clips)} clips -> {final_video.duration:.1f}s total")
         return final_video
     
     def _add_audio_layers(self, video_clip: VideoFileClip, original_audio_path: str) -> VideoFileClip:
@@ -173,8 +173,24 @@ class VideoAssembler:
         # Load original Italian audio
         original_audio = AudioFileClip(original_audio_path)
         
-        # Load background music
-        background_music_path = os.getenv("BACKGROUND_MUSIC_PATH", "hello/temp_audio_1305.wav")
+        # Load background music - try multiple possible locations
+        background_music_path = os.getenv("BACKGROUND_MUSIC_PATH")
+        if not background_music_path:
+            # Try common locations for the background music file
+            possible_paths = [
+                "temp_audio_1305.wav",
+                "hello/temp_audio_1305.wav", 
+                os.path.join(os.getcwd(), "temp_audio_1305.wav"),
+                os.path.join(os.getcwd(), "hello", "temp_audio_1305.wav")
+            ]
+            for path in possible_paths:
+                if os.path.exists(path):
+                    background_music_path = path
+                    logger.info(f"Found background music at: {path}")
+                    break
+            
+            if not background_music_path:
+                background_music_path = "temp_audio_1305.wav"  # Fallback
         
         if os.path.exists(background_music_path):
             logger.info(f"   Adding background music: {background_music_path}")
@@ -183,15 +199,16 @@ class VideoAssembler:
             
             # Trim/loop background music to match video duration
             if background_music.duration > video_clip.duration:
-                background_music = background_music.subclip(0, video_clip.duration)
+                background_music = background_music.subclipped(0, video_clip.duration)
             elif background_music.duration < video_clip.duration:
                 # Loop background music
                 loops_needed = int(video_clip.duration / background_music.duration) + 1
                 background_music = concatenate_audioclips([background_music] * loops_needed)
                 background_music = background_music.subclipped(0, video_clip.duration)
             
-            # Reduce background music volume (so Italian audio is clear)
-            background_music = background_music.with_effects([afx.MultiplyVolume(0.25)])  # 25% volume
+            # Reduce background music volume (so Italian audio is clear) but keep it audible
+            background_music = background_music.with_effects([afx.MultiplyVolume(0.4)])  # 40% volume for better audibility
+            logger.info(f"   Background music volume set to 40% for audibility")
             
             # Mix original Italian audio + background music
             mixed_audio = CompositeAudioClip([original_audio, background_music])
@@ -206,7 +223,7 @@ class VideoAssembler:
         # Attach audio to video
         video_with_audio = video_clip.with_audio(mixed_audio)
         
-        logger.info(f"   ✅ Audio added: {mixed_audio.duration:.1f}s")
+        logger.info(f"Audio added: {mixed_audio.duration:.1f}s")
         return video_with_audio
     
     def _add_subtitles(self, video_clip: VideoFileClip, transcript_data: Dict) -> CompositeVideoClip:
@@ -222,7 +239,7 @@ class VideoAssembler:
         # Composite video with subtitles
         final_video = CompositeVideoClip([video_clip] + subtitle_clips)
         
-        logger.info(f"   ✅ Added {len(subtitle_clips)} subtitle clips")
+        logger.info(f"Added {len(subtitle_clips)} subtitle clips")
         return final_video
     
     def _create_word_level_subtitles(self, whisper_data: Dict, frame_size: tuple, duration: float, subtitle_color: str = "white") -> List:
@@ -292,21 +309,28 @@ class VideoAssembler:
         return output_path
     
     def _get_subtitle_font(self) -> str:
-        """Get appropriate font for subtitles based on system"""
-        
-        # Try to find a good font for subtitles
-        font_options = [
-            "Arial-Bold",
-            "Arial",
-            "Helvetica-Bold", 
-            "Helvetica",
-            "DejaVu-Sans-Bold",
-            "DejaVu-Sans"
-        ]
-        
-        # For now, use Arial (most common)
-        # In production, you'd want to check which fonts are available
-        return "Arial-Bold"
+        """Get system font path based on OS (copied from video_manager.py)"""
+        font_paths = {
+            'nt': [  
+                r"C:\Windows\Fonts\Arial.ttf",
+                r"C:\Windows\Fonts\Calibri.ttf",
+                r"C:\Windows\Fonts\segoeui.ttf"
+            ],
+            'posix': [  
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+                "/usr/share/fonts/TTF/Arial.ttf",
+                "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+            ]
+        }
+
+        paths = font_paths.get(os.name, [])
+        for path in paths:
+            if os.path.exists(path):
+                logger.info(f"Using subtitle font: {path}")
+                return path
+
+        logger.warning("No system fonts found for subtitles, using default")
+        return ""
     
     def cleanup(self):
         """Clean up temporary files"""

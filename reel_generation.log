@@ -175,3 +175,147 @@
 2025-11-06 18:46:40,593 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_collaboration.mp4'
 2025-11-06 18:46:40,594 [INFO] __main__: Temporary files cleaned up
 2025-11-06 18:46:40,595 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc.mp4
+2025-11-06 19:07:38,844 [INFO] __main__: Initializing reel generation components...
+2025-11-06 19:07:38,844 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-06 19:07:38,844 [INFO] whisper_processor: Whisper service endpoint: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 19:07:38,846 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-06 19:07:40,302 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-06 19:07:40,304 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-06 19:07:40,305 [INFO] pexels_client: Pexels client initialized
+2025-11-06 19:07:40,307 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-06 19:07:40,308 [INFO] video_assembler: Video assembler initialized
+2025-11-06 19:07:40,308 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-06 19:07:40,309 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpsrnjlpsc
+2025-11-06 19:07:40,310 [INFO] __main__: All components initialized successfully
+2025-11-06 19:07:40,310 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-06 19:07:40,311 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-06 19:07:40,311 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-06 19:07:40,312 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-06 19:07:40,317 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-06 19:07:40,317 [INFO] whisper_processor: Sending request to Whisper service: https://c3c6765a3991.ngrok-free.app//process_audio
+2025-11-06 19:08:04,234 [INFO] whisper_processor: Received response from Whisper service
+2025-11-06 19:08:04,235 [INFO] whisper_processor: Transcription summary:
+2025-11-06 19:08:04,235 [INFO] whisper_processor:    Words: 128
+2025-11-06 19:08:04,235 [INFO] whisper_processor:    Lines: 25
+2025-11-06 19:08:04,236 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-06 19:08:04,236 [INFO] whisper_processor:    Language: it
+2025-11-06 19:08:04,237 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-06 19:08:04,238 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-06 19:08:04,238 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-06 19:08:04,954 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-06 19:08:04,958 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-06 19:08:04,958 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-06 19:08:04,958 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-06 19:08:04,959 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-06 19:08:04,959 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-06 19:08:04,960 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-06 19:08:04,960 [INFO] pexels_client: Searching with strict query: 'team corporate business professional office'
+2025-11-06 19:08:06,022 [INFO] pexels_client: Found 10 videos for keyword 'team':
+2025-11-06 19:08:06,023 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-06 19:08:06,030 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-06 19:08:06,030 [INFO] pexels_client:   Option 2: ID=6773635, Duration=10s
+2025-11-06 19:08:06,031 [INFO] pexels_client:     User: Kindel Media
+2025-11-06 19:08:06,031 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-working-with-a-laptop-6773635/
+2025-11-06 19:08:06,031 [INFO] pexels_client:   Option 3: ID=5438985, Duration=12s
+2025-11-06 19:08:06,032 [INFO] pexels_client:     User: Tima Miroshnichenko
+2025-11-06 19:08:06,032 [INFO] pexels_client:     URL: https://www.pexels.com/video/businesspeople-doing-a-handshake-5438985/
+2025-11-06 19:08:06,033 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'team'
+2025-11-06 19:08:06,033 [INFO] pexels_client: Found video for 'team': 11s
+2025-11-06 19:08:06,034 [INFO] pexels_client: Searching with strict query: 'collaboration corporate business professional office'
+2025-11-06 19:08:06,771 [INFO] pexels_client: Found 10 videos for keyword 'collaboration':
+2025-11-06 19:08:06,771 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-06 19:08:06,777 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-06 19:08:06,777 [INFO] pexels_client:   Option 2: ID=12894328, Duration=10s
+2025-11-06 19:08:06,777 [INFO] pexels_client:     User: Mizuno K
+2025-11-06 19:08:06,778 [INFO] pexels_client:     URL: https://www.pexels.com/video/hands-of-businesspeople-during-a-meeting-in-an-office-12894328/
+2025-11-06 19:08:06,778 [INFO] pexels_client:   Option 3: ID=8814706, Duration=8s
+2025-11-06 19:08:06,778 [INFO] pexels_client:     User: Kampus Production
+2025-11-06 19:08:06,779 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-person-signing-an-agreement-8814706/
+2025-11-06 19:08:06,779 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'collaboration'
+2025-11-06 19:08:06,780 [INFO] pexels_client: Found video for 'collaboration': 11s
+2025-11-06 19:08:06,780 [INFO] pexels_client: Searching with strict query: 'discussion corporate business professional office'
+2025-11-06 19:08:07,435 [INFO] pexels_client: Found 10 videos for keyword 'discussion':
+2025-11-06 19:08:07,436 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-06 19:08:07,441 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-06 19:08:07,441 [INFO] pexels_client:   Option 2: ID=12894328, Duration=10s
+2025-11-06 19:08:07,442 [INFO] pexels_client:     User: Mizuno K
+2025-11-06 19:08:07,442 [INFO] pexels_client:     URL: https://www.pexels.com/video/hands-of-businesspeople-during-a-meeting-in-an-office-12894328/
+2025-11-06 19:08:07,443 [INFO] pexels_client:   Option 3: ID=8814706, Duration=8s
+2025-11-06 19:08:07,443 [INFO] pexels_client:     User: Kampus Production
+2025-11-06 19:08:07,443 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-person-signing-an-agreement-8814706/
+2025-11-06 19:08:07,444 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'discussion'
+2025-11-06 19:08:07,444 [INFO] pexels_client: Found video for 'discussion': 11s
+2025-11-06 19:08:07,445 [INFO] pexels_client: Searching with strict query: 'professional corporate business professional office'
+2025-11-06 19:08:08,484 [INFO] pexels_client: Found 10 videos for keyword 'professional':
+2025-11-06 19:08:08,485 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-06 19:08:08,490 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-06 19:08:08,491 [INFO] pexels_client:   Option 2: ID=6931246, Duration=13s
+2025-11-06 19:08:08,491 [INFO] pexels_client:     User: Mikhail Nilov
+2025-11-06 19:08:08,491 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-person-writing-while-using-laptop-6931246/
+2025-11-06 19:08:08,492 [INFO] pexels_client:   Option 3: ID=12909007, Duration=10s
+2025-11-06 19:08:08,492 [INFO] pexels_client:     User: Mizuno K
+2025-11-06 19:08:08,492 [INFO] pexels_client:     URL: https://www.pexels.com/video/sad-depressed-woman-sitting-on-the-floor-in-an-office-12909007/
+2025-11-06 19:08:08,493 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'professional'
+2025-11-06 19:08:08,493 [INFO] pexels_client: Found video for 'professional': 11s
+2025-11-06 19:08:08,494 [INFO] pexels_client: Searching with strict query: 'workspace corporate business professional office'
+2025-11-06 19:08:09,127 [INFO] pexels_client: Found 10 videos for keyword 'workspace':
+2025-11-06 19:08:09,128 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-06 19:08:09,133 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-06 19:08:09,133 [INFO] pexels_client:   Option 2: ID=6931246, Duration=13s
+2025-11-06 19:08:09,134 [INFO] pexels_client:     User: Mikhail Nilov
+2025-11-06 19:08:09,134 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-person-writing-while-using-laptop-6931246/
+2025-11-06 19:08:09,135 [INFO] pexels_client:   Option 3: ID=12909007, Duration=10s
+2025-11-06 19:08:09,135 [INFO] pexels_client:     User: Mizuno K
+2025-11-06 19:08:09,135 [INFO] pexels_client:     URL: https://www.pexels.com/video/sad-depressed-woman-sitting-on-the-floor-in-an-office-12909007/
+2025-11-06 19:08:09,136 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'workspace'
+2025-11-06 19:08:09,136 [INFO] pexels_client: Found video for 'workspace': 11s
+2025-11-06 19:08:09,137 [INFO] pexels_client: Found 5 video segments
+2025-11-06 19:08:09,137 [INFO] __main__: Found 5 video segments
+2025-11-06 19:08:09,138 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-06 19:08:09,138 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-06 19:08:09,139 [INFO] pexels_client: Downloading video: team (11s)
+2025-11-06 19:08:09,379 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_team.mp4 (1526 KB)
+2025-11-06 19:08:09,379 [INFO] pexels_client: Downloading video: collaboration (11s)
+2025-11-06 19:08:09,622 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4 (1526 KB)
+2025-11-06 19:08:09,624 [INFO] pexels_client: Downloading video: discussion (11s)
+2025-11-06 19:08:09,880 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_discussion.mp4 (1526 KB)
+2025-11-06 19:08:09,880 [INFO] pexels_client: Downloading video: professional (11s)
+2025-11-06 19:08:10,120 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_professional.mp4 (1526 KB)
+2025-11-06 19:08:10,121 [INFO] pexels_client: Downloading video: workspace (11s)
+2025-11-06 19:08:10,341 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_workspace.mp4 (1526 KB)
+2025-11-06 19:08:10,342 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-06 19:08:10,342 [INFO] __main__: Downloaded 5 video files
+2025-11-06 19:08:10,343 [INFO] __main__: Step 4: Assembling final video...
+2025-11-06 19:08:10,343 [INFO] video_assembler: Starting final video assembly...
+2025-11-06 19:08:10,343 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-06 19:08:10,343 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_team.mp4
+2025-11-06 19:08:10,506 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 19:08:10,597 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-06 19:08:10,598 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4
+2025-11-06 19:08:10,731 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 19:08:10,835 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-06 19:08:10,835 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_discussion.mp4
+2025-11-06 19:08:10,979 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 19:08:11,064 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-06 19:08:11,065 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_professional.mp4
+2025-11-06 19:08:11,205 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 19:08:11,297 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-06 19:08:11,297 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_workspace.mp4
+2025-11-06 19:08:11,438 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-06 19:08:11,564 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-06 19:08:11,565 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-06 19:08:12,376 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-06 19:08:12,497 [INFO] video_assembler:    Adding background music: temp_audio_1305.wav
+2025-11-06 19:08:12,632 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-06 19:08:12,633 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-06 19:08:13,500 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-06 19:08:13,502 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc.mp4
+2025-11-06 19:19:30,239 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc.mp4
+2025-11-06 19:19:30,240 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-06 19:19:30,242 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_team.mp4'
+2025-11-06 19:19:30,244 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_collaboration.mp4'
+2025-11-06 19:19:30,245 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_discussion.mp4'
+2025-11-06 19:19:30,246 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_professional.mp4'
+2025-11-06 19:19:30,247 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_workspace.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_workspace.mp4'
+2025-11-06 19:19:30,248 [INFO] __main__: Temporary files cleaned up
+2025-11-06 19:19:30,249 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc.mp4
