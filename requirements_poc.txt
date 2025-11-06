@@ -1,0 +1,33 @@
+# Minimal requirements for Angelo's POC
+# Core packages from existing requirements.txt
+
+# AI/ML packages
+cohere==5.13.11
+langchain==0.3.12
+langchain-cohere==0.4.2
+langchain-core==0.3.31
+
+# Video processing
+moviepy==2.1.2
+pillow==10.4.0
+numpy==1.26.4
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+
+# HTTP requests for Pexels API
+requests==2.32.3
+aiohttp==3.11.10
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Whisper packages (will need to install separately)
+# faster-whisper  # Not in original requirements, will add
+# torch  # For Whisper, will add appropriate version
+# transformers  # For Whisper, will add
+
+# Pexels API (will need to install separately)
+# pexelsapi  # Will need to add
+
+# Audio processing
+# pydub  # Will need for MP3 to WAV conversion
