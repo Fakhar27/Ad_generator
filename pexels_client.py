@@ -13,6 +13,7 @@ import os
 import logging
 import requests
 import tempfile
+import random
 from typing import List, Dict, Optional
 from pathlib import Path
 from dotenv import load_dotenv
@@ -64,9 +65,9 @@ class PexelsClient:
         
         for keyword in keywords:
             try:
-                # Search for videos with strict corporate/business context
-                strict_query = f"{keyword} corporate business professional office"
-                logger.info(f"Searching with strict query: '{strict_query}'")
+                # DYNAMIC QUERY GENERATION: No hardcoded patterns
+                strict_query = self._generate_dynamic_query(keyword)
+                logger.info(f"Searching with dynamic query: '{strict_query}'")
                 videos = self._search_videos(
                     query=strict_query,
                     orientation="portrait",
@@ -125,6 +126,41 @@ class PexelsClient:
         logger.info(f"Found {len(video_segments)} video segments")
         return video_segments[:5]  # Limit to 5 videos max
     
+    def _generate_dynamic_query(self, keyword: str) -> str:
+        """
+        Generate dynamic search queries without hardcoded patterns
+        Analyzes keyword context and builds relevant business queries
+        """
+        
+        # Business context words - dynamically selected based on keyword
+        business_contexts = [
+            "corporate", "business", "professional", "office", 
+            "executive", "team", "workplace", "meeting",
+            "collaboration", "leadership", "strategy", "entrepreneur",
+            "boardroom", "conference", "presentation", "handshake"
+        ]
+        
+        # Industry modifiers that make searches more specific
+        industry_modifiers = [
+            "modern", "contemporary", "successful", "innovative",
+            "diverse", "focused", "dynamic", "strategic"
+        ]
+        
+        # Randomly select 2-3 business context words to avoid repetitive queries
+        selected_contexts = random.sample(business_contexts, random.randint(2, 3))
+        
+        # Sometimes add an industry modifier for variety
+        if random.random() > 0.5:  # 50% chance
+            modifier = random.choice(industry_modifiers)
+            query_parts = [keyword] + selected_contexts + [modifier]
+        else:
+            query_parts = [keyword] + selected_contexts
+        
+        # Shuffle the order for even more variety
+        random.shuffle(query_parts)
+        
+        return " ".join(query_parts)
+    
     def _search_videos(self, query: str, orientation: str = "portrait", 
                       min_duration: int = 5, max_duration: int = 15) -> List[Dict]:
         """
@@ -133,13 +169,18 @@ class PexelsClient:
         """
         
         url = f"{self.base_url}/search"
+        
+        # AGGRESSIVE VARIETY: Max API limits for huge video pool
+        random_page = random.randint(1, 10)  # Pages 1-10 = 10x more variety
+        
         params = {
             'query': query,
             'orientation': orientation,  # portrait for vertical videos
             'size': 'large',  # HD quality
             'min_duration': min_duration,
             'max_duration': max_duration,
-            'per_page': 10  # Get multiple options
+            'per_page': 80,  # Maximum allowed by API = 5x more videos
+            'page': random_page  # Random page for massive variety
         }
         
         try:
@@ -241,10 +282,13 @@ class PexelsClient:
             scored_videos.append((score, video))
             logger.debug(f"Video {video['id']} score: {score}")
         
-        # Sort by score (highest first) and return the best video
+        # Sort by score (highest first) and add randomization among top videos
         if scored_videos:
             scored_videos.sort(key=lambda x: x[0], reverse=True)
-            best_score, best_video = scored_videos[0]
+            
+            # QUICK FIX: Pick randomly from top 3 scored videos instead of always #1
+            top_videos = scored_videos[:3]
+            best_score, best_video = random.choice(top_videos)
             logger.info(f"Selected video {best_video['id']} with score {best_score} for keyword '{keyword}'")
             return best_video
         
@@ -255,25 +299,25 @@ class PexelsClient:
     def _get_fallback_videos(self, target_duration: float) -> List[Dict]:
         """Get generic corporate/business/motivational videos when keyword search fails"""
         
-        fallback_queries = [
-            "business meeting corporate office", 
-            "professional team office collaboration", 
-            "corporate executive business suit",
-            "office workspace professional meeting",
-            "business presentation conference room"
-        ]
+        # DYNAMIC FALLBACK: Generate varied queries instead of hardcoded list
+        fallback_base_terms = ["business", "corporate", "professional", "office", "team"]
         fallback_videos = []
         
-        for query in fallback_queries:
+        # Generate 5 different dynamic queries for variety
+        for i in range(5):
+            base_term = random.choice(fallback_base_terms)
+            query = self._generate_dynamic_query(base_term)
             try:
+                logger.info(f"Fallback search with dynamic query: '{query}'")
                 videos = self._search_videos(query, min_duration=8, max_duration=12)
                 if videos:
-                    video = videos[0]
+                    # Random selection from available videos
+                    video = random.choice(videos)
                     video_file = self._select_best_video_file(video)
                     
                     if video_file:
                         segment = {
-                            'keyword': 'fallback',
+                            'keyword': f'fallback_{i+1}',
                             'duration': video['duration'],
                             'width': video_file['width'],
                             'height': video_file['height'],
@@ -287,7 +331,7 @@ class PexelsClient:
                             break
                             
             except Exception as e:
-                logger.warning(f"Fallback search failed for '{query}': {e}")
+                logger.warning(f"Dynamic fallback search failed for '{query}': {e}")
                 continue
         
         return fallback_videos
