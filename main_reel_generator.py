@@ -22,13 +22,11 @@ import logging
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Import our custom modules
 from whisper_processor import WhisperProcessor
 from keyword_extractor import KeywordExtractor  
 from pexels_client import PexelsClient
 from video_assembler import VideoAssembler
 
-# Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
@@ -47,16 +45,12 @@ class ReelGenerator:
     def __init__(self):
         """Initialize the reel generator with all required components"""
         
-        # Load environment variables
         load_dotenv()
         
-        # Validate required environment variables
         self._validate_env()
         
-        # Initialize all processors
         logger.info("Initializing reel generation components...")
         
-        # Get ngrok URL for Whisper service (should be set manually or through env)
         whisper_ngrok_url = os.getenv("WHISPER_NGROK_URL")
         if not whisper_ngrok_url:
             logger.warning("WHISPER_NGROK_URL not set. You'll need to set it manually.")
@@ -97,17 +91,14 @@ class ReelGenerator:
         logger.info(f"Starting reel generation for: {italian_audio_path}")
         
         try:
-            # Step 1: Transcribe Italian audio using Whisper
             logger.info("Step 1: Transcribing Italian audio...")
             transcript_data = self.whisper_processor.transcribe_audio(italian_audio_path)
             logger.info(f"Transcription complete: {len(transcript_data['word_level'])} words detected")
             
-            # Step 2: Extract keywords using Cohere LLM
             logger.info("Step 2: Extracting keywords for video search...")
             keywords = self.keyword_extractor.extract_keywords(transcript_data['full_text'])
             logger.info(f"Keywords extracted: {keywords}")
             
-            # Step 3: Search Pexels for portrait corporate/business videos
             logger.info("Step 3: Searching for relevant videos...")
             video_segments = self.pexels_client.search_portrait_videos(
                 keywords=keywords,
@@ -115,22 +106,19 @@ class ReelGenerator:
             )
             logger.info(f"Found {len(video_segments)} video segments")
             
-            # Step 3.5: Download video files (once!)
             logger.info("Step 3.5: Downloading video files...")
             video_files = self.pexels_client.download_all_segments(video_segments)
             logger.info(f"Downloaded {len(video_files)} video files")
             
-            # Step 4: Assemble final video with all components
             logger.info("Step 4: Assembling final video...")
             final_video_path = self.video_assembler.create_final_reel(
-                video_files=video_files,  # Pass downloaded files, not metadata
+                video_files=video_files, 
                 original_audio_path=italian_audio_path,
                 transcript_data=transcript_data,
                 output_filename=output_filename
             )
             logger.info(f"Final video created: {final_video_path}")
             
-            # Step 5: Cleanup temporary files
             logger.info("Step 5: Cleaning up temporary files...")
             self._cleanup_temp_files()
             
@@ -145,9 +133,7 @@ class ReelGenerator:
     def _cleanup_temp_files(self):
         """Clean up any temporary files created during processing"""
         try:
-            # Clean up temporary video downloads
             self.pexels_client.cleanup()
-            # Clean up temporary audio conversions
             self.whisper_processor.cleanup()
             logger.info("Temporary files cleaned up")
         except Exception as e:
@@ -160,10 +146,8 @@ def main():
     print("Angelo's Reel Generation POC")
     print("=" * 50)
     
-    # Initialize the generator
     generator = ReelGenerator()
     
-    # Path to Angelo's audio file
     audio_file = "demovideo1.mp3"
     
     # Check if audio file exists
@@ -172,7 +156,6 @@ def main():
         print("Please ensure demovideo1.mp3 is in the current directory")
         sys.exit(1)
     
-    # Generate the reel
     try:
         output_video = generator.generate_reel(
             italian_audio_path=audio_file,

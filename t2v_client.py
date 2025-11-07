@@ -28,24 +28,19 @@ class T2VClient:
         
         logger.info("Initializing T2V client...")
         
-        # Set the ngrok URL for the T2V service
         self.ngrok_url = ngrok_url
         if not self.ngrok_url:
-            # Try to get from environment
             self.ngrok_url = os.getenv("T2V_NGROK_URL")
             if not self.ngrok_url:
                 logger.warning("No T2V ngrok URL provided. T2V features will be unavailable.")
         
-        # Endpoint for video generation
         self.generate_endpoint = f"{self.ngrok_url}/generate_video" if self.ngrok_url else None
         self.status_endpoint = f"{self.ngrok_url}/status" if self.ngrok_url else None
         
         logger.info(f"T2V service endpoint: {self.generate_endpoint}")
         
-        # Track temporary files for cleanup
         self.temp_files = []
         
-        # Check service status if URL is provided
         if self.ngrok_url:
             self._check_service_status()
     
@@ -88,7 +83,6 @@ class T2VClient:
         total_duration = 0
         
         for i, prompt_data in enumerate(prompts):
-            # Stop if we have enough duration
             if total_duration >= target_duration:
                 logger.info(f"✅ Target duration {target_duration:.1f}s reached with {total_duration:.1f}s")
                 break
@@ -107,7 +101,6 @@ class T2VClient:
                     video_files.append(video_path)
                     self.temp_files.append(video_path)
                     
-                    # Estimate duration (CogVideoX usually generates ~5 seconds)
                     estimated_duration = 5.0
                     total_duration += estimated_duration
                     
@@ -151,18 +144,15 @@ class T2VClient:
                 logger.error(f"T2V service error: {error_text}")
                 return None
             
-            # Parse response
             result = response.json()
             
             if 'error' in result:
                 logger.error(f"T2V generation error: {result['error']}")
                 return None
             
-            # Decode video data
             video_base64 = result['video_data']
             video_bytes = base64.b64decode(video_base64)
             
-            # Save to temp file with descriptive name
             output_path = f"temp_t2v_{index}_{purpose}_{int(time.time())}.mp4"
             with open(output_path, 'wb') as f:
                 f.write(video_bytes)
@@ -173,7 +163,6 @@ class T2VClient:
             logger.info(f"✅ Generated in {generation_time:.1f}s")
             logger.info(f"   File: {output_path} ({file_size/1024:.1f} KB)")
             
-            # Basic validation
             if not self._validate_video_quality(output_path):
                 logger.warning(f"⚠️ Video quality check failed for {purpose}")
                 # Don't return None, use it anyway for POC
@@ -191,7 +180,6 @@ class T2VClient:
     def _validate_video_quality(self, video_path: str) -> bool:
         """Basic validation for common T2V failures"""
         try:
-            # Check file exists and has reasonable size
             if not os.path.exists(video_path):
                 return False
             
@@ -201,9 +189,6 @@ class T2VClient:
                 return False
             
             # TODO: Could add more sophisticated checks:
-            # - Check for all-black frames
-            # - Verify video duration
-            # - Check resolution
             
             return True
             
@@ -243,15 +228,12 @@ class T2VClient:
         self.temp_files.clear()
 
 
-# Test function for standalone usage
 if __name__ == "__main__":
-    # Test with sample business prompts
     ngrok_url = input("Enter ngrok URL for T2V service (e.g., https://abc123.ngrok.io): ").strip()
     
     if ngrok_url:
         client = T2VClient(ngrok_url=ngrok_url)
         
-        # Test prompts
         test_prompts = [
             {"prompt": "Professional handshake between businesspeople in modern office", "purpose": "introduction", "duration": 5},
             {"prompt": "Executive presenting charts to team in bright conference room", "purpose": "presentation", "duration": 5},

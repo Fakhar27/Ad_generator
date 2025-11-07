@@ -14,7 +14,6 @@ import json
 from typing import List, Dict
 from dotenv import load_dotenv
 
-# LangChain imports (reusing existing setup)
 try:
     from langchain_cohere import ChatCohere
     from langchain_core.prompts import ChatPromptTemplate
@@ -35,7 +34,6 @@ class VideoPromptGenerator:
         
         load_dotenv()
         
-        # Get API key from environment
         cohere_api_key = os.getenv("CO_API_KEY")
         if not cohere_api_key:
             raise ValueError("CO_API_KEY not found in environment variables")
@@ -43,7 +41,6 @@ class VideoPromptGenerator:
         logger.info("Initializing Cohere LLM for video prompt generation...")
         
         try:
-            # Initialize Cohere LLM (same setup as keyword_extractor.py)
             self.llm = ChatCohere(
                 cohere_api_key=cohere_api_key,
                 temperature=0.4,  # Slightly higher for creative prompts
@@ -131,19 +128,15 @@ Each prompt should describe a simple, clear business scene suitable for AI video
         logger.info(f"Transcript preview: {italian_transcript[:100]}...")
         
         try:
-            # Create the chain
             chain = self.prompt_template | self.llm
             
-            # Generate video prompts
             logger.info("🧠 Sending transcript to Cohere for video sequence generation...")
             response = chain.invoke({"transcript": italian_transcript})
             
-            # Parse JSON response
             response_text = response.content.strip()
             logger.debug(f"Cohere response: {response_text}")
             
             try:
-                # Extract JSON from response
                 json_start = response_text.find('{')
                 json_end = response_text.rfind('}') + 1
                 
@@ -158,14 +151,12 @@ Each prompt should describe a simple, clear business scene suitable for AI video
                 logger.warning("Falling back to manual parsing...")
                 prompt_data = self._parse_fallback_response(response_text)
             
-            # Extract video sequence
             video_sequence = prompt_data.get('video_sequence', [])
             
             if not video_sequence:
                 logger.warning("No video sequence found, generating fallback prompts")
                 video_sequence = self._generate_fallback_prompts(target_duration)
             
-            # Validate and clean prompts
             video_sequence = self._validate_and_clean_prompts(video_sequence, target_duration)
             
             logger.info(f"✅ Generated {len(video_sequence)} video prompts")
@@ -175,7 +166,6 @@ Each prompt should describe a simple, clear business scene suitable for AI video
             
         except Exception as e:
             logger.error(f"Video prompt generation failed: {e}")
-            # Return fallback prompts for business content
             fallback_prompts = self._generate_fallback_prompts(target_duration)
             logger.warning(f"Using {len(fallback_prompts)} fallback video prompts")
             return fallback_prompts
@@ -184,7 +174,6 @@ Each prompt should describe a simple, clear business scene suitable for AI video
         """Manually parse response if JSON parsing fails"""
         logger.info("Attempting manual parsing of Cohere response...")
         
-        # Try to extract prompts line by line
         lines = response_text.split('\n')
         prompts = []
         
@@ -211,12 +200,10 @@ Each prompt should describe a simple, clear business scene suitable for AI video
         
         for i, prompt_data in enumerate(video_sequence):
             try:
-                # Ensure required fields
                 prompt = prompt_data.get('prompt', '').strip()
                 if not prompt:
                     continue
                 
-                # Clean and validate prompt
                 if len(prompt) < 10:
                     logger.warning(f"Prompt {i+1} too short: '{prompt}'")
                     continue
@@ -225,7 +212,6 @@ Each prompt should describe a simple, clear business scene suitable for AI video
                     prompt = prompt[:147] + "..."
                     logger.info(f"Truncated long prompt {i+1}")
                 
-                # Ensure business-related content
                 business_keywords = ['business', 'professional', 'office', 'corporate', 'executive', 'meeting', 'conference', 'team', 'presentation']
                 if not any(keyword in prompt.lower() for keyword in business_keywords):
                     prompt = f"Professional business scene: {prompt}"
@@ -245,7 +231,6 @@ Each prompt should describe a simple, clear business scene suitable for AI video
                 logger.warning(f"Error processing prompt {i+1}: {e}")
                 continue
         
-        # Ensure we have enough prompts
         while len(cleaned_sequence) < 6:  # Minimum 6 prompts
             fallback_prompt = {
                 "id": len(cleaned_sequence) + 1,
@@ -257,7 +242,6 @@ Each prompt should describe a simple, clear business scene suitable for AI video
             cleaned_sequence.append(fallback_prompt)
             logger.info(f"Added fallback prompt {len(cleaned_sequence)}")
         
-        # Limit to target duration
         max_prompts = int(target_duration / 5)
         if len(cleaned_sequence) > max_prompts:
             cleaned_sequence = cleaned_sequence[:max_prompts]
@@ -315,12 +299,9 @@ Each prompt should describe a simple, clear business scene suitable for AI video
         logger.info("=" * 50)
 
 
-# Test function for standalone usage  
 if __name__ == "__main__":
-    # Test the video prompt generator
     generator = VideoPromptGenerator()
     
-    # Test with sample Italian business text
     sample_text = """
     Benvenuti alla SmartGain Community! Siamo una comunità di imprenditori 
     che supporta la crescita del vostro business attraverso consulenza 
