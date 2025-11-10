@@ -150,3 +150,1627 @@
 2025-11-07 21:48:51,909 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12898221_support.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12898221_support.mp4'
 2025-11-07 21:48:51,909 [INFO] __main__: Temporary files cleaned up
 2025-11-07 21:48:51,910 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc.mp4
+2025-11-07 22:33:11,741 [INFO] __main__: Initializing reel generation components...
+2025-11-07 22:33:11,742 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-07 22:33:11,743 [INFO] whisper_processor: Whisper service endpoint: https://3cbca62652ae.ngrok-free.app/process_audio
+2025-11-07 22:33:11,746 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-07 22:33:14,601 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-07 22:33:14,606 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-07 22:33:14,608 [INFO] pexels_client: Pexels client initialized
+2025-11-07 22:33:14,612 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-07 22:33:14,613 [INFO] video_assembler: Video assembler initialized
+2025-11-07 22:33:14,614 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-07 22:33:14,615 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpfg7l8kyn
+2025-11-07 22:33:14,616 [INFO] __main__: All components initialized successfully
+2025-11-07 22:33:14,617 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-07 22:33:14,617 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-07 22:33:14,618 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-07 22:33:14,619 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-07 22:33:14,627 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-07 22:33:14,628 [INFO] whisper_processor: Sending request to Whisper service: https://3cbca62652ae.ngrok-free.app/process_audio
+2025-11-07 22:33:17,500 [INFO] whisper_processor: Received response from Whisper service
+2025-11-07 22:33:17,501 [INFO] whisper_processor: Transcription summary:
+2025-11-07 22:33:17,502 [INFO] whisper_processor:    Words: 128
+2025-11-07 22:33:17,503 [INFO] whisper_processor:    Lines: 25
+2025-11-07 22:33:17,503 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-07 22:33:17,504 [INFO] whisper_processor:    Language: it
+2025-11-07 22:33:17,505 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-07 22:33:17,506 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-07 22:33:17,507 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-07 22:33:18,175 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-07 22:33:18,211 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-07 22:33:18,212 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-07 22:33:18,213 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-07 22:33:18,213 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-07 22:33:18,214 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-07 22:33:18,215 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-07 22:33:18,215 [INFO] pexels_client: Searching with dynamic query: 'team business professional dynamic collaboration'
+2025-11-07 22:33:19,563 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-07 22:33:19,564 [INFO] pexels_client:   Option 1: ID=6324550, Duration=10s
+2025-11-07 22:33:19,564 [INFO] pexels_client:     User: Vanessa Garcia
+2025-11-07 22:33:19,564 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-working-with-a-laptop-6324550/
+2025-11-07 22:33:19,565 [INFO] pexels_client:   Option 2: ID=6324554, Duration=10s
+2025-11-07 22:33:19,565 [INFO] pexels_client:     User: Vanessa Garcia
+2025-11-07 22:33:19,566 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-presenting-his-work-in-a-whiteboard-6324554/
+2025-11-07 22:33:19,566 [INFO] pexels_client:   Option 3: ID=5989771, Duration=12s
+2025-11-07 22:33:19,567 [INFO] pexels_client:     User: Jack Sparrow
+2025-11-07 22:33:19,567 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-and-woman-busy-talking-and-discussing-with-each-other-5989771/
+2025-11-07 22:33:19,568 [INFO] pexels_client: Selected video 34292214 with score 7 for keyword 'team'
+2025-11-07 22:33:19,568 [INFO] pexels_client: Found video for 'team': 10s
+2025-11-07 22:33:19,569 [INFO] pexels_client: Searching with dynamic query: 'conference strategy dynamic office collaboration'
+2025-11-07 22:33:20,977 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-07 22:33:20,978 [INFO] pexels_client:   Option 1: ID=5638355, Duration=12s
+2025-11-07 22:33:20,978 [INFO] pexels_client:     User: Tima Miroshnichenko
+2025-11-07 22:33:20,978 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-racing-with-karts-on-a-race-track-5638355/
+2025-11-07 22:33:20,979 [INFO] pexels_client:   Option 2: ID=8513183, Duration=10s
+2025-11-07 22:33:20,979 [INFO] pexels_client:     User: Artem Podrez
+2025-11-07 22:33:20,980 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-reading-the-memo-posted-in-the-bulletin-board-8513183/
+2025-11-07 22:33:20,980 [INFO] pexels_client:   Option 3: ID=9644651, Duration=11s
+2025-11-07 22:33:20,981 [INFO] pexels_client:     User: Ron Lach
+2025-11-07 22:33:20,981 [INFO] pexels_client:     URL: https://www.pexels.com/video/men-wearing-a-fencing-mask-9644651/
+2025-11-07 22:33:20,982 [INFO] pexels_client: Selected video 12893581 with score 3 for keyword 'collaboration'
+2025-11-07 22:33:20,983 [INFO] pexels_client: Found video for 'collaboration': 10s
+2025-11-07 22:33:20,983 [INFO] pexels_client: Searching with dynamic query: 'office discussion executive'
+2025-11-07 22:33:22,738 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-07 22:33:22,760 [INFO] pexels_client:   Option 1: ID=7967286, Duration=12s
+2025-11-07 22:33:22,760 [INFO] pexels_client:     User: Darlene Alderson
+2025-11-07 22:33:22,761 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-looking-at-camera-7967286/
+2025-11-07 22:33:22,761 [INFO] pexels_client:   Option 2: ID=7659710, Duration=9s
+2025-11-07 22:33:22,762 [INFO] pexels_client:     User: Alena Darmel
+2025-11-07 22:33:22,762 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-talking-at-a-meeting-7659710/
+2025-11-07 22:33:22,762 [INFO] pexels_client:   Option 3: ID=7713965, Duration=9s
+2025-11-07 22:33:22,763 [INFO] pexels_client:     User: Kindel Media
+2025-11-07 22:33:22,764 [INFO] pexels_client:     URL: https://www.pexels.com/video/policemen-in-their-uniforms-7713965/
+2025-11-07 22:33:22,765 [INFO] pexels_client: Selected video 6774596 with score 5 for keyword 'discussion'
+2025-11-07 22:33:22,766 [INFO] pexels_client: Found video for 'discussion': 11s
+2025-11-07 22:33:22,766 [INFO] pexels_client: Searching with dynamic query: 'conference office contemporary handshake'
+2025-11-07 22:33:24,589 [INFO] pexels_client: Found 80 videos for keyword 'office':
+2025-11-07 22:33:24,589 [INFO] pexels_client:   Option 1: ID=4076744, Duration=11s
+2025-11-07 22:33:24,590 [INFO] pexels_client:     User: KATRIN  BOLOVTSOVA
+2025-11-07 22:33:24,590 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-sitting-on-a-bar-stool-while-video-calling-on-her-laptop-4076744/
+2025-11-07 22:33:24,591 [INFO] pexels_client:   Option 2: ID=7551822, Duration=10s
+2025-11-07 22:33:24,591 [INFO] pexels_client:     User: Hanna Pad
+2025-11-07 22:33:24,592 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-using-laptop-7551822/
+2025-11-07 22:33:24,592 [INFO] pexels_client:   Option 3: ID=7659712, Duration=12s
+2025-11-07 22:33:24,592 [INFO] pexels_client:     User: Alena Darmel
+2025-11-07 22:33:24,593 [INFO] pexels_client:     URL: https://www.pexels.com/video/coworkers-in-a-meeting-7659712/
+2025-11-07 22:33:24,595 [INFO] pexels_client: Selected video 32203298 with score 7 for keyword 'office'
+2025-11-07 22:33:24,596 [INFO] pexels_client: Found video for 'office': 12s
+2025-11-07 22:33:24,597 [INFO] pexels_client: Searching with dynamic query: 'strategy office presentation professional'
+2025-11-07 22:33:26,296 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-07 22:33:26,296 [INFO] pexels_client:   Option 1: ID=6930653, Duration=13s
+2025-11-07 22:33:26,297 [INFO] pexels_client:     User: Mikhail Nilov
+2025-11-07 22:33:26,297 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-shaking-hands-with-his-colleagues-6930653/
+2025-11-07 22:33:26,298 [INFO] pexels_client:   Option 2: ID=5971785, Duration=13s
+2025-11-07 22:33:26,298 [INFO] pexels_client:     User: cottonbro studio
+2025-11-07 22:33:26,299 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-manager-discussing-work-with-his-employee-5971785/
+2025-11-07 22:33:26,299 [INFO] pexels_client:   Option 3: ID=5520043, Duration=10s
+2025-11-07 22:33:26,300 [INFO] pexels_client:     User: Pavel Danilyuk
+2025-11-07 22:33:26,300 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-signing-a-contract-5520043/
+2025-11-07 22:33:26,302 [INFO] pexels_client: Selected video 12896415 with score 7 for keyword 'professional'
+2025-11-07 22:33:26,302 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-07 22:33:26,303 [INFO] pexels_client: Found 5 video segments
+2025-11-07 22:33:26,304 [INFO] __main__: Found 5 video segments
+2025-11-07 22:33:26,305 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-07 22:33:26,305 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-07 22:33:26,305 [INFO] pexels_client: Downloading video: team (10s)
+2025-11-07 22:33:27,399 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34292214_team.mp4 (484 KB)
+2025-11-07 22:33:27,400 [INFO] pexels_client: Downloading video: collaboration (10s)
+2025-11-07 22:33:29,367 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12893581_collaboration.mp4 (2550 KB)
+2025-11-07 22:33:29,367 [INFO] pexels_client: Downloading video: discussion (11s)
+2025-11-07 22:33:31,172 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_6774596_discussion.mp4 (2847 KB)
+2025-11-07 22:33:31,173 [INFO] pexels_client: Downloading video: office (12s)
+2025-11-07 22:33:32,489 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_32203298_office.mp4 (1365 KB)
+2025-11-07 22:33:32,490 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-07 22:33:33,032 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896415_professional.mp4 (3795 KB)
+2025-11-07 22:33:33,033 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-07 22:33:33,033 [INFO] __main__: Downloaded 5 video files
+2025-11-07 22:33:33,033 [INFO] __main__: Step 4: Assembling final video...
+2025-11-07 22:33:33,034 [INFO] video_assembler: Starting final video assembly...
+2025-11-07 22:33:33,034 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-07 22:33:33,034 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_34292214_team.mp4
+2025-11-07 22:33:34,264 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-07 22:33:34,435 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-07 22:33:34,436 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_12893581_collaboration.mp4
+2025-11-07 22:33:34,661 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-07 22:33:34,812 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-07 22:33:34,813 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_6774596_discussion.mp4
+2025-11-07 22:33:35,262 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-07 22:33:35,385 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-07 22:33:35,385 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_32203298_office.mp4
+2025-11-07 22:33:35,589 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-07 22:33:35,693 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-07 22:33:35,693 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896415_professional.mp4
+2025-11-07 22:33:35,938 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-07 22:33:35,946 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-07 22:33:36,864 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-07 22:33:36,864 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-07 22:33:37,249 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-07 22:33:38,127 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-07 22:33:38,128 [INFO] video_assembler: Audio added: 44.3s
+2025-11-07 22:33:38,128 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-07 22:33:38,128 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-07 22:33:38,926 [INFO] video_assembler: Added 128 subtitle clips
+2025-11-07 22:33:38,926 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-07 22:33:38,927 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-07 22:43:37,531 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-07 22:43:37,581 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-07 22:43:37,582 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-07 22:43:37,584 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34292214_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34292214_team.mp4'
+2025-11-07 22:43:37,586 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12893581_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12893581_collaboration.mp4'
+2025-11-07 22:43:37,587 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_6774596_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_6774596_discussion.mp4'
+2025-11-07 22:43:37,588 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_32203298_office.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_32203298_office.mp4'
+2025-11-07 22:43:37,589 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896415_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896415_professional.mp4'
+2025-11-07 22:43:37,590 [INFO] __main__: Temporary files cleaned up
+2025-11-07 22:43:37,590 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-08 14:52:55,633 [INFO] __main__: Initializing reel generation components...
+2025-11-08 14:52:55,652 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-08 14:52:55,652 [INFO] whisper_processor: Whisper service endpoint: https://60c266720c54.ngrok-free.app/process_audio
+2025-11-08 14:52:55,655 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-08 14:52:59,646 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-08 14:52:59,661 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-08 14:52:59,694 [INFO] pexels_client: Pexels client initialized
+2025-11-08 14:52:59,697 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-08 14:52:59,697 [INFO] video_assembler: Video assembler initialized
+2025-11-08 14:52:59,698 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-08 14:52:59,698 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpn8i480ai
+2025-11-08 14:52:59,699 [INFO] __main__: All components initialized successfully
+2025-11-08 14:52:59,699 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-08 14:52:59,700 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-08 14:52:59,701 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-08 14:52:59,702 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-08 14:52:59,711 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-08 14:52:59,711 [INFO] whisper_processor: Sending request to Whisper service: https://60c266720c54.ngrok-free.app/process_audio
+2025-11-08 14:53:03,778 [INFO] whisper_processor: Received response from Whisper service
+2025-11-08 14:53:03,779 [INFO] whisper_processor: Transcription summary:
+2025-11-08 14:53:03,779 [INFO] whisper_processor:    Words: 128
+2025-11-08 14:53:03,780 [INFO] whisper_processor:    Lines: 25
+2025-11-08 14:53:03,781 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-08 14:53:03,781 [INFO] whisper_processor:    Language: it
+2025-11-08 14:53:03,783 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-08 14:53:03,784 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-08 14:53:03,785 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-08 14:53:04,550 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-08 14:53:04,610 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-08 14:53:04,611 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-08 14:53:04,611 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-08 14:53:04,612 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-08 14:53:04,613 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-08 14:53:04,614 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-08 14:53:04,615 [INFO] pexels_client: Searching with dynamic query: 'collaboration modern team presentation'
+2025-11-08 14:53:06,476 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-08 14:53:06,477 [INFO] pexels_client:   Option 1: ID=6145675, Duration=10s
+2025-11-08 14:53:06,477 [INFO] pexels_client:     User: Keira Burton
+2025-11-08 14:53:06,478 [INFO] pexels_client:     URL: https://www.pexels.com/video/two-men-studying-together-6145675/
+2025-11-08 14:53:06,479 [INFO] pexels_client:   Option 2: ID=6622682, Duration=10s
+2025-11-08 14:53:06,479 [INFO] pexels_client:     User: Keira Burton
+2025-11-08 14:53:06,480 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-using-a-laptop-at-home-6622682/
+2025-11-08 14:53:06,480 [INFO] pexels_client:   Option 3: ID=6787363, Duration=9s
+2025-11-08 14:53:06,481 [INFO] pexels_client:     User: Artem Podrez
+2025-11-08 14:53:06,482 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-holding-a-blank-paper-6787363/
+2025-11-08 14:53:06,484 [INFO] pexels_client: Selected video 8141397 with score 5 for keyword 'team'
+2025-11-08 14:53:06,485 [INFO] pexels_client: Found video for 'team': 9s
+2025-11-08 14:53:06,486 [INFO] pexels_client: Searching with dynamic query: 'business office collaboration'
+2025-11-08 14:53:07,692 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-08 14:53:07,693 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-08 14:53:07,693 [INFO] pexels_client:     User: khezez  | 
+2025-11-08 14:53:07,694 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-08 14:53:07,694 [INFO] pexels_client:   Option 2: ID=8170425, Duration=8s
+2025-11-08 14:53:07,694 [INFO] pexels_client:     User: Kampus Production
+2025-11-08 14:53:07,695 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-talking-to-each-other-8170425/
+2025-11-08 14:53:07,695 [INFO] pexels_client:   Option 3: ID=12894328, Duration=10s
+2025-11-08 14:53:07,696 [INFO] pexels_client:     User: Mizuno K
+2025-11-08 14:53:07,696 [INFO] pexels_client:     URL: https://www.pexels.com/video/hands-of-businesspeople-during-a-meeting-in-an-office-12894328/
+2025-11-08 14:53:07,698 [INFO] pexels_client: Selected video 12896414 with score 7 for keyword 'collaboration'
+2025-11-08 14:53:07,698 [INFO] pexels_client: Found video for 'collaboration': 10s
+2025-11-08 14:53:07,699 [INFO] pexels_client: Searching with dynamic query: 'corporate presentation collaboration discussion focused'
+2025-11-08 14:53:09,093 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-08 14:53:09,093 [INFO] pexels_client:   Option 1: ID=7579666, Duration=11s
+2025-11-08 14:53:09,094 [INFO] pexels_client:     User: Tima Miroshnichenko
+2025-11-08 14:53:09,095 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-working-using-laptop-7579666/
+2025-11-08 14:53:09,095 [INFO] pexels_client:   Option 2: ID=7952165, Duration=13s
+2025-11-08 14:53:09,096 [INFO] pexels_client:     User: Felicity Tai
+2025-11-08 14:53:09,096 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-person-getting-folder-from-a-bag-7952165/
+2025-11-08 14:53:09,097 [INFO] pexels_client:   Option 3: ID=7687993, Duration=8s
+2025-11-08 14:53:09,097 [INFO] pexels_client:     User: Kindel Media
+2025-11-08 14:53:09,097 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-working-together-7687993/
+2025-11-08 14:53:09,098 [INFO] pexels_client: Selected video 12896411 with score 5 for keyword 'discussion'
+2025-11-08 14:53:09,099 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-08 14:53:09,099 [INFO] pexels_client: Searching with dynamic query: 'professional professional contemporary meeting'
+2025-11-08 14:53:10,543 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-08 14:53:10,544 [INFO] pexels_client:   Option 1: ID=7082857, Duration=10s
+2025-11-08 14:53:10,545 [INFO] pexels_client:     User: Laura Tancredi
+2025-11-08 14:53:10,545 [INFO] pexels_client:     URL: https://www.pexels.com/video/men-having-a-conversation-while-taking-notes-7082857/
+2025-11-08 14:53:10,545 [INFO] pexels_client:   Option 2: ID=5637273, Duration=10s
+2025-11-08 14:53:10,546 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-08 14:53:10,546 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-in-a-meeting-5637273/
+2025-11-08 14:53:10,546 [INFO] pexels_client:   Option 3: ID=5637286, Duration=10s
+2025-11-08 14:53:10,546 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-08 14:53:10,547 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-working-together-5637286/
+2025-11-08 14:53:10,547 [INFO] pexels_client: Selected video 12896417 with score 7 for keyword 'professional'
+2025-11-08 14:53:10,548 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-08 14:53:10,548 [INFO] pexels_client: Searching with dynamic query: 'office workspace meeting strategy'
+2025-11-08 14:53:11,850 [INFO] pexels_client: Found 80 videos for keyword 'workspace':
+2025-11-08 14:53:11,851 [INFO] pexels_client:   Option 1: ID=34554258, Duration=11s
+2025-11-08 14:53:11,851 [INFO] pexels_client:     User: khezez  | 
+2025-11-08 14:53:11,852 [INFO] pexels_client:     URL: https://www.pexels.com/video/team-collaboration-in-office-meeting-room-34554258/
+2025-11-08 14:53:11,852 [INFO] pexels_client:   Option 2: ID=8170425, Duration=8s
+2025-11-08 14:53:11,853 [INFO] pexels_client:     User: Kampus Production
+2025-11-08 14:53:11,853 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-talking-to-each-other-8170425/
+2025-11-08 14:53:11,854 [INFO] pexels_client:   Option 3: ID=12894328, Duration=10s
+2025-11-08 14:53:11,854 [INFO] pexels_client:     User: Mizuno K
+2025-11-08 14:53:11,855 [INFO] pexels_client:     URL: https://www.pexels.com/video/hands-of-businesspeople-during-a-meeting-in-an-office-12894328/
+2025-11-08 14:53:11,856 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'workspace'
+2025-11-08 14:53:11,857 [INFO] pexels_client: Found video for 'workspace': 11s
+2025-11-08 14:53:11,857 [INFO] pexels_client: Found 5 video segments
+2025-11-08 14:53:11,858 [INFO] __main__: Found 5 video segments
+2025-11-08 14:53:11,859 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-08 14:53:11,859 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-08 14:53:11,860 [INFO] pexels_client: Downloading video: team (9s)
+2025-11-08 14:53:14,479 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8141397_team.mp4 (5469 KB)
+2025-11-08 14:53:14,480 [INFO] pexels_client: Downloading video: collaboration (10s)
+2025-11-08 14:53:15,881 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896414_collaboration.mp4 (4202 KB)
+2025-11-08 14:53:15,882 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-08 14:53:17,028 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896411_discussion.mp4 (1660 KB)
+2025-11-08 14:53:17,029 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-08 14:53:20,050 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896417_professional.mp4 (5727 KB)
+2025-11-08 14:53:20,051 [INFO] pexels_client: Downloading video: workspace (11s)
+2025-11-08 14:53:20,498 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_workspace.mp4 (1526 KB)
+2025-11-08 14:53:20,499 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-08 14:53:20,500 [INFO] __main__: Downloaded 5 video files
+2025-11-08 14:53:20,500 [INFO] __main__: Step 4: Assembling final video...
+2025-11-08 14:53:20,500 [INFO] video_assembler: Starting final video assembly...
+2025-11-08 14:53:20,501 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-08 14:53:20,501 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_8141397_team.mp4
+2025-11-08 14:53:22,100 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-08 14:53:22,114 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896414_collaboration.mp4
+2025-11-08 14:53:27,413 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-08 14:53:27,417 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896411_discussion.mp4
+2025-11-08 14:53:28,294 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-08 14:53:28,637 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-08 14:53:28,637 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896417_professional.mp4
+2025-11-08 14:53:29,235 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-08 14:53:29,244 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_workspace.mp4
+2025-11-08 14:53:29,960 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-08 14:53:30,285 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-08 14:53:30,285 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-08 14:53:31,787 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-08 14:53:31,788 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-08 14:53:32,426 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-08 14:53:32,845 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-08 14:53:32,846 [INFO] video_assembler: Audio added: 44.3s
+2025-11-08 14:53:32,846 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-08 14:53:32,847 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-08 14:53:34,903 [INFO] video_assembler: Added 128 subtitle clips
+2025-11-08 14:53:34,907 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-08 14:53:34,909 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-08 15:03:56,084 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-08 15:03:56,131 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-08 15:03:56,132 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-08 15:03:56,136 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896414_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896414_collaboration.mp4'
+2025-11-08 15:03:56,137 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896411_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896411_discussion.mp4'
+2025-11-08 15:03:56,138 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896417_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896417_professional.mp4'
+2025-11-08 15:03:56,140 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_workspace.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_workspace.mp4'
+2025-11-08 15:03:56,141 [INFO] __main__: Temporary files cleaned up
+2025-11-08 15:03:56,142 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_new_3.mp4
+2025-11-10 14:20:51,480 [INFO] __main__: Initializing reel generation components...
+2025-11-10 14:20:51,547 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 14:20:51,548 [INFO] whisper_processor: Whisper service endpoint: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 14:20:51,550 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 14:20:53,545 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 14:20:53,567 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 14:20:53,568 [INFO] pexels_client: Pexels client initialized
+2025-11-10 14:20:53,570 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 14:20:53,571 [INFO] video_assembler: Video assembler initialized
+2025-11-10 14:20:53,571 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 14:20:53,571 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpwh1gj340
+2025-11-10 14:20:53,571 [INFO] __main__: All components initialized successfully
+2025-11-10 14:20:53,572 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 14:20:53,572 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 14:20:53,572 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 14:20:53,573 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 14:20:56,119 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 14:20:56,119 [INFO] whisper_processor: Sending request to Whisper service: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 14:20:59,584 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 14:20:59,585 [INFO] whisper_processor: Transcription summary:
+2025-11-10 14:20:59,585 [INFO] whisper_processor:    Words: 128
+2025-11-10 14:20:59,586 [INFO] whisper_processor:    Lines: 25
+2025-11-10 14:20:59,586 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 14:20:59,586 [INFO] whisper_processor:    Language: it
+2025-11-10 14:20:59,589 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 14:20:59,589 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 14:20:59,590 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 14:21:00,413 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 14:21:00,523 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 14:21:00,524 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 14:21:00,524 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 14:21:00,539 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 14:21:00,539 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 14:21:00,539 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 14:21:00,540 [INFO] pexels_client: Searching with dynamic query: 'strategy leadership team office'
+2025-11-10 14:21:02,306 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 14:21:02,307 [INFO] pexels_client:   Option 1: ID=5646340, Duration=12s
+2025-11-10 14:21:02,307 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-10 14:21:02,308 [INFO] pexels_client:     URL: https://www.pexels.com/video/three-people-walking-on-street-while-talking-to-each-other-5646340/
+2025-11-10 14:21:02,309 [INFO] pexels_client:   Option 2: ID=13802096, Duration=10s
+2025-11-10 14:21:02,309 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:21:02,309 [INFO] pexels_client:     URL: https://www.pexels.com/video/two-business-colleagues-leaving-a-building-in-a-hurry-13802096/
+2025-11-10 14:21:02,310 [INFO] pexels_client:   Option 3: ID=5971795, Duration=12s
+2025-11-10 14:21:02,310 [INFO] pexels_client:     User: cottonbro studio
+2025-11-10 14:21:02,311 [INFO] pexels_client:     URL: https://www.pexels.com/video/group-of-people-working-together-in-the-office-5971795/
+2025-11-10 14:21:02,312 [INFO] pexels_client: Selected video 12896414 with score 7 for keyword 'team'
+2025-11-10 14:21:02,312 [INFO] pexels_client: Found video for 'team': 10s
+2025-11-10 14:21:02,313 [INFO] pexels_client: Searching with dynamic query: 'strategy collaboration collaboration'
+2025-11-10 14:21:03,637 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 14:21:03,638 [INFO] pexels_client:   Option 1: ID=12893614, Duration=10s
+2025-11-10 14:21:03,638 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:21:03,639 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-business-meeting-12893614/
+2025-11-10 14:21:03,639 [INFO] pexels_client:   Option 2: ID=7652261, Duration=10s
+2025-11-10 14:21:03,640 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:21:03,640 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-showing-a-document-in-a-presentation-7652261/
+2025-11-10 14:21:03,641 [INFO] pexels_client:   Option 3: ID=7660704, Duration=9s
+2025-11-10 14:21:03,641 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 14:21:03,642 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-reading-a-document-while-sitting-on-a-desk-7660704/
+2025-11-10 14:21:03,644 [INFO] pexels_client: Selected video 12896417 with score 7 for keyword 'collaboration'
+2025-11-10 14:21:03,644 [INFO] pexels_client: Found video for 'collaboration': 10s
+2025-11-10 14:21:03,645 [INFO] pexels_client: Searching with dynamic query: 'diverse entrepreneur workplace conference discussion'
+2025-11-10 14:21:05,213 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 14:21:05,214 [INFO] pexels_client:   Option 1: ID=5646340, Duration=12s
+2025-11-10 14:21:05,214 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-10 14:21:05,215 [INFO] pexels_client:     URL: https://www.pexels.com/video/three-people-walking-on-street-while-talking-to-each-other-5646340/
+2025-11-10 14:21:05,215 [INFO] pexels_client:   Option 2: ID=12909803, Duration=10s
+2025-11-10 14:21:05,216 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:21:05,216 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-sitting-at-work-12909803/
+2025-11-10 14:21:05,217 [INFO] pexels_client:   Option 3: ID=9049297, Duration=10s
+2025-11-10 14:21:05,217 [INFO] pexels_client:     User: Mike Jones
+2025-11-10 14:21:05,217 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-holding-a-tablet-while-writing-on-a-notebook-9049297/
+2025-11-10 14:21:05,219 [INFO] pexels_client: Selected video 5439028 with score 5 for keyword 'discussion'
+2025-11-10 14:21:05,219 [INFO] pexels_client: Found video for 'discussion': 13s
+2025-11-10 14:21:05,219 [INFO] pexels_client: Searching with dynamic query: 'leadership office business entrepreneur'
+2025-11-10 14:21:06,937 [INFO] pexels_client: Found 80 videos for keyword 'office':
+2025-11-10 14:21:06,938 [INFO] pexels_client:   Option 1: ID=13801292, Duration=10s
+2025-11-10 14:21:06,938 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:21:06,939 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-businesswoman-talking-on-the-phone-in-the-backseat-of-a-car-13801292/
+2025-11-10 14:21:06,939 [INFO] pexels_client:   Option 2: ID=6773634, Duration=8s
+2025-11-10 14:21:06,939 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:21:06,940 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-in-a-business-meeting-6773634/
+2025-11-10 14:21:06,940 [INFO] pexels_client:   Option 3: ID=7647331, Duration=8s
+2025-11-10 14:21:06,941 [INFO] pexels_client:     User: Anastasia  Shuraeva
+2025-11-10 14:21:06,941 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-wearing-a-suit-7647331/
+2025-11-10 14:21:06,942 [INFO] pexels_client: Selected video 12894324 with score 7 for keyword 'office'
+2025-11-10 14:21:06,943 [INFO] pexels_client: Found video for 'office': 10s
+2025-11-10 14:21:06,943 [INFO] pexels_client: Searching with dynamic query: 'professional conference handshake'
+2025-11-10 14:21:08,695 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 14:21:08,696 [INFO] pexels_client:   Option 1: ID=9892799, Duration=12s
+2025-11-10 14:21:08,697 [INFO] pexels_client:     User:  
+2025-11-10 14:21:08,697 [INFO] pexels_client:     URL: https://www.pexels.com/video/cook-pouring-eggs-through-filter-9892799/
+2025-11-10 14:21:08,698 [INFO] pexels_client:   Option 2: ID=5439028, Duration=13s
+2025-11-10 14:21:08,698 [INFO] pexels_client:     User: Tima Miroshnichenko
+2025-11-10 14:21:08,698 [INFO] pexels_client:     URL: https://www.pexels.com/video/young-men-in-office-meeting-5439028/
+2025-11-10 14:21:08,699 [INFO] pexels_client:   Option 3: ID=6952476, Duration=11s
+2025-11-10 14:21:08,699 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 14:21:08,700 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-using-her-laptop-6952476/
+2025-11-10 14:21:08,701 [INFO] pexels_client: Selected video 12894332 with score 7 for keyword 'professional'
+2025-11-10 14:21:08,701 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-10 14:21:08,702 [INFO] pexels_client: Found 5 video segments
+2025-11-10 14:21:08,702 [INFO] __main__: Found 5 video segments
+2025-11-10 14:21:08,703 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 14:21:08,703 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 14:21:08,703 [INFO] pexels_client: Downloading video: team (10s)
+2025-11-10 14:21:09,104 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896414_team.mp4 (4202 KB)
+2025-11-10 14:21:09,104 [INFO] pexels_client: Downloading video: collaboration (10s)
+2025-11-10 14:21:09,694 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896417_collaboration.mp4 (5727 KB)
+2025-11-10 14:21:09,695 [INFO] pexels_client: Downloading video: discussion (13s)
+2025-11-10 14:21:10,138 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_5439028_discussion.mp4 (2977 KB)
+2025-11-10 14:21:10,139 [INFO] pexels_client: Downloading video: office (10s)
+2025-11-10 14:21:11,658 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894324_office.mp4 (3330 KB)
+2025-11-10 14:21:11,660 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-10 14:21:12,974 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894332_professional.mp4 (3422 KB)
+2025-11-10 14:21:12,975 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 14:21:12,975 [INFO] __main__: Downloaded 5 video files
+2025-11-10 14:21:12,976 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 14:21:12,976 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 14:21:12,977 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 14:21:12,977 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896414_team.mp4
+2025-11-10 14:21:13,890 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:21:13,893 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:21:13,896 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896417_collaboration.mp4
+2025-11-10 14:21:14,140 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:21:14,144 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:21:14,145 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_5439028_discussion.mp4
+2025-11-10 14:21:14,362 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 14:21:14,365 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 14:21:14,435 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 14:21:14,486 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:21:14,487 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894324_office.mp4
+2025-11-10 14:21:14,696 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:21:14,699 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:21:14,700 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894332_professional.mp4
+2025-11-10 14:21:15,082 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:21:15,085 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:21:15,091 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 14:21:16,378 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 14:21:16,380 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 14:21:18,245 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 14:21:19,478 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 14:21:19,479 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 14:21:19,480 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 14:21:19,480 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-10 14:21:20,845 [INFO] video_assembler: Added 128 subtitle clips
+2025-11-10 14:21:20,846 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 14:21:20,847 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc.mp4
+2025-11-10 14:31:44,447 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc.mp4
+2025-11-10 14:31:45,357 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc.mp4
+2025-11-10 14:31:45,358 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 14:31:46,772 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896414_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896414_team.mp4'
+2025-11-10 14:31:46,775 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896417_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896417_collaboration.mp4'
+2025-11-10 14:31:46,827 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_5439028_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_5439028_discussion.mp4'
+2025-11-10 14:31:46,829 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894324_office.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894324_office.mp4'
+2025-11-10 14:31:46,831 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894332_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894332_professional.mp4'
+2025-11-10 14:31:47,215 [INFO] __main__: Temporary files cleaned up
+2025-11-10 14:31:47,216 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc.mp4
+2025-11-10 14:39:12,971 [INFO] __main__: Initializing reel generation components...
+2025-11-10 14:39:12,971 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 14:39:12,971 [INFO] whisper_processor: Whisper service endpoint: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 14:39:12,973 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 14:39:15,251 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 14:39:15,254 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 14:39:15,256 [INFO] pexels_client: Pexels client initialized
+2025-11-10 14:39:15,257 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 14:39:15,258 [INFO] video_assembler: Video assembler initialized
+2025-11-10 14:39:15,258 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 14:39:15,259 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpnttb3_ef
+2025-11-10 14:39:15,259 [INFO] __main__: All components initialized successfully
+2025-11-10 14:39:15,260 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 14:39:15,260 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 14:39:15,261 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 14:39:15,261 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 14:39:15,265 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 14:39:15,266 [INFO] whisper_processor: Sending request to Whisper service: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 14:39:18,030 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 14:39:18,030 [INFO] whisper_processor: Transcription summary:
+2025-11-10 14:39:18,031 [INFO] whisper_processor:    Words: 128
+2025-11-10 14:39:18,031 [INFO] whisper_processor:    Lines: 25
+2025-11-10 14:39:18,032 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 14:39:18,032 [INFO] whisper_processor:    Language: it
+2025-11-10 14:39:18,033 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 14:39:18,033 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 14:39:18,034 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 14:39:18,723 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 14:39:18,813 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 14:39:18,814 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 14:39:18,814 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 14:39:18,815 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 14:39:18,815 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 14:39:18,815 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 14:39:18,816 [INFO] pexels_client: Searching with dynamic query: 'team boardroom diverse office'
+2025-11-10 14:39:20,584 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 14:39:20,584 [INFO] pexels_client:   Option 1: ID=8141489, Duration=8s
+2025-11-10 14:39:20,585 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 14:39:20,585 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-in-a-business-meeting-8141489/
+2025-11-10 14:39:20,586 [INFO] pexels_client:   Option 2: ID=6951460, Duration=10s
+2025-11-10 14:39:20,586 [INFO] pexels_client:     User: Werner Pfennig
+2025-11-10 14:39:20,587 [INFO] pexels_client:     URL: https://www.pexels.com/video/elderly-man-giving-a-talk-at-a-meeting-in-the-conference-room-6951460/
+2025-11-10 14:39:20,587 [INFO] pexels_client:   Option 3: ID=6773635, Duration=10s
+2025-11-10 14:39:20,588 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:39:20,588 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-working-with-a-laptop-6773635/
+2025-11-10 14:39:20,590 [INFO] pexels_client: Selected video 34554258 with score 9 for keyword 'team'
+2025-11-10 14:39:20,590 [INFO] pexels_client: Found video for 'team': 11s
+2025-11-10 14:39:20,590 [INFO] pexels_client: Searching with dynamic query: 'corporate innovative handshake boardroom collaboration'
+2025-11-10 14:39:21,731 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 14:39:21,732 [INFO] pexels_client:   Option 1: ID=8170420, Duration=8s
+2025-11-10 14:39:21,732 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 14:39:21,733 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-group-of-women-in-a-meeting-8170420/
+2025-11-10 14:39:21,733 [INFO] pexels_client:   Option 2: ID=8135580, Duration=13s
+2025-11-10 14:39:21,733 [INFO] pexels_client:     User: Karola G
+2025-11-10 14:39:21,734 [INFO] pexels_client:     URL: https://www.pexels.com/video/couple-signing-a-divorce-agreement-8135580/
+2025-11-10 14:39:21,734 [INFO] pexels_client:   Option 3: ID=8141182, Duration=13s
+2025-11-10 14:39:21,734 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 14:39:21,735 [INFO] pexels_client:     URL: https://www.pexels.com/video/coworkers-discussing-about-work-8141182/
+2025-11-10 14:39:21,736 [INFO] pexels_client: Selected video 8344233 with score 5 for keyword 'collaboration'
+2025-11-10 14:39:21,736 [INFO] pexels_client: Found video for 'collaboration': 12s
+2025-11-10 14:39:21,736 [INFO] pexels_client: Searching with dynamic query: 'discussion collaboration presentation modern'
+2025-11-10 14:39:23,676 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 14:39:23,677 [INFO] pexels_client:   Option 1: ID=7316069, Duration=10s
+2025-11-10 14:39:23,678 [INFO] pexels_client:     User: Angela Roma
+2025-11-10 14:39:23,678 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-with-a-white-sign-7316069/
+2025-11-10 14:39:23,679 [INFO] pexels_client:   Option 2: ID=8034684, Duration=11s
+2025-11-10 14:39:23,679 [INFO] pexels_client:     User: Edmond Dants
+2025-11-10 14:39:23,679 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-having-a-video-call-on-his-laptop-8034684/
+2025-11-10 14:39:23,680 [INFO] pexels_client:   Option 3: ID=13801290, Duration=10s
+2025-11-10 14:39:23,680 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:39:23,681 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-showing-her-smartphone-to-the-man-in-suit-13801290/
+2025-11-10 14:39:23,683 [INFO] pexels_client: Selected video 8170490 with score 5 for keyword 'discussion'
+2025-11-10 14:39:23,684 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-10 14:39:23,684 [INFO] pexels_client: Searching with dynamic query: 'professional business collaboration'
+2025-11-10 14:39:25,434 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 14:39:25,434 [INFO] pexels_client:   Option 1: ID=5636773, Duration=10s
+2025-11-10 14:39:25,435 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-10 14:39:25,436 [INFO] pexels_client:     URL: https://www.pexels.com/video/person-standing-in-front-of-a-building-5636773/
+2025-11-10 14:39:25,436 [INFO] pexels_client:   Option 2: ID=5636782, Duration=10s
+2025-11-10 14:39:25,437 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-10 14:39:25,437 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-checking-on-her-phone-while-standing-on-the-road-5636782/
+2025-11-10 14:39:25,437 [INFO] pexels_client:   Option 3: ID=13802096, Duration=10s
+2025-11-10 14:39:25,438 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:39:25,438 [INFO] pexels_client:     URL: https://www.pexels.com/video/two-business-colleagues-leaving-a-building-in-a-hurry-13802096/
+2025-11-10 14:39:25,439 [INFO] pexels_client: Selected video 12894332 with score 7 for keyword 'professional'
+2025-11-10 14:39:25,440 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-10 14:39:25,440 [INFO] pexels_client: Searching with dynamic query: 'strategy workspace entrepreneur conference modern'
+2025-11-10 14:39:27,286 [INFO] pexels_client: Found 80 videos for keyword 'workspace':
+2025-11-10 14:39:27,286 [INFO] pexels_client:   Option 1: ID=6944153, Duration=10s
+2025-11-10 14:39:27,287 [INFO] pexels_client:     User: George Milton
+2025-11-10 14:39:27,287 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-on-chair-typing-on-notebook-6944153/
+2025-11-10 14:39:27,288 [INFO] pexels_client:   Option 2: ID=8264002, Duration=12s
+2025-11-10 14:39:27,289 [INFO] pexels_client:     User: Henri Mathieu-Saint-Laurent
+2025-11-10 14:39:27,289 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-typing-using-a-laptop-8264002/
+2025-11-10 14:39:27,290 [INFO] pexels_client:   Option 3: ID=8188830, Duration=11s
+2025-11-10 14:39:27,290 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 14:39:27,291 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-showing-her-presentation-8188830/
+2025-11-10 14:39:27,292 [INFO] pexels_client: Selected video 12893523 with score 5 for keyword 'workspace'
+2025-11-10 14:39:27,293 [INFO] pexels_client: Found video for 'workspace': 10s
+2025-11-10 14:39:27,293 [INFO] pexels_client: Found 5 video segments
+2025-11-10 14:39:27,294 [INFO] __main__: Found 5 video segments
+2025-11-10 14:39:27,294 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 14:39:27,294 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 14:39:27,295 [INFO] pexels_client: Downloading video: team (11s)
+2025-11-10 14:39:27,617 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_team.mp4 (1526 KB)
+2025-11-10 14:39:27,618 [INFO] pexels_client: Downloading video: collaboration (12s)
+2025-11-10 14:39:28,720 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8344233_collaboration.mp4 (2024 KB)
+2025-11-10 14:39:28,721 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-10 14:39:29,281 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8170490_discussion.mp4 (2947 KB)
+2025-11-10 14:39:29,283 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-10 14:39:29,777 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894332_professional.mp4 (3422 KB)
+2025-11-10 14:39:29,778 [INFO] pexels_client: Downloading video: workspace (10s)
+2025-11-10 14:39:31,896 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12893523_workspace.mp4 (2217 KB)
+2025-11-10 14:39:31,898 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 14:39:31,898 [INFO] __main__: Downloaded 5 video files
+2025-11-10 14:39:31,898 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 14:39:31,899 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 14:39:31,900 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 14:39:31,900 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_34554258_team.mp4
+2025-11-10 14:39:32,926 [INFO] video_assembler:      Original Pexels video: 360x640
+2025-11-10 14:39:32,930 [INFO] video_assembler:      Adjusting resolution from 360x640 to 1080x1920
+2025-11-10 14:39:32,994 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 14:39:33,047 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:39:33,047 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_8344233_collaboration.mp4
+2025-11-10 14:39:33,498 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 14:39:33,504 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 14:39:33,635 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 14:39:33,702 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:39:33,703 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_8170490_discussion.mp4
+2025-11-10 14:39:33,930 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 14:39:33,932 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 14:39:34,047 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 14:39:34,116 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:39:34,117 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894332_professional.mp4
+2025-11-10 14:39:35,400 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:39:35,555 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:39:35,649 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_12893523_workspace.mp4
+2025-11-10 14:39:40,207 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 14:39:40,213 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 14:39:40,416 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 14:39:40,590 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:39:40,592 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 14:39:43,277 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 14:39:43,277 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 14:39:44,888 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 14:39:46,149 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 14:39:46,150 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 14:39:46,150 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 14:39:46,151 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-10 14:39:49,032 [INFO] video_assembler: Added 128 subtitle clips
+2025-11-10 14:39:49,032 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 14:39:49,034 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc22.mp4
+2025-11-10 14:50:46,996 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc22.mp4
+2025-11-10 14:50:47,128 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc22.mp4
+2025-11-10 14:50:47,128 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 14:50:47,426 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_34554258_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_34554258_team.mp4'
+2025-11-10 14:50:47,427 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8344233_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8344233_collaboration.mp4'
+2025-11-10 14:50:47,428 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8170490_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8170490_discussion.mp4'
+2025-11-10 14:50:47,443 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894332_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894332_professional.mp4'
+2025-11-10 14:50:47,445 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12893523_workspace.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12893523_workspace.mp4'
+2025-11-10 14:50:47,683 [INFO] __main__: Temporary files cleaned up
+2025-11-10 14:50:47,683 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc22.mp4
+2025-11-10 14:54:55,066 [INFO] __main__: Initializing reel generation components...
+2025-11-10 14:54:55,066 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 14:54:55,066 [INFO] whisper_processor: Whisper service endpoint: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 14:54:55,067 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 14:54:57,891 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 14:54:57,894 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 14:54:57,896 [INFO] pexels_client: Pexels client initialized
+2025-11-10 14:54:57,898 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 14:54:57,898 [INFO] video_assembler: Video assembler initialized
+2025-11-10 14:54:57,898 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 14:54:57,899 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpfjr6esw7
+2025-11-10 14:54:57,899 [INFO] __main__: All components initialized successfully
+2025-11-10 14:54:57,900 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 14:54:57,900 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 14:54:57,901 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 14:54:57,901 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 14:54:57,906 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 14:54:57,907 [INFO] whisper_processor: Sending request to Whisper service: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 14:55:00,902 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 14:55:00,903 [INFO] whisper_processor: Transcription summary:
+2025-11-10 14:55:00,903 [INFO] whisper_processor:    Words: 128
+2025-11-10 14:55:00,903 [INFO] whisper_processor:    Lines: 25
+2025-11-10 14:55:00,904 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 14:55:00,904 [INFO] whisper_processor:    Language: it
+2025-11-10 14:55:00,905 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 14:55:00,905 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 14:55:00,906 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 14:55:01,708 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 14:55:01,807 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 14:55:01,807 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 14:55:01,808 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 14:55:01,808 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 14:55:01,809 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 14:55:01,809 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 14:55:01,810 [INFO] pexels_client: Searching with dynamic query: 'team strategy handshake'
+2025-11-10 14:55:03,548 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 14:55:03,549 [INFO] pexels_client:   Option 1: ID=7106746, Duration=10s
+2025-11-10 14:55:03,549 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:55:03,549 [INFO] pexels_client:     URL: https://www.pexels.com/video/children-building-a-model-rocket-ship-made-out-of-aluminum-foil-7106746/
+2025-11-10 14:55:03,549 [INFO] pexels_client:   Option 2: ID=8693842, Duration=13s
+2025-11-10 14:55:03,550 [INFO] pexels_client:     User: Yaroslav Shuraev
+2025-11-10 14:55:03,550 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-spinning-the-ball-in-his-fingers-8693842/
+2025-11-10 14:55:03,550 [INFO] pexels_client:   Option 3: ID=8751466, Duration=13s
+2025-11-10 14:55:03,551 [INFO] pexels_client:     User: Kevin  Malik
+2025-11-10 14:55:03,551 [INFO] pexels_client:     URL: https://www.pexels.com/video/men-playing-jenga-8751466/
+2025-11-10 14:55:03,552 [INFO] pexels_client: Selected video 6773630 with score 5 for keyword 'team'
+2025-11-10 14:55:03,553 [INFO] pexels_client: Found video for 'team': 12s
+2025-11-10 14:55:03,553 [INFO] pexels_client: Searching with dynamic query: 'professional diverse workplace collaboration'
+2025-11-10 14:55:04,602 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 14:55:04,602 [INFO] pexels_client:   Option 1: ID=8035029, Duration=12s
+2025-11-10 14:55:04,603 [INFO] pexels_client:     User: Edmond Dants
+2025-11-10 14:55:04,603 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-talking-while-using-her-laptop-8035029/
+2025-11-10 14:55:04,604 [INFO] pexels_client:   Option 2: ID=7981249, Duration=10s
+2025-11-10 14:55:04,605 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 14:55:04,605 [INFO] pexels_client:     URL: https://www.pexels.com/video/couple-working-from-home-7981249/
+2025-11-10 14:55:04,605 [INFO] pexels_client:   Option 3: ID=7534405, Duration=13s
+2025-11-10 14:55:04,606 [INFO] pexels_client:     User: MART  PRODUCTION
+2025-11-10 14:55:04,607 [INFO] pexels_client:     URL: https://www.pexels.com/video/office-workers-looking-at-camera-7534405/
+2025-11-10 14:55:04,608 [INFO] pexels_client: Selected video 8141489 with score 5 for keyword 'collaboration'
+2025-11-10 14:55:04,608 [INFO] pexels_client: Found video for 'collaboration': 8s
+2025-11-10 14:55:04,609 [INFO] pexels_client: Searching with dynamic query: 'corporate discussion workplace'
+2025-11-10 14:55:05,928 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 14:55:05,930 [INFO] pexels_client:   Option 1: ID=5637281, Duration=11s
+2025-11-10 14:55:05,930 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-10 14:55:05,930 [INFO] pexels_client:     URL: https://www.pexels.com/video/employee-giving-presentation-to-her-seniors-in-a-meeting-5637281/
+2025-11-10 14:55:05,931 [INFO] pexels_client:   Option 2: ID=12898222, Duration=10s
+2025-11-10 14:55:05,931 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:55:05,932 [INFO] pexels_client:     URL: https://www.pexels.com/video/three-businesspeople-working-in-an-office-12898222/
+2025-11-10 14:55:05,932 [INFO] pexels_client:   Option 3: ID=12893574, Duration=10s
+2025-11-10 14:55:05,932 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 14:55:05,933 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-discussing-in-office-12893574/
+2025-11-10 14:55:05,934 [INFO] pexels_client: Selected video 12894330 with score 7 for keyword 'discussion'
+2025-11-10 14:55:05,935 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-10 14:55:05,935 [INFO] pexels_client: Searching with dynamic query: 'team professional conference presentation diverse'
+2025-11-10 14:55:07,215 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 14:55:07,218 [INFO] pexels_client:   Option 1: ID=6775035, Duration=9s
+2025-11-10 14:55:07,219 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:55:07,219 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-businesswoman-talking-in-a-meeting-6775035/
+2025-11-10 14:55:07,220 [INFO] pexels_client:   Option 2: ID=6774601, Duration=11s
+2025-11-10 14:55:07,220 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:55:07,221 [INFO] pexels_client:     URL: https://www.pexels.com/video/frustration-over-business-analytics-6774601/
+2025-11-10 14:55:07,221 [INFO] pexels_client:   Option 3: ID=6774593, Duration=11s
+2025-11-10 14:55:07,222 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 14:55:07,222 [INFO] pexels_client:     URL: https://www.pexels.com/video/business-planning-in-a-meeting-6774593/
+2025-11-10 14:55:07,223 [INFO] pexels_client: Selected video 7963136 with score 9 for keyword 'professional'
+2025-11-10 14:55:07,224 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-10 14:55:07,224 [INFO] pexels_client: Searching with dynamic query: 'presentation workspace business focused'
+2025-11-10 14:55:08,973 [INFO] pexels_client: Found 80 videos for keyword 'workspace':
+2025-11-10 14:55:08,977 [INFO] pexels_client:   Option 1: ID=6279520, Duration=10s
+2025-11-10 14:55:08,977 [INFO] pexels_client:     User: Uriel Mont
+2025-11-10 14:55:08,978 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-using-her-laptop-6279520/
+2025-11-10 14:55:08,978 [INFO] pexels_client:   Option 2: ID=7010226, Duration=10s
+2025-11-10 14:55:08,979 [INFO] pexels_client:     User: George Milton
+2025-11-10 14:55:08,979 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-using-laptop-7010226/
+2025-11-10 14:55:08,980 [INFO] pexels_client:   Option 3: ID=6787363, Duration=9s
+2025-11-10 14:55:08,980 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 14:55:08,980 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-holding-a-blank-paper-6787363/
+2025-11-10 14:55:08,981 [INFO] pexels_client: Selected video 8189162 with score 5 for keyword 'workspace'
+2025-11-10 14:55:08,982 [INFO] pexels_client: Found video for 'workspace': 11s
+2025-11-10 14:55:08,982 [INFO] pexels_client: Found 5 video segments
+2025-11-10 14:55:08,983 [INFO] __main__: Found 5 video segments
+2025-11-10 14:55:08,983 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 14:55:08,983 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 14:55:08,984 [INFO] pexels_client: Downloading video: team (12s)
+2025-11-10 14:55:11,004 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_6773630_team.mp4 (8217 KB)
+2025-11-10 14:55:11,005 [INFO] pexels_client: Downloading video: collaboration (8s)
+2025-11-10 14:55:12,060 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8141489_collaboration.mp4 (4607 KB)
+2025-11-10 14:55:12,061 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-10 14:55:14,061 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894330_discussion.mp4 (4059 KB)
+2025-11-10 14:55:14,062 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-10 14:55:16,020 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_7963136_professional.mp4 (1776 KB)
+2025-11-10 14:55:16,021 [INFO] pexels_client: Downloading video: workspace (11s)
+2025-11-10 14:55:17,023 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8189162_workspace.mp4 (3676 KB)
+2025-11-10 14:55:17,024 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 14:55:17,025 [INFO] __main__: Downloaded 5 video files
+2025-11-10 14:55:17,025 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 14:55:17,026 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 14:55:17,026 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 14:55:17,026 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_6773630_team.mp4
+2025-11-10 14:55:17,498 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:55:17,499 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:55:17,499 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_8141489_collaboration.mp4
+2025-11-10 14:55:17,719 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:55:17,722 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:55:17,724 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894330_discussion.mp4
+2025-11-10 14:55:18,246 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:55:18,250 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:55:18,257 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_7963136_professional.mp4
+2025-11-10 14:55:21,271 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 14:55:21,273 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 14:55:21,759 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 14:55:22,311 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:55:22,313 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_8189162_workspace.mp4
+2025-11-10 14:55:24,204 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 14:55:24,206 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 14:55:24,207 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 14:55:25,279 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 14:55:25,279 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 14:55:26,929 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 14:55:27,595 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 14:55:27,596 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 14:55:27,596 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 14:55:27,596 [INFO] video_assembler: Creating subtitles for 128 words with color: white
+2025-11-10 14:55:27,627 [INFO] video_assembler: Created phrase: 'Gestire tutto da solo?' (0.0s-2.0s)
+2025-11-10 14:55:27,653 [INFO] video_assembler: Created phrase: 'È un po' come' (1.6s-3.6s)
+2025-11-10 14:55:27,686 [INFO] video_assembler: Created phrase: 'navigare in mare aperto' (2.2s-4.2s)
+2025-11-10 14:55:27,716 [INFO] video_assembler: Created phrase: 'senza busso, la prima' (3.3s-5.3s)
+2025-11-10 14:55:27,733 [INFO] video_assembler: Created phrase: 'o poi ti perdi.' (4.4s-6.4s)
+2025-11-10 14:55:27,767 [INFO] video_assembler: Created phrase: 'Con Smartgain non sei' (5.8s-7.8s)
+2025-11-10 14:55:27,786 [INFO] video_assembler: Created phrase: 'mai solo. C 'è' (7.0s-9.0s)
+2025-11-10 14:55:27,821 [INFO] video_assembler: Created phrase: 'una community vera, fatta' (8.2s-10.2s)
+2025-11-10 14:55:27,849 [INFO] video_assembler: Created phrase: 'di persone reali che' (9.7s-11.7s)
+2025-11-10 14:55:27,877 [INFO] video_assembler: Created phrase: 'ti affiancano in ogni' (10.7s-12.7s)
+2025-11-10 14:55:27,918 [INFO] video_assembler: Created phrase: 'momento. Persone competenti che' (11.8s-14.0s)
+2025-11-10 14:55:27,953 [INFO] video_assembler: Created phrase: 'leggono clausole e contratti' (14.0s-16.0s)
+2025-11-10 14:55:27,974 [INFO] video_assembler: Created phrase: 'insieme a te, non' (15.4s-17.4s)
+2025-11-10 14:55:28,003 [INFO] video_assembler: Created phrase: 'al posto tuo. Niente' (16.4s-18.4s)
+2025-11-10 14:55:28,035 [INFO] video_assembler: Created phrase: 'col center dove nessuno' (17.7s-19.7s)
+2025-11-10 14:55:28,071 [INFO] video_assembler: Created phrase: 'ti conosce, niente risposte,' (19.1s-21.1s)
+2025-11-10 14:55:28,105 [INFO] video_assembler: Created phrase: 'pre -confezionate che non' (20.8s-22.8s)
+2025-11-10 14:55:28,129 [INFO] video_assembler: Created phrase: 'risolvono nulla. Qui c' (22.0s-24.0s)
+2025-11-10 14:55:28,159 [INFO] video_assembler: Created phrase: ''è solo supporto vero,' (23.7s-25.7s)
+2025-11-10 14:55:28,196 [INFO] video_assembler: Created phrase: 'con persone che capiscono' (25.0s-27.0s)
+2025-11-10 14:55:28,226 [INFO] video_assembler: Created phrase: 'davvero quello che stai' (26.1s-28.1s)
+2025-11-10 14:55:28,255 [INFO] video_assembler: Created phrase: 'affrontando. In pari dai' (27.1s-29.1s)
+2025-11-10 14:55:28,288 [INFO] video_assembler: Created phrase: 'casi degli altri, condividi' (28.6s-30.6s)
+2025-11-10 14:55:28,303 [INFO] video_assembler: Created phrase: 'i tuoi dubbi e' (30.0s-32.0s)
+2025-11-10 14:55:28,346 [INFO] video_assembler: Created phrase: 'prendi decisioni consapevoli. Ogni' (30.8s-33.1s)
+2025-11-10 14:55:28,386 [INFO] video_assembler: Created phrase: 'singolo passo, trasparenza totale' (33.1s-35.3s)
+2025-11-10 14:55:28,400 [INFO] video_assembler: Created phrase: 'sempre,' (35.3s-37.3s)
+2025-11-10 14:55:28,434 [INFO] video_assembler: Created phrase: 'vuoi unirti alla community' (36.3s-38.3s)
+2025-11-10 14:55:28,450 [INFO] video_assembler: Created phrase: 'smartgain,' (37.3s-39.3s)
+2025-11-10 14:55:28,482 [INFO] video_assembler: Created phrase: 'trovi tutte le informazioni' (38.7s-40.7s)
+2025-11-10 14:55:28,499 [INFO] video_assembler: Created phrase: 'nel link in bio' (40.0s-42.0s)
+2025-11-10 14:55:28,534 [INFO] video_assembler: Created phrase: 'oppure se commenti con' (41.0s-43.0s)
+2025-11-10 14:55:28,564 [INFO] video_assembler: Created phrase: 'Smart ti mandiamo tutti' (42.2s-44.2s)
+2025-11-10 14:55:28,579 [INFO] video_assembler: Created phrase: 'i dettagli.' (43.5s-45.5s)
+2025-11-10 14:55:28,660 [INFO] video_assembler: Added 34 subtitle clips
+2025-11-10 14:55:28,661 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 14:55:28,663 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_tes.mp4
+2025-11-10 15:05:08,894 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_tes.mp4
+2025-11-10 15:05:08,962 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_tes.mp4
+2025-11-10 15:05:08,963 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 15:05:09,084 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_6773630_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_6773630_team.mp4'
+2025-11-10 15:05:09,085 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8141489_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8141489_collaboration.mp4'
+2025-11-10 15:05:09,085 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894330_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894330_discussion.mp4'
+2025-11-10 15:05:09,086 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_7963136_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_7963136_professional.mp4'
+2025-11-10 15:05:09,087 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8189162_workspace.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8189162_workspace.mp4'
+2025-11-10 15:05:09,194 [INFO] __main__: Temporary files cleaned up
+2025-11-10 15:05:09,194 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_tes.mp4
+2025-11-10 15:23:43,818 [INFO] __main__: Initializing reel generation components...
+2025-11-10 15:23:43,825 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 15:23:43,826 [INFO] whisper_processor: Whisper service endpoint: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 15:23:43,828 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 15:23:45,498 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 15:23:45,502 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 15:23:45,504 [INFO] pexels_client: Pexels client initialized
+2025-11-10 15:23:45,532 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 15:23:45,532 [INFO] video_assembler: Video assembler initialized
+2025-11-10 15:23:45,533 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 15:23:45,533 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmp25die9ta
+2025-11-10 15:23:45,533 [INFO] __main__: All components initialized successfully
+2025-11-10 15:23:45,534 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 15:23:45,534 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 15:23:45,534 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 15:23:45,535 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 15:23:45,539 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 15:23:45,540 [INFO] whisper_processor: Sending request to Whisper service: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 15:23:48,326 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 15:23:48,326 [INFO] whisper_processor: Transcription summary:
+2025-11-10 15:23:48,327 [INFO] whisper_processor:    Words: 128
+2025-11-10 15:23:48,327 [INFO] whisper_processor:    Lines: 25
+2025-11-10 15:23:48,327 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 15:23:48,328 [INFO] whisper_processor:    Language: it
+2025-11-10 15:23:48,329 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 15:23:48,330 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 15:23:48,330 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 15:23:49,130 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 15:23:49,179 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 15:23:49,179 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 15:23:49,179 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 15:23:49,180 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 15:23:49,180 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 15:23:49,181 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 15:23:49,181 [INFO] pexels_client: Searching with dynamic query: 'team team modern handshake'
+2025-11-10 15:23:50,378 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 15:23:50,379 [INFO] pexels_client:   Option 1: ID=8519559, Duration=10s
+2025-11-10 15:23:50,379 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 15:23:50,380 [INFO] pexels_client:     URL: https://www.pexels.com/video/colleagues-having-a-conversation-8519559/
+2025-11-10 15:23:50,380 [INFO] pexels_client:   Option 2: ID=12893610, Duration=10s
+2025-11-10 15:23:50,380 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 15:23:50,381 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-and-woman-talking-about-documents-in-office-12893610/
+2025-11-10 15:23:50,381 [INFO] pexels_client:   Option 3: ID=12893617, Duration=10s
+2025-11-10 15:23:50,382 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 15:23:50,382 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-making-notes-on-wall-12893617/
+2025-11-10 15:23:50,383 [INFO] pexels_client: Selected video 12893614 with score 5 for keyword 'team'
+2025-11-10 15:23:50,383 [INFO] pexels_client: Found video for 'team': 10s
+2025-11-10 15:23:50,383 [INFO] pexels_client: Searching with dynamic query: 'strategy meeting team collaboration'
+2025-11-10 15:23:51,930 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 15:23:51,931 [INFO] pexels_client:   Option 1: ID=8533369, Duration=10s
+2025-11-10 15:23:51,932 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 15:23:51,932 [INFO] pexels_client:     URL: https://www.pexels.com/video/scientists-shaking-hands-in-a-laboratory-8533369/
+2025-11-10 15:23:51,932 [INFO] pexels_client:   Option 2: ID=5520034, Duration=13s
+2025-11-10 15:23:51,933 [INFO] pexels_client:     User: Pavel Danilyuk
+2025-11-10 15:23:51,933 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-signing-a-contract-5520034/
+2025-11-10 15:23:51,934 [INFO] pexels_client:   Option 3: ID=13801248, Duration=10s
+2025-11-10 15:23:51,934 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 15:23:51,935 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-in-black-suit-talking-to-woman-holding-a-book-13801248/
+2025-11-10 15:23:51,936 [INFO] pexels_client: Selected video 12893523 with score 5 for keyword 'collaboration'
+2025-11-10 15:23:51,936 [INFO] pexels_client: Found video for 'collaboration': 10s
+2025-11-10 15:23:51,937 [INFO] pexels_client: Searching with dynamic query: 'handshake contemporary workplace corporate discussion'
+2025-11-10 15:23:53,343 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 15:23:53,343 [INFO] pexels_client:   Option 1: ID=7688134, Duration=9s
+2025-11-10 15:23:53,343 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 15:23:53,344 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-working-in-finance-7688134/
+2025-11-10 15:23:53,344 [INFO] pexels_client:   Option 2: ID=8632594, Duration=9s
+2025-11-10 15:23:53,345 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 15:23:53,345 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-working-in-front-of-her-laptop-8632594/
+2025-11-10 15:23:53,345 [INFO] pexels_client:   Option 3: ID=12893607, Duration=10s
+2025-11-10 15:23:53,346 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 15:23:53,346 [INFO] pexels_client:     URL: https://www.pexels.com/video/close-up-view-of-shaking-hands-12893607/
+2025-11-10 15:23:53,347 [INFO] pexels_client: Selected video 12896412 with score 5 for keyword 'discussion'
+2025-11-10 15:23:53,348 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-10 15:23:53,348 [INFO] pexels_client: Searching with dynamic query: 'entrepreneur business office leadership'
+2025-11-10 15:23:55,261 [INFO] pexels_client: Found 80 videos for keyword 'office':
+2025-11-10 15:23:55,262 [INFO] pexels_client:   Option 1: ID=8632494, Duration=10s
+2025-11-10 15:23:55,263 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 15:23:55,263 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-working-using-a-computer-8632494/
+2025-11-10 15:23:55,263 [INFO] pexels_client:   Option 2: ID=8513178, Duration=10s
+2025-11-10 15:23:55,264 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 15:23:55,264 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-using-a-laptop-8513178/
+2025-11-10 15:23:55,265 [INFO] pexels_client:   Option 3: ID=8555728, Duration=10s
+2025-11-10 15:23:55,265 [INFO] pexels_client:     User: Timur Weber
+2025-11-10 15:23:55,265 [INFO] pexels_client:     URL: https://www.pexels.com/video/close-up-video-of-hands-8555728/
+2025-11-10 15:23:55,267 [INFO] pexels_client: Selected video 12894331 with score 5 for keyword 'office'
+2025-11-10 15:23:55,267 [INFO] pexels_client: Found video for 'office': 10s
+2025-11-10 15:23:55,267 [INFO] pexels_client: Searching with dynamic query: 'presentation professional contemporary professional'
+2025-11-10 15:23:56,968 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 15:23:56,969 [INFO] pexels_client:   Option 1: ID=34506436, Duration=12s
+2025-11-10 15:23:56,969 [INFO] pexels_client:     User: khezez  | 
+2025-11-10 15:23:56,970 [INFO] pexels_client:     URL: https://www.pexels.com/video/barista-crafting-coffee-drink-with-precision-34506436/
+2025-11-10 15:23:56,970 [INFO] pexels_client:   Option 2: ID=12893606, Duration=10s
+2025-11-10 15:23:56,971 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 15:23:56,971 [INFO] pexels_client:     URL: https://www.pexels.com/video/using-drawing-tablet-in-office-12893606/
+2025-11-10 15:23:56,971 [INFO] pexels_client:   Option 3: ID=3297872, Duration=11s
+2025-11-10 15:23:56,972 [INFO] pexels_client:     User: cottonbro studio
+2025-11-10 15:23:56,972 [INFO] pexels_client:     URL: https://www.pexels.com/video/food-art-plating-of-a-sushi-rice-roll-with-vegetables-toppings-3297872/
+2025-11-10 15:23:56,973 [INFO] pexels_client: Selected video 12894328 with score 7 for keyword 'professional'
+2025-11-10 15:23:56,973 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-10 15:23:56,974 [INFO] pexels_client: Found 5 video segments
+2025-11-10 15:23:56,974 [INFO] __main__: Found 5 video segments
+2025-11-10 15:23:56,974 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 15:23:56,975 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 15:23:56,975 [INFO] pexels_client: Downloading video: team (10s)
+2025-11-10 15:23:58,690 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12893614_team.mp4 (5038 KB)
+2025-11-10 15:23:58,690 [INFO] pexels_client: Downloading video: collaboration (10s)
+2025-11-10 15:23:58,969 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12893523_collaboration.mp4 (2217 KB)
+2025-11-10 15:23:58,970 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-10 15:24:00,442 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896412_discussion.mp4 (1794 KB)
+2025-11-10 15:24:00,443 [INFO] pexels_client: Downloading video: office (10s)
+2025-11-10 15:24:01,898 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894331_office.mp4 (1342 KB)
+2025-11-10 15:24:01,899 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-10 15:24:02,281 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894328_professional.mp4 (2822 KB)
+2025-11-10 15:24:02,282 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 15:24:02,283 [INFO] __main__: Downloaded 5 video files
+2025-11-10 15:24:02,283 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 15:24:02,284 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 15:24:02,284 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 15:24:02,284 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_12893614_team.mp4
+2025-11-10 15:24:05,306 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 15:24:05,322 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:24:05,323 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_12893523_collaboration.mp4
+2025-11-10 15:24:05,546 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 15:24:05,551 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 15:24:06,004 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 15:24:06,057 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:24:06,058 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896412_discussion.mp4
+2025-11-10 15:24:06,305 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 15:24:06,308 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 15:24:06,382 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 15:24:06,432 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:24:06,433 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894331_office.mp4
+2025-11-10 15:24:06,668 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 15:24:06,669 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 15:24:07,222 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 15:24:07,758 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:24:07,760 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894328_professional.mp4
+2025-11-10 15:24:09,787 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 15:24:09,804 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 15:24:11,306 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 15:24:11,754 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:24:11,754 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 15:24:14,634 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 15:24:14,634 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 15:24:17,032 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 15:24:18,247 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 15:24:18,248 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 15:24:18,249 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 15:24:18,250 [INFO] video_assembler: Creating subtitles for 25 lines with color: white
+2025-11-10 15:24:18,742 [INFO] video_assembler: Created line part 1: 'Gestire tutto da solo?' (0.0s-0.9s)
+2025-11-10 15:24:18,757 [INFO] video_assembler: Created line part 2: 'È un' (0.9s-1.8s)
+2025-11-10 15:24:18,792 [INFO] video_assembler: Created line part 1: 'po' come navigare' (1.8s-2.6s)
+2025-11-10 15:24:18,829 [INFO] video_assembler: Created line part 2: 'in mare aperto' (2.6s-3.3s)
+2025-11-10 15:24:18,858 [INFO] video_assembler: Created line part 1: 'senza busso,' (3.3s-4.0s)
+2025-11-10 15:24:18,886 [INFO] video_assembler: Created line part 2: 'la prima o poi' (4.0s-4.7s)
+2025-11-10 15:24:18,904 [INFO] video_assembler: Created line part 1: 'ti perdi.' (4.7s-5.8s)
+2025-11-10 15:24:18,938 [INFO] video_assembler: Created line part 2: 'Con Smartgain non' (5.8s-6.8s)
+2025-11-10 15:24:18,958 [INFO] video_assembler: Created line part 1: 'sei mai solo.' (6.8s-7.8s)
+2025-11-10 15:24:18,992 [INFO] video_assembler: Created line part 2: 'C 'è una community' (7.8s-8.7s)
+2025-11-10 15:24:19,005 [INFO] video_assembler: Created line part 1: 'vera,' (8.7s-9.6s)
+2025-11-10 15:24:19,043 [INFO] video_assembler: Created line part 2: 'fatta di persone reali' (9.6s-10.6s)
+2025-11-10 15:24:19,072 [INFO] video_assembler: Created line part 1: 'che ti affiancano' (10.6s-11.5s)
+2025-11-10 15:24:19,103 [INFO] video_assembler: Created line part 2: 'in ogni momento.' (11.5s-12.3s)
+2025-11-10 15:24:19,137 [INFO] video_assembler: Created line part 1: 'Persone competenti' (12.7s-13.6s)
+2025-11-10 15:24:19,161 [INFO] video_assembler: Created line part 2: 'che leggono' (13.6s-14.4s)
+2025-11-10 15:24:19,182 [INFO] video_assembler: Created line part 1: 'clausole e' (14.4s-15.1s)
+2025-11-10 15:24:19,211 [INFO] video_assembler: Created line part 2: 'contratti insieme' (15.1s-15.8s)
+2025-11-10 15:24:19,226 [INFO] video_assembler: Created line part 1: 'a te,' (15.8s-16.8s)
+2025-11-10 15:24:19,272 [INFO] video_assembler: Created line part 2: 'non al posto tuo. Niente' (16.8s-17.7s)
+2025-11-10 15:24:19,293 [INFO] video_assembler: Created line part 1: 'col center' (17.7s-18.5s)
+2025-11-10 15:24:19,321 [INFO] video_assembler: Created line part 2: 'dove nessuno ti' (18.5s-19.2s)
+2025-11-10 15:24:19,338 [INFO] video_assembler: Created line part 1: 'conosce,' (19.2s-20.1s)
+2025-11-10 15:24:19,376 [INFO] video_assembler: Created line part 2: 'niente risposte, pre' (20.1s-20.9s)
+2025-11-10 15:24:19,411 [INFO] video_assembler: Created line part 1: '-confezionate che' (20.9s-21.7s)
+2025-11-10 15:24:19,437 [INFO] video_assembler: Created line part 2: 'non risolvono' (21.7s-22.5s)
+2025-11-10 15:24:19,453 [INFO] video_assembler: Created line part 1: 'nulla.' (22.5s-23.5s)
+2025-11-10 15:24:19,497 [INFO] video_assembler: Created line part 2: 'Qui c 'è solo supporto' (23.5s-24.5s)
+2025-11-10 15:24:19,511 [INFO] video_assembler: Created line part 1: 'vero,' (24.5s-25.3s)
+2025-11-10 15:24:19,558 [INFO] video_assembler: Created line part 2: 'con persone che capiscono' (25.3s-26.1s)
+2025-11-10 15:24:19,591 [INFO] video_assembler: Created line part 1: 'davvero quello' (26.1s-27.0s)
+2025-11-10 15:24:19,626 [INFO] video_assembler: Created line part 2: 'che stai affrontando.' (27.0s-27.8s)
+2025-11-10 15:24:19,645 [INFO] video_assembler: Created line part 1: 'In pari dai' (27.8s-28.6s)
+2025-11-10 15:24:19,674 [INFO] video_assembler: Created line part 2: 'casi degli altri,' (28.6s-29.4s)
+2025-11-10 15:24:19,698 [INFO] video_assembler: Created line part 1: 'condividi i tuoi' (29.6s-30.4s)
+2025-11-10 15:24:19,729 [INFO] video_assembler: Created line part 2: 'dubbi e prendi' (30.4s-31.2s)
+2025-11-10 15:24:19,771 [INFO] video_assembler: Created line part 1: 'decisioni consapevoli.' (31.2s-32.1s)
+2025-11-10 15:24:19,784 [INFO] video_assembler: Created line part 2: 'Ogni' (32.1s-33.1s)
+2025-11-10 15:24:19,816 [INFO] video_assembler: Created line part 1: 'singolo passo,' (33.1s-34.0s)
+2025-11-10 15:24:19,844 [INFO] video_assembler: Created line part 2: 'trasparenza' (34.0s-34.9s)
+2025-11-10 15:24:19,873 [INFO] video_assembler: Created line part 1: 'totale sempre,' (34.9s-35.9s)
+2025-11-10 15:24:19,892 [INFO] video_assembler: Created line part 2: 'vuoi unirti' (35.9s-36.8s)
+2025-11-10 15:24:19,941 [INFO] video_assembler: Created line part 1: 'alla community smartgain,' (36.8s-37.9s)
+2025-11-10 15:24:19,953 [INFO] video_assembler: Created line part 2: 'trovi' (37.9s-38.9s)
+2025-11-10 15:24:19,968 [INFO] video_assembler: Created line part 1: 'tutte le' (38.9s-39.7s)
+2025-11-10 15:24:20,000 [INFO] video_assembler: Created line part 2: 'informazioni nel link' (39.7s-40.5s)
+2025-11-10 15:24:20,030 [INFO] video_assembler: Created line part 1: 'in bio oppure' (40.5s-41.4s)
+2025-11-10 15:24:20,064 [INFO] video_assembler: Created line part 2: 'se commenti con' (41.4s-42.2s)
+2025-11-10 15:24:20,102 [INFO] video_assembler: Created line part 1: 'Smart ti mandiamo' (42.2s-43.3s)
+2025-11-10 15:24:20,133 [INFO] video_assembler: Created line part 2: 'tutti i dettagli.' (43.3s-44.3s)
+2025-11-10 15:24:20,222 [INFO] video_assembler: Added 50 subtitle clips
+2025-11-10 15:24:20,223 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 15:24:20,224 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_testing.mp4
+2025-11-10 15:34:06,209 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_testing.mp4
+2025-11-10 15:34:06,319 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_testing.mp4
+2025-11-10 15:34:06,320 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 15:34:06,344 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12893614_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12893614_team.mp4'
+2025-11-10 15:34:06,346 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12893523_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12893523_collaboration.mp4'
+2025-11-10 15:34:06,348 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896412_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896412_discussion.mp4'
+2025-11-10 15:34:06,349 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894331_office.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894331_office.mp4'
+2025-11-10 15:34:06,350 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894328_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894328_professional.mp4'
+2025-11-10 15:34:06,802 [INFO] __main__: Temporary files cleaned up
+2025-11-10 15:34:06,803 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_testing.mp4
+2025-11-10 15:46:59,613 [INFO] __main__: Initializing reel generation components...
+2025-11-10 15:46:59,631 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 15:46:59,632 [INFO] whisper_processor: Whisper service endpoint: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 15:46:59,634 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 15:47:01,653 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 15:47:01,657 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 15:47:01,658 [INFO] pexels_client: Pexels client initialized
+2025-11-10 15:47:01,660 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 15:47:01,661 [INFO] video_assembler: Video assembler initialized
+2025-11-10 15:47:01,661 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 15:47:01,661 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpx40ipaga
+2025-11-10 15:47:01,662 [INFO] __main__: All components initialized successfully
+2025-11-10 15:47:01,662 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 15:47:01,663 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 15:47:01,663 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 15:47:01,664 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 15:47:01,748 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 15:47:01,748 [INFO] whisper_processor: Sending request to Whisper service: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 15:47:04,552 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 15:47:04,553 [INFO] whisper_processor: Transcription summary:
+2025-11-10 15:47:04,554 [INFO] whisper_processor:    Words: 128
+2025-11-10 15:47:04,554 [INFO] whisper_processor:    Lines: 25
+2025-11-10 15:47:04,555 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 15:47:04,555 [INFO] whisper_processor:    Language: it
+2025-11-10 15:47:04,557 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 15:47:04,558 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 15:47:04,558 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 15:47:05,124 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 15:47:05,153 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 15:47:05,153 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 15:47:05,153 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 15:47:05,153 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 15:47:05,155 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 15:47:05,155 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 15:47:05,156 [INFO] pexels_client: Searching with dynamic query: 'team office diverse handshake'
+2025-11-10 15:47:06,504 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 15:47:06,504 [INFO] pexels_client:   Option 1: ID=8034783, Duration=11s
+2025-11-10 15:47:06,505 [INFO] pexels_client:     User: Edmond Dants
+2025-11-10 15:47:06,505 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-is-talking-with-colleague-8034783/
+2025-11-10 15:47:06,506 [INFO] pexels_client:   Option 2: ID=5520034, Duration=13s
+2025-11-10 15:47:06,506 [INFO] pexels_client:     User: Pavel Danilyuk
+2025-11-10 15:47:06,507 [INFO] pexels_client:     URL: https://www.pexels.com/video/people-signing-a-contract-5520034/
+2025-11-10 15:47:06,507 [INFO] pexels_client:   Option 3: ID=7196218, Duration=8s
+2025-11-10 15:47:06,507 [INFO] pexels_client:     User: SHVETS production
+2025-11-10 15:47:06,508 [INFO] pexels_client:     URL: https://www.pexels.com/video/close-up-video-of-people-using-a-laptop-7196218/
+2025-11-10 15:47:06,509 [INFO] pexels_client: Selected video 12893523 with score 5 for keyword 'team'
+2025-11-10 15:47:06,510 [INFO] pexels_client: Found video for 'team': 10s
+2025-11-10 15:47:06,510 [INFO] pexels_client: Searching with dynamic query: 'collaboration corporate presentation handshake'
+2025-11-10 15:47:08,259 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 15:47:08,260 [INFO] pexels_client:   Option 1: ID=12909004, Duration=10s
+2025-11-10 15:47:08,260 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 15:47:08,261 [INFO] pexels_client:     URL: https://www.pexels.com/video/irritated-woman-at-work-12909004/
+2025-11-10 15:47:08,261 [INFO] pexels_client:   Option 2: ID=5999649, Duration=10s
+2025-11-10 15:47:08,261 [INFO] pexels_client:     User: Ono  Kosuki
+2025-11-10 15:47:08,262 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-reading-a-newspaper-5999649/
+2025-11-10 15:47:08,262 [INFO] pexels_client:   Option 3: ID=8187802, Duration=9s
+2025-11-10 15:47:08,262 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 15:47:08,263 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-father-carrying-his-son-on-his-shoulder-while-fixing-the-frame-on-the-wall-8187802/
+2025-11-10 15:47:08,265 [INFO] pexels_client: Selected video 12896415 with score 7 for keyword 'collaboration'
+2025-11-10 15:47:08,265 [INFO] pexels_client: Found video for 'collaboration': 10s
+2025-11-10 15:47:08,265 [INFO] pexels_client: Searching with dynamic query: 'presentation office executive successful discussion'
+2025-11-10 15:47:09,659 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 15:47:09,659 [INFO] pexels_client:   Option 1: ID=7659712, Duration=12s
+2025-11-10 15:47:09,659 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 15:47:09,660 [INFO] pexels_client:     URL: https://www.pexels.com/video/coworkers-in-a-meeting-7659712/
+2025-11-10 15:47:09,660 [INFO] pexels_client:   Option 2: ID=6169990, Duration=13s
+2025-11-10 15:47:09,661 [INFO] pexels_client:     User: Tima Miroshnichenko
+2025-11-10 15:47:09,661 [INFO] pexels_client:     URL: https://www.pexels.com/video/female-staff-holding-parcel-and-checklist-6169990/
+2025-11-10 15:47:09,661 [INFO] pexels_client:   Option 3: ID=5999657, Duration=12s
+2025-11-10 15:47:09,662 [INFO] pexels_client:     User: Ono  Kosuki
+2025-11-10 15:47:09,662 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-looking-at-her-files-5999657/
+2025-11-10 15:47:09,663 [INFO] pexels_client: Selected video 12898222 with score 5 for keyword 'discussion'
+2025-11-10 15:47:09,665 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-10 15:47:09,665 [INFO] pexels_client: Searching with dynamic query: 'boardroom professional corporate entrepreneur'
+2025-11-10 15:47:10,928 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 15:47:10,928 [INFO] pexels_client:   Option 1: ID=5136656, Duration=10s
+2025-11-10 15:47:10,929 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 15:47:10,929 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-in-the-office-5136656/
+2025-11-10 15:47:10,930 [INFO] pexels_client:   Option 2: ID=3256822, Duration=13s
+2025-11-10 15:47:10,930 [INFO] pexels_client:     User: fauxels
+2025-11-10 15:47:10,930 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-and-a-woman-conversing-about-work-done-using-a-laptop-3256822/
+2025-11-10 15:47:10,931 [INFO] pexels_client:   Option 3: ID=9614042, Duration=10s
+2025-11-10 15:47:10,931 [INFO] pexels_client:     User: Lara Jameson
+2025-11-10 15:47:10,932 [INFO] pexels_client:     URL: https://www.pexels.com/video/businessman-answering-phone-call-9614042/
+2025-11-10 15:47:10,933 [INFO] pexels_client: Selected video 6773630 with score 5 for keyword 'professional'
+2025-11-10 15:47:10,933 [INFO] pexels_client: Found video for 'professional': 12s
+2025-11-10 15:47:10,934 [INFO] pexels_client: Searching with dynamic query: 'executive office workspace'
+2025-11-10 15:47:12,590 [INFO] pexels_client: Found 80 videos for keyword 'workspace':
+2025-11-10 15:47:12,591 [INFO] pexels_client:   Option 1: ID=8513200, Duration=9s
+2025-11-10 15:47:12,591 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 15:47:12,592 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-closed-the-deal-8513200/
+2025-11-10 15:47:12,593 [INFO] pexels_client:   Option 2: ID=8557551, Duration=10s
+2025-11-10 15:47:12,593 [INFO] pexels_client:     User: Timur Weber
+2025-11-10 15:47:12,594 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-person-writing-on-a-document-paper-8557551/
+2025-11-10 15:47:12,594 [INFO] pexels_client:   Option 3: ID=8246975, Duration=12s
+2025-11-10 15:47:12,594 [INFO] pexels_client:     User: Henri Mathieu-Saint-Laurent
+2025-11-10 15:47:12,595 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-wearing-a-brown-suit-8246975/
+2025-11-10 15:47:12,596 [INFO] pexels_client: Selected video 8631883 with score 5 for keyword 'workspace'
+2025-11-10 15:47:12,596 [INFO] pexels_client: Found video for 'workspace': 9s
+2025-11-10 15:47:12,596 [INFO] pexels_client: Found 5 video segments
+2025-11-10 15:47:12,598 [INFO] __main__: Found 5 video segments
+2025-11-10 15:47:12,598 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 15:47:12,598 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 15:47:12,599 [INFO] pexels_client: Downloading video: team (10s)
+2025-11-10 15:47:12,861 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12893523_team.mp4 (2217 KB)
+2025-11-10 15:47:12,861 [INFO] pexels_client: Downloading video: collaboration (10s)
+2025-11-10 15:47:13,247 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896415_collaboration.mp4 (3795 KB)
+2025-11-10 15:47:13,248 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-10 15:47:14,433 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12898222_discussion.mp4 (4707 KB)
+2025-11-10 15:47:14,435 [INFO] pexels_client: Downloading video: professional (12s)
+2025-11-10 15:47:15,704 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_6773630_professional.mp4 (8217 KB)
+2025-11-10 15:47:15,705 [INFO] pexels_client: Downloading video: workspace (9s)
+2025-11-10 15:47:17,226 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8631883_workspace.mp4 (5361 KB)
+2025-11-10 15:47:17,227 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 15:47:17,227 [INFO] __main__: Downloaded 5 video files
+2025-11-10 15:47:17,228 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 15:47:17,228 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 15:47:17,228 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 15:47:17,228 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_12893523_team.mp4
+2025-11-10 15:47:17,887 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 15:47:17,892 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 15:47:17,963 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 15:47:18,013 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:47:18,013 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896415_collaboration.mp4
+2025-11-10 15:47:18,249 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 15:47:18,257 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:47:18,258 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_12898222_discussion.mp4
+2025-11-10 15:47:20,826 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 15:47:20,908 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:47:21,085 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_6773630_professional.mp4
+2025-11-10 15:47:26,439 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 15:47:26,635 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:47:26,636 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_8631883_workspace.mp4
+2025-11-10 15:47:27,187 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 15:47:27,199 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 15:47:27,203 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 15:47:28,761 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 15:47:28,762 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 15:47:31,725 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 15:47:32,269 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 15:47:32,271 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 15:47:32,271 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 15:47:32,272 [INFO] video_assembler: Creating subtitles for 25 lines with color: white
+2025-11-10 15:47:32,272 [INFO] video_assembler: Using safe text width: 864px (80% of 1080px)
+2025-11-10 15:47:32,496 [INFO] video_assembler: Created safe text clip: 'Gestire tutto da solo? È un' (0.0s-1.8s)
+2025-11-10 15:47:32,563 [INFO] video_assembler: Created safe text clip: 'po' come navigare in mare aperto' (1.8s-3.3s)
+2025-11-10 15:47:32,623 [INFO] video_assembler: Created safe text clip: 'senza busso, la prima o poi' (3.3s-4.7s)
+2025-11-10 15:47:32,685 [INFO] video_assembler: Created safe text clip: 'ti perdi. Con Smartgain non' (4.7s-6.8s)
+2025-11-10 15:47:32,750 [INFO] video_assembler: Created safe text clip: 'sei mai solo. C 'è una community' (6.8s-8.7s)
+2025-11-10 15:47:32,851 [INFO] video_assembler: Created safe text clip: 'vera, fatta di persone reali' (8.7s-10.6s)
+2025-11-10 15:47:32,909 [INFO] video_assembler: Created safe text clip: 'che ti affiancano in ogni momento.' (10.6s-12.3s)
+2025-11-10 15:47:32,971 [INFO] video_assembler: Created safe text clip: 'Persone competenti che leggono' (12.7s-14.4s)
+2025-11-10 15:47:33,027 [INFO] video_assembler: Created safe text clip: 'clausole e contratti insieme' (14.4s-15.8s)
+2025-11-10 15:47:33,088 [INFO] video_assembler: Created safe text clip: 'a te, non al posto tuo. Niente' (15.8s-17.7s)
+2025-11-10 15:47:33,144 [INFO] video_assembler: Created safe text clip: 'col center dove nessuno ti' (17.7s-19.2s)
+2025-11-10 15:47:33,204 [INFO] video_assembler: Created safe text clip: 'conosce, niente risposte, pre' (19.2s-20.9s)
+2025-11-10 15:47:33,261 [INFO] video_assembler: Created safe text clip: '-confezionate che non risolvono' (20.9s-22.5s)
+2025-11-10 15:47:33,324 [INFO] video_assembler: Created safe text clip: 'nulla. Qui c 'è solo supporto' (22.5s-24.5s)
+2025-11-10 15:47:33,408 [INFO] video_assembler: Created safe text clip: 'vero, con persone che capiscono' (24.5s-26.1s)
+2025-11-10 15:47:33,500 [INFO] video_assembler: Created safe text clip: 'davvero quello che stai affrontando.' (26.1s-27.8s)
+2025-11-10 15:47:33,560 [INFO] video_assembler: Created safe text clip: 'In pari dai casi degli altri,' (27.8s-29.4s)
+2025-11-10 15:47:33,616 [INFO] video_assembler: Created safe text clip: 'condividi i tuoi dubbi e prendi' (29.6s-31.2s)
+2025-11-10 15:47:33,666 [INFO] video_assembler: Created safe text clip: 'decisioni consapevoli. Ogni' (31.2s-33.1s)
+2025-11-10 15:47:33,723 [INFO] video_assembler: Created safe text clip: 'singolo passo, trasparenza' (33.1s-34.9s)
+2025-11-10 15:47:33,776 [INFO] video_assembler: Created safe text clip: 'totale sempre, vuoi unirti' (34.9s-36.8s)
+2025-11-10 15:47:33,835 [INFO] video_assembler: Created safe text clip: 'alla community smartgain, trovi' (36.8s-38.9s)
+2025-11-10 15:47:33,881 [INFO] video_assembler: Created safe text clip: 'tutte le informazioni nel link' (38.9s-40.5s)
+2025-11-10 15:47:33,940 [INFO] video_assembler: Created safe text clip: 'in bio oppure se commenti con' (40.5s-42.2s)
+2025-11-10 15:47:34,001 [INFO] video_assembler: Created safe text clip: 'Smart ti mandiamo tutti i dettagli.' (42.2s-44.3s)
+2025-11-10 15:47:34,078 [INFO] video_assembler: Added 25 subtitle clips
+2025-11-10 15:47:34,079 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 15:47:34,080 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_testing_2.mp4
+2025-11-10 15:57:02,508 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_testing_2.mp4
+2025-11-10 15:57:02,739 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_testing_2.mp4
+2025-11-10 15:57:02,767 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 15:57:02,971 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12893523_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12893523_team.mp4'
+2025-11-10 15:57:02,973 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896415_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896415_collaboration.mp4'
+2025-11-10 15:57:02,973 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12898222_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12898222_discussion.mp4'
+2025-11-10 15:57:02,974 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_6773630_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_6773630_professional.mp4'
+2025-11-10 15:57:02,975 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8631883_workspace.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8631883_workspace.mp4'
+2025-11-10 15:57:03,101 [INFO] __main__: Temporary files cleaned up
+2025-11-10 15:57:03,101 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_testing_2.mp4
+2025-11-10 16:06:17,531 [INFO] __main__: Initializing reel generation components...
+2025-11-10 16:06:17,559 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 16:06:17,559 [INFO] whisper_processor: Whisper service endpoint: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 16:06:17,562 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 16:06:19,245 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 16:06:19,250 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 16:06:19,251 [INFO] pexels_client: Pexels client initialized
+2025-11-10 16:06:19,253 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 16:06:19,254 [INFO] video_assembler: Video assembler initialized
+2025-11-10 16:06:19,254 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 16:06:19,255 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpb7kgpqfx
+2025-11-10 16:06:19,255 [INFO] __main__: All components initialized successfully
+2025-11-10 16:06:19,256 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 16:06:19,256 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 16:06:19,256 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 16:06:19,257 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 16:06:19,262 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 16:06:19,264 [INFO] whisper_processor: Sending request to Whisper service: https://d70fdcc0e722.ngrok-free.app/process_audio
+2025-11-10 16:06:20,067 [ERROR] whisper_processor: Transcription failed: HTTPSConnectionPool(host='d70fdcc0e722.ngrok-free.app', port=443): Max retries exceeded with url: /process_audio (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:2427)')))
+2025-11-10 16:06:20,068 [ERROR] __main__: Error during reel generation: HTTPSConnectionPool(host='d70fdcc0e722.ngrok-free.app', port=443): Max retries exceeded with url: /process_audio (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:2427)')))
+2025-11-10 16:06:20,068 [ERROR] __main__: Error type: SSLError
+2025-11-10 16:11:11,459 [INFO] __main__: Initializing reel generation components...
+2025-11-10 16:11:11,459 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 16:11:11,460 [INFO] whisper_processor: Whisper service endpoint: https://6b968a66d840.ngrok-free.app/process_audio
+2025-11-10 16:11:11,463 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 16:11:12,721 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 16:11:12,723 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 16:11:12,724 [INFO] pexels_client: Pexels client initialized
+2025-11-10 16:11:12,726 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 16:11:12,726 [INFO] video_assembler: Video assembler initialized
+2025-11-10 16:11:12,726 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 16:11:12,727 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpi2z05a1j
+2025-11-10 16:11:12,727 [INFO] __main__: All components initialized successfully
+2025-11-10 16:11:12,728 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 16:11:12,728 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 16:11:12,728 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 16:11:12,729 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 16:11:12,733 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 16:11:12,734 [INFO] whisper_processor: Sending request to Whisper service: https://6b968a66d840.ngrok-free.app/process_audio
+2025-11-10 16:11:16,339 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 16:11:16,340 [INFO] whisper_processor: Transcription summary:
+2025-11-10 16:11:16,340 [INFO] whisper_processor:    Words: 128
+2025-11-10 16:11:16,341 [INFO] whisper_processor:    Lines: 25
+2025-11-10 16:11:16,341 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 16:11:16,341 [INFO] whisper_processor:    Language: it
+2025-11-10 16:11:16,343 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 16:11:16,345 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 16:11:16,345 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 16:11:17,023 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 16:11:17,071 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 16:11:17,071 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 16:11:17,072 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 16:11:17,072 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 16:11:17,073 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'office', 'professional']
+2025-11-10 16:11:17,073 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 16:11:17,074 [INFO] pexels_client: Searching with dynamic query: 'team conference corporate'
+2025-11-10 16:11:18,842 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 16:11:18,843 [INFO] pexels_client:   Option 1: ID=8632592, Duration=12s
+2025-11-10 16:11:18,844 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 16:11:18,844 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-talking-to-her-colleague-wearing-virtual-reality-headset-8632592/
+2025-11-10 16:11:18,845 [INFO] pexels_client:   Option 2: ID=9613990, Duration=10s
+2025-11-10 16:11:18,845 [INFO] pexels_client:     User: Lara Jameson
+2025-11-10 16:11:18,846 [INFO] pexels_client:     URL: https://www.pexels.com/video/businessman-talking-on-phone-9613990/
+2025-11-10 16:11:18,846 [INFO] pexels_client:   Option 3: ID=8141702, Duration=11s
+2025-11-10 16:11:18,847 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 16:11:18,847 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-taking-notes-8141702/
+2025-11-10 16:11:18,848 [INFO] pexels_client: Selected video 12896415 with score 7 for keyword 'team'
+2025-11-10 16:11:18,848 [INFO] pexels_client: Found video for 'team': 10s
+2025-11-10 16:11:18,849 [INFO] pexels_client: Searching with dynamic query: 'executive handshake dynamic conference collaboration'
+2025-11-10 16:11:20,562 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 16:11:20,563 [INFO] pexels_client:   Option 1: ID=8246631, Duration=9s
+2025-11-10 16:11:20,563 [INFO] pexels_client:     User: Henri Mathieu-Saint-Laurent
+2025-11-10 16:11:20,564 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-having-an-interview-8246631/
+2025-11-10 16:11:20,564 [INFO] pexels_client:   Option 2: ID=10506824, Duration=10s
+2025-11-10 16:11:20,565 [INFO] pexels_client:     User: cottonbro studio
+2025-11-10 16:11:20,565 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-smiling-teenager-hanging-from-a-pull-up-bar-10506824/
+2025-11-10 16:11:20,565 [INFO] pexels_client:   Option 3: ID=5266005, Duration=8s
+2025-11-10 16:11:20,566 [INFO] pexels_client:     User: Monstera Production
+2025-11-10 16:11:20,566 [INFO] pexels_client:     URL: https://www.pexels.com/video/close-up-vide-of-children-solving-math-problems-5266005/
+2025-11-10 16:11:20,567 [INFO] pexels_client: Selected video 8061670 with score 3 for keyword 'collaboration'
+2025-11-10 16:11:20,568 [INFO] pexels_client: Found video for 'collaboration': 11s
+2025-11-10 16:11:20,568 [INFO] pexels_client: Searching with dynamic query: 'dynamic presentation corporate discussion professional'
+2025-11-10 16:11:22,324 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 16:11:22,325 [INFO] pexels_client:   Option 1: ID=7652166, Duration=13s
+2025-11-10 16:11:22,325 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 16:11:22,326 [INFO] pexels_client:     URL: https://www.pexels.com/video/person-typing-on-the-laptop-7652166/
+2025-11-10 16:11:22,326 [INFO] pexels_client:   Option 2: ID=13801227, Duration=10s
+2025-11-10 16:11:22,327 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 16:11:22,327 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-in-black-suit-smiling-13801227/
+2025-11-10 16:11:22,328 [INFO] pexels_client:   Option 3: ID=13801259, Duration=10s
+2025-11-10 16:11:22,328 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 16:11:22,328 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-and-a-woman-discussing-paperwork-in-a-park-13801259/
+2025-11-10 16:11:22,329 [INFO] pexels_client: Selected video 5281216 with score 5 for keyword 'discussion'
+2025-11-10 16:11:22,330 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-10 16:11:22,330 [INFO] pexels_client: Searching with dynamic query: 'modern handshake meeting office office'
+2025-11-10 16:11:23,685 [INFO] pexels_client: Found 80 videos for keyword 'office':
+2025-11-10 16:11:23,686 [INFO] pexels_client:   Option 1: ID=7652111, Duration=9s
+2025-11-10 16:11:23,686 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 16:11:23,687 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-explaining-a-paperwork-to-a-woman-7652111/
+2025-11-10 16:11:23,687 [INFO] pexels_client:   Option 2: ID=7857057, Duration=10s
+2025-11-10 16:11:23,688 [INFO] pexels_client:     User: Greta Hoffman
+2025-11-10 16:11:23,688 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-using-laptop-7857057/
+2025-11-10 16:11:23,688 [INFO] pexels_client:   Option 3: ID=8551113, Duration=10s
+2025-11-10 16:11:23,689 [INFO] pexels_client:     User: Liliana Drew
+2025-11-10 16:11:23,690 [INFO] pexels_client:     URL: https://www.pexels.com/video/colleagues-talking-while-leaning-on-the-steel-glass-fence-8551113/
+2025-11-10 16:11:23,691 [INFO] pexels_client: Selected video 8344343 with score 5 for keyword 'office'
+2025-11-10 16:11:23,691 [INFO] pexels_client: Found video for 'office': 9s
+2025-11-10 16:11:23,692 [INFO] pexels_client: Searching with dynamic query: 'collaboration conference professional'
+2025-11-10 16:11:25,406 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 16:11:25,407 [INFO] pexels_client:   Option 1: ID=5970704, Duration=12s
+2025-11-10 16:11:25,407 [INFO] pexels_client:     User: Karola G
+2025-11-10 16:11:25,408 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-and-woman-talking-5970704/
+2025-11-10 16:11:25,408 [INFO] pexels_client:   Option 2: ID=6781915, Duration=13s
+2025-11-10 16:11:25,409 [INFO] pexels_client:     User: Artem Podrez
+2025-11-10 16:11:25,409 [INFO] pexels_client:     URL: https://www.pexels.com/video/two-women-working-6781915/
+2025-11-10 16:11:25,409 [INFO] pexels_client:   Option 3: ID=6931513, Duration=10s
+2025-11-10 16:11:25,410 [INFO] pexels_client:     User: Mikhail Nilov
+2025-11-10 16:11:25,410 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-smiling-and-laughing-6931513/
+2025-11-10 16:11:25,411 [INFO] pexels_client: Selected video 12893531 with score 5 for keyword 'professional'
+2025-11-10 16:11:25,412 [INFO] pexels_client: Found video for 'professional': 10s
+2025-11-10 16:11:25,412 [INFO] pexels_client: Found 5 video segments
+2025-11-10 16:11:25,413 [INFO] __main__: Found 5 video segments
+2025-11-10 16:11:25,413 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 16:11:25,414 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 16:11:25,414 [INFO] pexels_client: Downloading video: team (10s)
+2025-11-10 16:11:25,918 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896415_team.mp4 (3795 KB)
+2025-11-10 16:11:25,919 [INFO] pexels_client: Downloading video: collaboration (11s)
+2025-11-10 16:11:27,161 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8061670_collaboration.mp4 (1482 KB)
+2025-11-10 16:11:27,162 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-10 16:11:28,619 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_5281216_discussion.mp4 (3134 KB)
+2025-11-10 16:11:28,620 [INFO] pexels_client: Downloading video: office (9s)
+2025-11-10 16:11:30,809 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_8344343_office.mp4 (2631 KB)
+2025-11-10 16:11:30,810 [INFO] pexels_client: Downloading video: professional (10s)
+2025-11-10 16:11:31,981 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12893531_professional.mp4 (1767 KB)
+2025-11-10 16:11:31,981 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 16:11:31,982 [INFO] __main__: Downloaded 5 video files
+2025-11-10 16:11:31,982 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 16:11:31,983 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 16:11:31,983 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 16:11:31,983 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896415_team.mp4
+2025-11-10 16:11:33,100 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 16:11:33,103 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:11:33,105 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_8061670_collaboration.mp4
+2025-11-10 16:11:33,380 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 16:11:33,393 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 16:11:33,507 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 16:11:33,561 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:11:33,561 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_5281216_discussion.mp4
+2025-11-10 16:11:34,080 [INFO] video_assembler:      Original Pexels video: 720x1366
+2025-11-10 16:11:34,080 [INFO] video_assembler:      Adjusting resolution from 720x1366 to 1080x1920
+2025-11-10 16:11:34,136 [INFO] video_assembler:      Final dimensions: 1012x1920
+2025-11-10 16:11:34,188 [INFO] video_assembler: Processed: 8.9s, 1012x1920
+2025-11-10 16:11:34,189 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_8344343_office.mp4
+2025-11-10 16:11:34,468 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 16:11:34,484 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 16:11:34,570 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 16:11:34,643 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:11:34,643 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_12893531_professional.mp4
+2025-11-10 16:11:34,995 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 16:11:35,000 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 16:11:35,090 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 16:11:35,148 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:11:35,148 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 16:11:36,719 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 16:11:36,720 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 16:11:40,028 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 16:11:40,656 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 16:11:40,658 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 16:11:40,658 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 16:11:40,659 [INFO] video_assembler: Creating subtitles for 25 lines with color: white
+2025-11-10 16:11:41,606 [INFO] video_assembler: Created first part: 'Gestire tutto da solo?' (0.0s)
+2025-11-10 16:11:41,614 [INFO] video_assembler: Created second part: 'È un' (0.9s)
+2025-11-10 16:11:41,631 [INFO] video_assembler: Created first part: 'po' come navigare' (1.8s)
+2025-11-10 16:11:41,646 [INFO] video_assembler: Created second part: 'in mare aperto' (2.6s)
+2025-11-10 16:11:41,668 [INFO] video_assembler: Created first part: 'senza busso,' (3.3s)
+2025-11-10 16:11:41,690 [INFO] video_assembler: Created second part: 'la prima o poi' (4.0s)
+2025-11-10 16:11:41,705 [INFO] video_assembler: Created first part: 'ti perdi.' (4.7s)
+2025-11-10 16:11:41,735 [INFO] video_assembler: Created second part: 'Con Smartgain non' (5.8s)
+2025-11-10 16:11:41,751 [INFO] video_assembler: Created first part: 'sei mai solo.' (6.8s)
+2025-11-10 16:11:41,775 [INFO] video_assembler: Created second part: 'C 'è una community' (7.8s)
+2025-11-10 16:11:41,784 [INFO] video_assembler: Created first part: 'vera,' (8.7s)
+2025-11-10 16:11:41,804 [INFO] video_assembler: Created second part: 'fatta di persone reali' (9.6s)
+2025-11-10 16:11:41,821 [INFO] video_assembler: Created first part: 'che ti affiancano' (10.6s)
+2025-11-10 16:11:41,842 [INFO] video_assembler: Created second part: 'in ogni momento.' (11.5s)
+2025-11-10 16:11:41,871 [INFO] video_assembler: Created first part: 'Persone competenti' (12.7s)
+2025-11-10 16:11:41,885 [INFO] video_assembler: Created second part: 'che leggono' (13.6s)
+2025-11-10 16:11:41,898 [INFO] video_assembler: Created first part: 'clausole e' (14.4s)
+2025-11-10 16:11:41,919 [INFO] video_assembler: Created second part: 'contratti insieme' (15.1s)
+2025-11-10 16:11:41,925 [INFO] video_assembler: Created first part: 'a te,' (15.8s)
+2025-11-10 16:11:41,950 [INFO] video_assembler: Created second part: 'non al posto tuo. Niente' (16.8s)
+2025-11-10 16:11:41,964 [INFO] video_assembler: Created first part: 'col center' (17.7s)
+2025-11-10 16:11:41,987 [INFO] video_assembler: Created second part: 'dove nessuno ti' (18.5s)
+2025-11-10 16:11:42,001 [INFO] video_assembler: Created first part: 'conosce,' (19.2s)
+2025-11-10 16:11:42,028 [INFO] video_assembler: Created second part: 'niente risposte, pre' (20.1s)
+2025-11-10 16:11:42,054 [INFO] video_assembler: Created first part: '-confezionate che' (20.9s)
+2025-11-10 16:11:42,066 [INFO] video_assembler: Created second part: 'non risolvono' (21.7s)
+2025-11-10 16:11:42,079 [INFO] video_assembler: Created first part: 'nulla. Qui c' (22.5s)
+2025-11-10 16:11:42,103 [INFO] video_assembler: Created second part: ''è solo supporto' (23.5s)
+2025-11-10 16:11:42,117 [INFO] video_assembler: Created first part: 'vero,' (24.5s)
+2025-11-10 16:11:42,151 [INFO] video_assembler: Created second part: 'con persone che capiscono' (25.3s)
+2025-11-10 16:11:42,170 [INFO] video_assembler: Created first part: 'davvero quello' (26.1s)
+2025-11-10 16:11:42,193 [INFO] video_assembler: Created second part: 'che stai affrontando.' (27.0s)
+2025-11-10 16:11:42,208 [INFO] video_assembler: Created first part: 'In pari dai' (27.8s)
+2025-11-10 16:11:42,227 [INFO] video_assembler: Created second part: 'casi degli altri,' (28.6s)
+2025-11-10 16:11:42,243 [INFO] video_assembler: Created first part: 'condividi i tuoi' (29.6s)
+2025-11-10 16:11:42,258 [INFO] video_assembler: Created second part: 'dubbi e prendi' (30.4s)
+2025-11-10 16:11:42,278 [INFO] video_assembler: Created first part: 'decisioni consapevoli.' (31.2s)
+2025-11-10 16:11:42,284 [INFO] video_assembler: Created second part: 'Ogni' (32.1s)
+2025-11-10 16:11:42,297 [INFO] video_assembler: Created first part: 'singolo passo,' (33.1s)
+2025-11-10 16:11:42,311 [INFO] video_assembler: Created second part: 'trasparenza' (34.0s)
+2025-11-10 16:11:42,325 [INFO] video_assembler: Created first part: 'totale sempre,' (34.9s)
+2025-11-10 16:11:42,337 [INFO] video_assembler: Created second part: 'vuoi unirti' (35.9s)
+2025-11-10 16:11:42,361 [INFO] video_assembler: Created first part: 'alla community smartgain,' (36.8s)
+2025-11-10 16:11:42,367 [INFO] video_assembler: Created second part: 'trovi' (37.9s)
+2025-11-10 16:11:42,374 [INFO] video_assembler: Created first part: 'tutte le' (38.9s)
+2025-11-10 16:11:42,390 [INFO] video_assembler: Created second part: 'informazioni nel link' (39.7s)
+2025-11-10 16:11:42,401 [INFO] video_assembler: Created first part: 'in bio oppure' (40.5s)
+2025-11-10 16:11:42,414 [INFO] video_assembler: Created second part: 'se commenti con' (41.4s)
+2025-11-10 16:11:42,429 [INFO] video_assembler: Created first part: 'Smart ti mandiamo' (42.2s)
+2025-11-10 16:11:42,439 [INFO] video_assembler: Created second part: 'tutti i dettagli.' (43.3s)
+2025-11-10 16:11:42,481 [INFO] video_assembler: Added 50 subtitle clips
+2025-11-10 16:11:42,482 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 16:11:42,483 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_testing_3.mp4
+2025-11-10 16:21:39,926 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_testing_3.mp4
+2025-11-10 16:21:40,101 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_testing_3.mp4
+2025-11-10 16:21:40,117 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 16:21:40,193 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896415_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896415_team.mp4'
+2025-11-10 16:21:40,194 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8061670_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8061670_collaboration.mp4'
+2025-11-10 16:21:40,194 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_5281216_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_5281216_discussion.mp4'
+2025-11-10 16:21:40,195 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_8344343_office.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_8344343_office.mp4'
+2025-11-10 16:21:40,196 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12893531_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12893531_professional.mp4'
+2025-11-10 16:21:40,562 [INFO] __main__: Temporary files cleaned up
+2025-11-10 16:21:40,562 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_testing_3.mp4
+2025-11-10 16:31:02,078 [INFO] __main__: Initializing reel generation components...
+2025-11-10 16:31:02,078 [INFO] whisper_processor: Initializing Whisper client...
+2025-11-10 16:31:02,078 [INFO] whisper_processor: Whisper service endpoint: https://6b968a66d840.ngrok-free.app/process_audio
+2025-11-10 16:31:02,080 [INFO] keyword_extractor: Initializing Cohere LLM for keyword extraction...
+2025-11-10 16:31:03,858 [INFO] httpx: HTTP Request: GET https://api.cohere.com/v1/models?endpoint=chat&default_only=true "HTTP/1.1 200 OK"
+2025-11-10 16:31:03,860 [INFO] keyword_extractor: Cohere keyword extractor initialized
+2025-11-10 16:31:03,861 [INFO] pexels_client: Pexels client initialized
+2025-11-10 16:31:03,863 [INFO] video_assembler: Using subtitle font: C:\Windows\Fonts\Arial.ttf
+2025-11-10 16:31:03,864 [INFO] video_assembler: Video assembler initialized
+2025-11-10 16:31:03,864 [INFO] video_assembler:    Output resolution: 1080x1920
+2025-11-10 16:31:03,865 [INFO] video_assembler:    Temp directory: C:\Users\Admin\AppData\Local\Temp\tmpmt2frji_
+2025-11-10 16:31:03,865 [INFO] __main__: All components initialized successfully
+2025-11-10 16:31:03,866 [INFO] __main__: Starting reel generation for: demovideo1.mp3
+2025-11-10 16:31:03,866 [INFO] __main__: Step 1: Transcribing Italian audio...
+2025-11-10 16:31:03,866 [INFO] whisper_processor: Starting transcription of: demovideo1.mp3
+2025-11-10 16:31:03,867 [INFO] whisper_processor: Reading and encoding audio file...
+2025-11-10 16:31:03,873 [INFO] whisper_processor: Audio file size: 698.00 KB
+2025-11-10 16:31:03,873 [INFO] whisper_processor: Sending request to Whisper service: https://6b968a66d840.ngrok-free.app/process_audio
+2025-11-10 16:31:06,619 [INFO] whisper_processor: Received response from Whisper service
+2025-11-10 16:31:06,619 [INFO] whisper_processor: Transcription summary:
+2025-11-10 16:31:06,620 [INFO] whisper_processor:    Words: 128
+2025-11-10 16:31:06,620 [INFO] whisper_processor:    Lines: 25
+2025-11-10 16:31:06,621 [INFO] whisper_processor:    Duration: 44.3s
+2025-11-10 16:31:06,621 [INFO] whisper_processor:    Language: it
+2025-11-10 16:31:06,622 [INFO] __main__: Transcription complete: 128 words detected
+2025-11-10 16:31:06,623 [INFO] __main__: Step 2: Extracting keywords for video search...
+2025-11-10 16:31:06,623 [INFO] keyword_extractor: Extracting keywords from transcript...
+2025-11-10 16:31:07,249 [INFO] httpx: HTTP Request: POST https://api.cohere.com/v2/chat "HTTP/1.1 200 OK"
+2025-11-10 16:31:07,284 [INFO] keyword_extractor: Extracted keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 16:31:07,285 [INFO] __main__: Keywords extracted: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 16:31:07,285 [INFO] __main__: Step 3: Searching for relevant videos...
+2025-11-10 16:31:07,286 [INFO] pexels_client: Searching Pexels for videos...
+2025-11-10 16:31:07,286 [INFO] pexels_client:    Keywords: ['team', 'collaboration', 'discussion', 'professional', 'workspace']
+2025-11-10 16:31:07,286 [INFO] pexels_client:    Target duration: 44.3 seconds
+2025-11-10 16:31:07,287 [INFO] pexels_client: Searching with dynamic query: 'team team collaboration'
+2025-11-10 16:31:08,578 [INFO] pexels_client: Found 80 videos for keyword 'team':
+2025-11-10 16:31:08,579 [INFO] pexels_client:   Option 1: ID=9244033, Duration=12s
+2025-11-10 16:31:08,579 [INFO] pexels_client:     User: cottonbro studio
+2025-11-10 16:31:08,580 [INFO] pexels_client:     URL: https://www.pexels.com/video/close-up-footage-of-people-walking-away-9244033/
+2025-11-10 16:31:08,580 [INFO] pexels_client:   Option 2: ID=7660698, Duration=10s
+2025-11-10 16:31:08,581 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 16:31:08,581 [INFO] pexels_client:     URL: https://www.pexels.com/video/employees-busy-working-7660698/
+2025-11-10 16:31:08,581 [INFO] pexels_client:   Option 3: ID=12894328, Duration=10s
+2025-11-10 16:31:08,582 [INFO] pexels_client:     User: Mizuno K
+2025-11-10 16:31:08,582 [INFO] pexels_client:     URL: https://www.pexels.com/video/hands-of-businesspeople-during-a-meeting-in-an-office-12894328/
+2025-11-10 16:31:08,583 [INFO] pexels_client: Selected video 12894328 with score 7 for keyword 'team'
+2025-11-10 16:31:08,583 [INFO] pexels_client: Found video for 'team': 10s
+2025-11-10 16:31:08,584 [INFO] pexels_client: Searching with dynamic query: 'dynamic collaboration workplace meeting handshake'
+2025-11-10 16:31:09,937 [INFO] pexels_client: Found 80 videos for keyword 'collaboration':
+2025-11-10 16:31:09,938 [INFO] pexels_client:   Option 1: ID=5632052, Duration=10s
+2025-11-10 16:31:09,938 [INFO] pexels_client:     User: Ono  Kosuki
+2025-11-10 16:31:09,939 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-man-in-brown-coat-looking-pensive-5632052/
+2025-11-10 16:31:09,939 [INFO] pexels_client:   Option 2: ID=5697634, Duration=10s
+2025-11-10 16:31:09,940 [INFO] pexels_client:     User: Alex Green
+2025-11-10 16:31:09,940 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-cup-of-coffee-and-notebook-on-the-table-5697634/
+2025-11-10 16:31:09,940 [INFO] pexels_client:   Option 3: ID=5404958, Duration=11s
+2025-11-10 16:31:09,941 [INFO] pexels_client:     User: Amina Filkins
+2025-11-10 16:31:09,941 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-using-their-gadgets-inside-the-flower-shop-5404958/
+2025-11-10 16:31:09,943 [INFO] pexels_client: Selected video 12896412 with score 5 for keyword 'collaboration'
+2025-11-10 16:31:09,944 [INFO] pexels_client: Found video for 'collaboration': 10s
+2025-11-10 16:31:09,944 [INFO] pexels_client: Searching with dynamic query: 'conference team boardroom discussion contemporary'
+2025-11-10 16:31:11,758 [INFO] pexels_client: Found 80 videos for keyword 'discussion':
+2025-11-10 16:31:11,759 [INFO] pexels_client:   Option 1: ID=7437512, Duration=10s
+2025-11-10 16:31:11,759 [INFO] pexels_client:     User: cottonbro studio
+2025-11-10 16:31:11,759 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-looking-at-a-laptop-7437512/
+2025-11-10 16:31:11,760 [INFO] pexels_client:   Option 2: ID=8348717, Duration=11s
+2025-11-10 16:31:11,760 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 16:31:11,761 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-presenting-at-work-8348717/
+2025-11-10 16:31:11,761 [INFO] pexels_client:   Option 3: ID=6775035, Duration=9s
+2025-11-10 16:31:11,762 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 16:31:11,762 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-businesswoman-talking-in-a-meeting-6775035/
+2025-11-10 16:31:11,763 [INFO] pexels_client: Selected video 12896414 with score 7 for keyword 'discussion'
+2025-11-10 16:31:11,763 [INFO] pexels_client: Found video for 'discussion': 10s
+2025-11-10 16:31:11,764 [INFO] pexels_client: Searching with dynamic query: 'professional strategy successful entrepreneur handshake'
+2025-11-10 16:31:12,847 [INFO] pexels_client: Found 80 videos for keyword 'professional':
+2025-11-10 16:31:12,847 [INFO] pexels_client:   Option 1: ID=7660351, Duration=13s
+2025-11-10 16:31:12,848 [INFO] pexels_client:     User: Alena Darmel
+2025-11-10 16:31:12,848 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-showing-a-book-to-a-man-7660351/
+2025-11-10 16:31:12,849 [INFO] pexels_client:   Option 2: ID=7967234, Duration=12s
+2025-11-10 16:31:12,849 [INFO] pexels_client:     User: Darlene Alderson
+2025-11-10 16:31:12,850 [INFO] pexels_client:     URL: https://www.pexels.com/video/man-presenting-in-the-meeting-room-7967234/
+2025-11-10 16:31:12,850 [INFO] pexels_client:   Option 3: ID=7687957, Duration=8s
+2025-11-10 16:31:12,851 [INFO] pexels_client:     User: Kindel Media
+2025-11-10 16:31:12,851 [INFO] pexels_client:     URL: https://www.pexels.com/video/women-working-at-the-office-7687957/
+2025-11-10 16:31:12,852 [INFO] pexels_client: Selected video 7687830 with score 5 for keyword 'professional'
+2025-11-10 16:31:12,852 [INFO] pexels_client: Found video for 'professional': 9s
+2025-11-10 16:31:12,853 [INFO] pexels_client: Searching with dynamic query: 'workspace professional office'
+2025-11-10 16:31:14,238 [INFO] pexels_client: Found 80 videos for keyword 'workspace':
+2025-11-10 16:31:14,238 [INFO] pexels_client:   Option 1: ID=8632195, Duration=11s
+2025-11-10 16:31:14,239 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 16:31:14,239 [INFO] pexels_client:     URL: https://www.pexels.com/video/colleagues-having-discussion-8632195/
+2025-11-10 16:31:14,240 [INFO] pexels_client:   Option 2: ID=8632199, Duration=10s
+2025-11-10 16:31:14,240 [INFO] pexels_client:     User: Kampus Production
+2025-11-10 16:31:14,241 [INFO] pexels_client:     URL: https://www.pexels.com/video/a-woman-writing-on-the-whiteboard-while-making-presentation-8632199/
+2025-11-10 16:31:14,241 [INFO] pexels_client:   Option 3: ID=5636788, Duration=10s
+2025-11-10 16:31:14,242 [INFO] pexels_client:     User: Sora Shimazaki
+2025-11-10 16:31:14,242 [INFO] pexels_client:     URL: https://www.pexels.com/video/woman-in-business-suit-standing-at-stairs-of-a-building-5636788/
+2025-11-10 16:31:14,243 [INFO] pexels_client: Selected video 5636788 with score 5 for keyword 'workspace'
+2025-11-10 16:31:14,243 [INFO] pexels_client: Found video for 'workspace': 10s
+2025-11-10 16:31:14,244 [INFO] pexels_client: Found 5 video segments
+2025-11-10 16:31:14,244 [INFO] __main__: Found 5 video segments
+2025-11-10 16:31:14,245 [INFO] __main__: Step 3.5: Downloading video files...
+2025-11-10 16:31:14,245 [INFO] pexels_client: Downloading 5 video segments...
+2025-11-10 16:31:14,245 [INFO] pexels_client: Downloading video: team (10s)
+2025-11-10 16:31:14,554 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12894328_team.mp4 (2822 KB)
+2025-11-10 16:31:14,555 [INFO] pexels_client: Downloading video: collaboration (10s)
+2025-11-10 16:31:14,793 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896412_collaboration.mp4 (1794 KB)
+2025-11-10 16:31:14,794 [INFO] pexels_client: Downloading video: discussion (10s)
+2025-11-10 16:31:15,145 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_12896414_discussion.mp4 (4202 KB)
+2025-11-10 16:31:15,146 [INFO] pexels_client: Downloading video: professional (9s)
+2025-11-10 16:31:16,344 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_7687830_professional.mp4 (2771 KB)
+2025-11-10 16:31:16,345 [INFO] pexels_client: Downloading video: workspace (10s)
+2025-11-10 16:31:18,744 [INFO] pexels_client: Downloaded: C:\Users\Admin\AppData\Local\Temp\pexels_5636788_workspace.mp4 (5311 KB)
+2025-11-10 16:31:18,745 [INFO] pexels_client: Successfully downloaded 5 videos
+2025-11-10 16:31:18,746 [INFO] __main__: Downloaded 5 video files
+2025-11-10 16:31:18,746 [INFO] __main__: Step 4: Assembling final video...
+2025-11-10 16:31:18,747 [INFO] video_assembler: Starting final video assembly...
+2025-11-10 16:31:18,747 [INFO] video_assembler: Step 1: Processing video files...
+2025-11-10 16:31:18,747 [INFO] video_assembler:    Processing clip 1/5: C:\Users\Admin\AppData\Local\Temp\pexels_12894328_team.mp4
+2025-11-10 16:31:19,085 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 16:31:19,089 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 16:31:19,170 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 16:31:19,222 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:31:19,222 [INFO] video_assembler:    Processing clip 2/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896412_collaboration.mp4
+2025-11-10 16:31:19,420 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 16:31:19,424 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 16:31:19,494 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 16:31:19,546 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:31:19,546 [INFO] video_assembler:    Processing clip 3/5: C:\Users\Admin\AppData\Local\Temp\pexels_12896414_discussion.mp4
+2025-11-10 16:31:19,784 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 16:31:19,786 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:31:19,790 [INFO] video_assembler:    Processing clip 4/5: C:\Users\Admin\AppData\Local\Temp\pexels_7687830_professional.mp4
+2025-11-10 16:31:21,699 [INFO] video_assembler:      Original Pexels video: 720x1280
+2025-11-10 16:31:21,700 [INFO] video_assembler:      Adjusting resolution from 720x1280 to 1080x1920
+2025-11-10 16:31:21,754 [INFO] video_assembler:      Final dimensions: 1080x1920
+2025-11-10 16:31:21,854 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:31:21,854 [INFO] video_assembler:    Processing clip 5/5: C:\Users\Admin\AppData\Local\Temp\pexels_5636788_workspace.mp4
+2025-11-10 16:31:22,397 [INFO] video_assembler:      Original Pexels video: 1080x1920
+2025-11-10 16:31:22,398 [INFO] video_assembler: Processed: 8.9s, 1080x1920
+2025-11-10 16:31:22,398 [INFO] video_assembler: Step 2: Concatenating video segments...
+2025-11-10 16:31:23,091 [INFO] video_assembler: Concatenated 5 clips -> 44.3s total
+2025-11-10 16:31:23,091 [INFO] video_assembler: Step 3: Adding audio layers...
+2025-11-10 16:31:23,442 [INFO] video_assembler:    Adding background music: backgroundMusic1.wav
+2025-11-10 16:31:23,790 [INFO] video_assembler:    Background music volume set to 40% for audibility
+2025-11-10 16:31:23,791 [INFO] video_assembler: Audio added: 44.3s
+2025-11-10 16:31:23,791 [INFO] video_assembler: Step 4: Adding Italian subtitles...
+2025-11-10 16:31:23,791 [INFO] video_assembler: Creating subtitles for 25 lines with color: white
+2025-11-10 16:31:23,792 [INFO] video_assembler: Using text box width: 900px, position: 1056px
+2025-11-10 16:31:23,922 [INFO] video_assembler: Created caption text: 'Gestire tutto da solo? È un' (0.0s-1.8s)
+2025-11-10 16:31:23,947 [INFO] video_assembler: Created caption text: 'po' come navigare in mare aperto' (1.8s-3.3s)
+2025-11-10 16:31:23,968 [INFO] video_assembler: Created caption text: 'senza busso, la prima o poi' (3.3s-4.7s)
+2025-11-10 16:31:23,995 [INFO] video_assembler: Created caption text: 'ti perdi. Con Smartgain non' (4.7s-6.8s)
+2025-11-10 16:31:24,024 [INFO] video_assembler: Created caption text: 'sei mai solo. C 'è una community' (6.8s-8.7s)
+2025-11-10 16:31:24,046 [INFO] video_assembler: Created caption text: 'vera, fatta di persone reali' (8.7s-10.6s)
+2025-11-10 16:31:24,072 [INFO] video_assembler: Created caption text: 'che ti affiancano in ogni momento.' (10.6s-12.3s)
+2025-11-10 16:31:24,101 [INFO] video_assembler: Created caption text: 'Persone competenti che leggono' (12.7s-14.4s)
+2025-11-10 16:31:24,126 [INFO] video_assembler: Created caption text: 'clausole e contratti insieme' (14.4s-15.8s)
+2025-11-10 16:31:24,147 [INFO] video_assembler: Created caption text: 'a te, non al posto tuo. Niente' (15.8s-17.7s)
+2025-11-10 16:31:24,169 [INFO] video_assembler: Created caption text: 'col center dove nessuno ti' (17.7s-19.2s)
+2025-11-10 16:31:24,195 [INFO] video_assembler: Created caption text: 'conosce, niente risposte, pre' (19.2s-20.9s)
+2025-11-10 16:31:24,215 [INFO] video_assembler: Created caption text: '-confezionate che non risolvono' (20.9s-22.5s)
+2025-11-10 16:31:24,236 [INFO] video_assembler: Created caption text: 'nulla. Qui c 'è solo supporto' (22.5s-24.5s)
+2025-11-10 16:31:24,261 [INFO] video_assembler: Created caption text: 'vero, con persone che capiscono' (24.5s-26.1s)
+2025-11-10 16:31:24,287 [INFO] video_assembler: Created caption text: 'davvero quello che stai affrontando.' (26.1s-27.8s)
+2025-11-10 16:31:24,311 [INFO] video_assembler: Created caption text: 'In pari dai casi degli altri,' (27.8s-29.4s)
+2025-11-10 16:31:24,331 [INFO] video_assembler: Created caption text: 'condividi i tuoi dubbi e prendi' (29.6s-31.2s)
+2025-11-10 16:31:24,355 [INFO] video_assembler: Created caption text: 'decisioni consapevoli. Ogni' (31.2s-33.1s)
+2025-11-10 16:31:24,377 [INFO] video_assembler: Created caption text: 'singolo passo, trasparenza' (33.1s-34.9s)
+2025-11-10 16:31:24,396 [INFO] video_assembler: Created caption text: 'totale sempre, vuoi unirti' (34.9s-36.8s)
+2025-11-10 16:31:24,428 [INFO] video_assembler: Created caption text: 'alla community smartgain, trovi' (36.8s-38.9s)
+2025-11-10 16:31:24,452 [INFO] video_assembler: Created caption text: 'tutte le informazioni nel link' (38.9s-40.5s)
+2025-11-10 16:31:24,484 [INFO] video_assembler: Created caption text: 'in bio oppure se commenti con' (40.5s-42.2s)
+2025-11-10 16:31:24,517 [INFO] video_assembler: Created caption text: 'Smart ti mandiamo tutti i dettagli.' (42.2s-44.3s)
+2025-11-10 16:31:24,572 [INFO] video_assembler: Added 25 subtitle clips
+2025-11-10 16:31:24,572 [INFO] video_assembler: Step 5: Exporting final video...
+2025-11-10 16:31:24,573 [INFO] video_assembler:    Exporting to: output_videos\angelo_business_reel_poc_testing_4.mp4
+2025-11-10 16:41:18,481 [INFO] video_assembler: Video assembly complete: output_videos\angelo_business_reel_poc_testing_4.mp4
+2025-11-10 16:41:18,617 [INFO] __main__: Final video created: output_videos\angelo_business_reel_poc_testing_4.mp4
+2025-11-10 16:41:18,618 [INFO] __main__: Step 5: Cleaning up temporary files...
+2025-11-10 16:41:18,621 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12894328_team.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12894328_team.mp4'
+2025-11-10 16:41:18,622 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896412_collaboration.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896412_collaboration.mp4'
+2025-11-10 16:41:18,623 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_12896414_discussion.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_12896414_discussion.mp4'
+2025-11-10 16:41:18,625 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_7687830_professional.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_7687830_professional.mp4'
+2025-11-10 16:41:18,626 [WARNING] pexels_client: Failed to remove temp video C:\Users\Admin\AppData\Local\Temp\pexels_5636788_workspace.mp4: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Admin\\AppData\\Local\\Temp\\pexels_5636788_workspace.mp4'
+2025-11-10 16:41:18,822 [INFO] __main__: Temporary files cleaned up
+2025-11-10 16:41:18,823 [INFO] __main__: REEL GENERATION COMPLETE! Output: output_videos\angelo_business_reel_poc_testing_4.mp4

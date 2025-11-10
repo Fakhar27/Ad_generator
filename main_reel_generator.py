@@ -159,7 +159,7 @@ def main():
     try:
         output_video = generator.generate_reel(
             italian_audio_path=audio_file,
-            output_filename="angelo_business_reel_poc.mp4"
+            output_filename="angelo_business_reel_poc_testing_4.mp4"
         )
         
         print(f"SUCCESS! Generated reel: {output_video}")

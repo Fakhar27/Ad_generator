@@ -114,11 +114,22 @@ class VideoAssembler:
                 # Load video clip
                 clip = VideoFileClip(video_file)
                 
-                # Since Pexels already provides portrait videos, no resizing needed
-                # Just ensure it matches our target resolution if needed
+                # Log original dimensions to debug quality issues
+                logger.info(f"     Original Pexels video: {clip.w}x{clip.h}")
+                
+                # Preserve aspect ratio when resizing to avoid stretching
                 if clip.w != self.target_width or clip.h != self.target_height:
                     logger.info(f"     Adjusting resolution from {clip.w}x{clip.h} to {self.target_width}x{self.target_height}")
-                    clip = clip.resized((self.target_width, self.target_height))
+                    
+                    # Resize based on height to preserve aspect ratio
+                    clip = clip.resized(height=self.target_height)
+                    
+                    # If width is too wide after height resize, crop it
+                    if clip.w > self.target_width:
+                        logger.info(f"     Cropping width from {clip.w} to {self.target_width}")
+                        clip = clip.cropped(x_center=clip.w/2, width=self.target_width)
+                    
+                    logger.info(f"     Final dimensions: {clip.w}x{clip.h}")
                 
                 # Trim to desired duration
                 if clip.duration > duration_per_clip:
@@ -243,33 +254,39 @@ class VideoAssembler:
         return final_video
     
     def _create_word_level_subtitles(self, whisper_data: Dict, frame_size: tuple, duration: float, subtitle_color: str = "white") -> List:
-        """Creates word-level subtitle clips (adapted from video_manager.py)"""
+        """Creates line-level subtitle clips using MoviePy caption method with proper text wrapping"""
         try:
             subtitle_clips = []
-            words_data = whisper_data.get('word_level', [])
-            position = ('center', 0.78)  # Position relative to frame height
-            relative = True
+            line_level_data = whisper_data.get('line_level', [])
             
-            logger.info(f"Creating subtitles for {len(words_data)} words with color: {subtitle_color}")
+            # Calculate safe width and position for portrait mode
+            safe_width = 900  # 900px width for better text fitting (90px margins)
+            center_position = int(frame_size[1] * 0.55)  # 55% down for centered appearance
             
-            for word_data in words_data:
-                word = word_data['word'].strip()
-                if not word:
+            logger.info(f"Creating subtitles for {len(line_level_data)} lines with color: {subtitle_color}")
+            logger.info(f"Using text box width: {safe_width}px, position: {center_position}px")
+            
+            for i, line_data in enumerate(line_level_data):
+                text = line_data['text'].strip()
+                if not text:
                     continue
-                    
-                word_clip = (TextClip(
-                    text=word,
+                
+                # Create text clip using caption method with size constraint
+                line_clip = TextClip(
+                    text=text,
                     font=self.subtitle_font,
-                    font_size=int(frame_size[1] * 0.075),  # 7.5% of frame height
+                    font_size=int(frame_size[1] * 0.09),  # Decreased from 0.11 to 0.09 (smaller)
                     color=subtitle_color,
                     stroke_color='black',
-                    stroke_width=2
-                )
-                .with_position(position, relative=relative)
-                .with_start(word_data['start'])
-                .with_duration(word_data['end'] - word_data['start']))
+                    stroke_width=3,
+                    size=(safe_width, None),  # Force width limit, auto height
+                    method='caption'  # Enable automatic text wrapping
+                ).with_position(('center', center_position))\
+                .with_start(line_data['start'])\
+                .with_duration(line_data['end'] - line_data['start'])
                 
-                subtitle_clips.append(word_clip)
+                subtitle_clips.append(line_clip)
+                logger.info(f"Created caption text: '{text[:40]}{'...' if len(text) > 40 else ''}' ({line_data['start']:.1f}s-{line_data['end']:.1f}s)")
                 
             return subtitle_clips
         except Exception as e:
