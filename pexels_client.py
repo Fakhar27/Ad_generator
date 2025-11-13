@@ -131,12 +131,35 @@ class PexelsClient:
             "boardroom", "conference", "presentation", "handshake"
         ]
         
-        industry_modifiers = [
-            "modern", "contemporary", "successful", "innovative",
-            "diverse", "focused", "dynamic", "strategic"
+        # Italian/European bias terms for target audience
+        italian_european_contexts = [
+            "Milan office", "Italian boardroom", "European corporate",
+            "Mediterranean business", "Italian professional", "European executive",
+            "Milano business", "Roman office", "Italian entrepreneur",
+            "European meeting", "Italian team", "Mediterranean corporate"
         ]
         
-        selected_contexts = random.sample(business_contexts, random.randint(2, 3))
+        # Italian business keywords 
+        italian_keywords = [
+            "ufficio", "riunione", "azienda", "lavoro", "incontro",
+            "presentazione", "squadra", "successo", "innovazione"
+        ]
+        
+        industry_modifiers = [
+            "modern", "contemporary", "successful", "innovative",
+            "diverse", "focused", "dynamic", "strategic", "European",
+            "Mediterranean", "Italian style", "elegant", "sophisticated"
+        ]
+        
+        # 40% chance to use Italian/European bias for target audience preference
+        if random.random() < 0.4:
+            selected_contexts = random.sample(italian_european_contexts, random.randint(1, 2))
+            # Sometimes add Italian keywords
+            if random.random() < 0.3:
+                italian_term = random.choice(italian_keywords)
+                selected_contexts.append(italian_term)
+        else:
+            selected_contexts = random.sample(business_contexts, random.randint(2, 3))
         
         if random.random() > 0.5:  # 50% chance
             modifier = random.choice(industry_modifiers)
@@ -157,7 +180,7 @@ class PexelsClient:
         
         url = f"{self.base_url}/search"
         
-        random_page = random.randint(1, 10)  # Pages 1-10 = 10x more variety
+        random_page = random.randint(1, 15)  # Pages 1-15 = Even more variety
         
         params = {
             'query': query,

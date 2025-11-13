@@ -235,8 +235,8 @@ def main():
     try:
         generator = T2VReelGenerator()
     except Exception as e:
-        print(f"❌ Failed to initialize T2V generator: {e}")
-        print("💡 Make sure T2V service notebook is running and T2V_NGROK_URL is set")
+        print(f"Failed to initialize T2V generator: {e}")
+        print("Make sure T2V service notebook is running and T2V_NGROK_URL is set")
         sys.exit(1)
     
     # Path to Angelo's audio file

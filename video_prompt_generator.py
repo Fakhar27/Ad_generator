@@ -77,26 +77,26 @@ AVOID COMPLEX SCENES:
 
 OUTPUT FORMAT:
 Return a JSON object with this exact structure:
-{
+{{
   "video_sequence": [
-    {
+    {{
       "id": 1,
       "prompt": "Professional businesswoman presenting charts to executive team in bright modern conference room",
       "purpose": "introduction",
       "target_duration": 5,
       "scene_type": "presentation"
-    },
-    {
+    }},
+    {{
       "id": 2, 
       "prompt": "Two executives shaking hands across glass meeting table in corporate office",
       "purpose": "agreement",
       "target_duration": 5,
       "scene_type": "interaction"
-    }
+    }}
   ],
   "total_duration": 40,
   "narrative_flow": "Brief description of how videos flow together"
-}"""),
+}}"""),
                 ("human", """Italian business transcript:
 "{transcript}"
 
@@ -130,7 +130,7 @@ Each prompt should describe a simple, clear business scene suitable for AI video
         try:
             chain = self.prompt_template | self.llm
             
-            logger.info("🧠 Sending transcript to Cohere for video sequence generation...")
+            logger.info("Sending transcript to Cohere for video sequence generation...")
             response = chain.invoke({"transcript": italian_transcript})
             
             response_text = response.content.strip()
@@ -159,7 +159,7 @@ Each prompt should describe a simple, clear business scene suitable for AI video
             
             video_sequence = self._validate_and_clean_prompts(video_sequence, target_duration)
             
-            logger.info(f"✅ Generated {len(video_sequence)} video prompts")
+            logger.info(f"Generated {len(video_sequence)} video prompts")
             self._log_video_sequence(video_sequence)
             
             return video_sequence

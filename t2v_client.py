@@ -77,14 +77,14 @@ class T2VClient:
             return []
         
         logger.info(f"Generating {len(prompts)} videos via T2V service")
-        logger.warning(f"⚠️ ESTIMATED TIME: {len(prompts) * 8} minutes ({len(prompts)} videos × 8 min each)")
+        logger.warning(f"ESTIMATED TIME: {len(prompts) * 8} minutes ({len(prompts)} videos x 8 min each)")
         
         video_files = []
         total_duration = 0
         
         for i, prompt_data in enumerate(prompts):
             if total_duration >= target_duration:
-                logger.info(f"✅ Target duration {target_duration:.1f}s reached with {total_duration:.1f}s")
+                logger.info(f"Target duration {target_duration:.1f}s reached with {total_duration:.1f}s")
                 break
                 
             try:
@@ -93,7 +93,7 @@ class T2VClient:
                 
                 logger.info(f"Generating video {i+1}/{len(prompts)}: {purpose}")
                 logger.info(f"Prompt: '{prompt}'")
-                logger.info(f"⏱️ Expected time: 8 minutes for 5-second clip...")
+                logger.info(f"Expected time: 8 minutes for 5-second clip...")
                 
                 video_path = self._generate_single_video(prompt, i, purpose)
                 
@@ -104,10 +104,10 @@ class T2VClient:
                     estimated_duration = 5.0
                     total_duration += estimated_duration
                     
-                    logger.info(f"✅ Video {i+1} generated successfully")
-                    logger.info(f"📊 Progress: {total_duration:.1f}s/{target_duration:.1f}s ({len(video_files)} videos)")
+                    logger.info(f"Video {i+1} generated successfully")
+                    logger.info(f"Progress: {total_duration:.1f}s/{target_duration:.1f}s ({len(video_files)} videos)")
                 else:
-                    logger.error(f"❌ Video {i+1} generation failed")
+                    logger.error(f"Video {i+1} generation failed")
                     
             except Exception as e:
                 logger.error(f"Error generating video {i+1}: {e}")
@@ -130,7 +130,7 @@ class T2VClient:
             "seed": 42 + index  # Different seed for variety
         }
         
-        logger.info(f"⚙️ Sending T2V request for: {purpose}")
+        logger.info(f"Sending T2V request for: {purpose}")
         
         try:
             response = requests.post(
@@ -160,21 +160,21 @@ class T2VClient:
             generation_time = time.time() - start_time
             file_size = len(video_bytes)
             
-            logger.info(f"✅ Generated in {generation_time:.1f}s")
+            logger.info(f"Generated in {generation_time:.1f}s")
             logger.info(f"   File: {output_path} ({file_size/1024:.1f} KB)")
             
             if not self._validate_video_quality(output_path):
-                logger.warning(f"⚠️ Video quality check failed for {purpose}")
+                logger.warning(f"Video quality check failed for {purpose}")
                 # Don't return None, use it anyway for POC
             
             return output_path
             
         except requests.exceptions.Timeout:
-            logger.error(f"❌ T2V request timed out (15 minutes) for: {purpose}")
+            logger.error(f"T2V request timed out (15 minutes) for: {purpose}")
             logger.error("   GPU may be overwhelmed or generation is very slow")
             return None
         except Exception as e:
-            logger.error(f"❌ T2V request failed for {purpose}: {e}")
+            logger.error(f"T2V request failed for {purpose}: {e}")
             return None
     
     def _validate_video_quality(self, video_path: str) -> bool:
@@ -247,14 +247,14 @@ if __name__ == "__main__":
         if confirm == 'y':
             try:
                 video_files = client.generate_videos_from_prompts(test_prompts, 15.0)
-                print(f"\n✅ Generated {len(video_files)} videos:")
+                print(f"\nGenerated {len(video_files)} videos:")
                 for video in video_files:
                     print(f"  - {video}")
             except Exception as e:
-                print(f"❌ Test failed: {e}")
+                print(f"Test failed: {e}")
             finally:
                 client.cleanup()
         else:
             print("Test cancelled")
     else:
-        print("❌ No ngrok URL provided")
+        print("No ngrok URL provided")
